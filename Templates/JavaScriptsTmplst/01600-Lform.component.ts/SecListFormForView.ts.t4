@@ -1,0 +1,537 @@
+﻿<#@ template language="C#" HostSpecific="True" Debug="True" #>
+<#@ output extension="ts" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="CS2ANGULAR" #>
+<#@ import namespace="CS2ANGULAR.Model" #>
+<#@ import namespace="CS2ANGULAR.Model.Serializable" #>
+<#@ parameter type="CS2ANGULAR.Model.Serializable.ModelViewSerializable" name="Model" #>
+<#@ parameter type="CS2ANGULAR.Model.Serializable.DbContextSerializable" name="Context" #>
+
+<#
+    string OperatorSufix        = "Oprtr";
+    string EqualOperator        = "eq";
+
+    string MaxHeightPropSelector        = "max-height";
+    string MaxHeightPropName            = "maxHeight";
+    string FilterMaxHeightPropSelector  = "filter-max-height";
+    string FilterMaxHeightPropName      = "filterMaxHeight";
+    string ShowFilterSelector           = "show-filter";
+    string ShowFilterPropName           = "showFilter";
+    string showAddFltItemSelector       = "show-add-flt-item";
+    string showAddFltItemPropName       = "showAddFltItem";
+    string PermissionsSelector          = "permissions";
+    string PermissionsPropName          = "permissions";
+    string IsDisabledSelector           = "is-disabled";
+    string IsDisabledPropName           = "isDisabled";
+    string AppSettingServicePropName    = "appGlblSettings";
+    string HiddenFilterSelector         = "hidden-filter";
+    string HiddenFilterPropName         = "hiddenFilter";
+    string formRootService              = "frmRootSrv";
+    string src2arrayMethodName          = "src2array";
+    string GetWithFilterMethodName      = "getwithfilter";
+    string ShowErrorMethodName          = "showError";
+    string CanAddSelector               = "can-add";
+    string CanAddPropName               = "canAdd";
+    string CanUpdSelector               = "can-update";
+    string CanUpdPropName               = "canUpdate";
+    string CanDelSelector               = "can-delete";
+    string CanDelPropName               = "canDelete";
+
+
+    string eventEmitterPubModelFolder           = "00019-event-emitter-pub.interface.ts";
+
+    string appSettingServiceFolder              = "00015-app-glbl-settings.service.ts";
+    string itemHeightDataModelFolder            = "00016-item-height-data.interface.ts";
+    string filterResultModelFolder              = "00024-web-service-filter-rslt.interface.ts";
+
+    string viewInterfaceFolder                  = "01100-.interface.ts";
+    string viewInterfacePageFolder              = "01200-Page.interface.ts";
+    string viewInterfaceFltFolder               = "01300-Filter.interface.ts";
+    string viewServiceFolder                    = "01401-.service.ts";
+
+
+    string lformCssFolder                       = "01600-Lform.component.css";
+    string lformHtmlFolder                      = "01600-Lform.component.html";
+    string lformComponentFolder                 = "01600-Lform.component.ts";
+
+
+    string eventEmitterPubModelClassName        = GetModelClassName(Context, eventEmitterPubModelFolder);
+    string itemHeightDataModelClassName         = GetModelClassName(Context, itemHeightDataModelFolder);
+
+    string lformSelectorCommonPart              = GetComponentSelectorCommonPart(Model, lformComponentFolder);
+    string componentClassName                   = GetComponentClassName(Model, lformComponentFolder);
+    string filterResultModelClassName           = GetModelClassName(Context, filterResultModelFolder);
+    string serviceClassName                     = GetServiceClassName(Model, viewServiceFolder);
+    string appSettingServiceClassName           = GetCommonServiceClassName(Context, appSettingServiceFolder);
+    string componentSelectorCommonPart          = GetComponentSelectorCommonPart(Model, lformComponentFolder);
+
+
+#>
+
+import { Component, OnInit, Input, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+
+import { <#= appSettingServiceClassName #> } from '<#=  GetCommonFolderName(Model, Context,  appSettingServiceFolder, lformComponentFolder)#>';
+import { <#= itemHeightDataModelClassName #> } from '<#= GetCommonFolderName(Model, Context, itemHeightDataModelFolder, lformComponentFolder)#>';
+import { <#= filterResultModelClassName #> } from '<#=  GetCommonFolderName(Model, Context,  filterResultModelFolder, lformComponentFolder)#>';
+import { <#= GetInterfaceFilterName(Model) #> } from '<#=  GetCrossComponentFolderName(Model, lformComponentFolder, Context, Model.ViewName, viewInterfaceFltFolder) #>';
+import { <#= GetInterfacePageName(Model) #> } from '<#=  GetCrossComponentFolderName(Model, lformComponentFolder, Context, Model.ViewName, viewInterfacePageFolder) #>';
+import { <#= serviceClassName #> } from '<#=  GetCrossComponentFolderName(Model, lformComponentFolder, Context, Model.ViewName, viewServiceFolder) #>';
+
+
+@Component({
+  selector: 'app-<#= componentSelectorCommonPart #>',
+  templateUrl: '<#= GetFolderName(Model, lformHtmlFolder, lformComponentFolder)#>.html',
+  styleUrls: ['<#=  GetFolderName(Model, lformCssFolder, lformComponentFolder)#>.css']
+})
+export class <#= componentClassName #> implements OnInit,  <#= itemHeightDataModelClassName #> {
+
+    @Input('<#= FilterMaxHeightPropSelector #>')  <#= FilterMaxHeightPropName #>: number | null = null;
+    @Input('<#= MaxHeightPropSelector #>') <#= MaxHeightPropName #>: number | null = null;
+
+    isOnInitCalled: boolean = false;
+
+    @Input('<#= ShowFilterSelector #>') <#= ShowFilterPropName #>: boolean = true;
+    @Input('<#= showAddFltItemSelector #>') <#= showAddFltItemPropName #>: boolean = true;
+    @Input('<#= IsDisabledSelector #>') <#= IsDisabledPropName #>: boolean = true;
+    public <#= PermissionsPropName #>: Array<number> = [];
+
+    @Input('<#= CanAddSelector #>') <#= CanAddPropName #>: boolean = false;
+    @Input('<#= CanUpdSelector #>') <#= CanUpdPropName #>: boolean = false;
+    @Input('<#= CanDelSelector #>') <#= CanDelPropName #>: boolean = false;
+    
+    constructor(private  <#= formRootService #>: <#= serviceClassName #>, protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #>, private cd: ChangeDetectorRef) {
+    }
+    ngOnInit(): void {
+        this.onFilter();
+        this.isOnInitCalled = true;
+    }
+
+    protected _<#= HiddenFilterPropName #>: Array<<#= filterResultModelClassName #>> = [];
+    @Input('<#= HiddenFilterSelector #>') 
+        get <#= HiddenFilterPropName #>(): Array<<#= filterResultModelClassName #>> {
+          return this._<#= HiddenFilterPropName #>;
+        }
+        set <#= HiddenFilterPropName #>(inDef: Array<<#= filterResultModelClassName #>>) {
+          if (typeof inDef === 'undefined') {
+            this._<#= HiddenFilterPropName #> = [];
+          } else if(!Array.isArray(inDef)) {
+            this._<#= HiddenFilterPropName #> = [];
+          } else {
+            this._<#= HiddenFilterPropName #> =  inDef;
+          }
+          if(this.isOnInitCalled) {
+            this.onFilter();
+          }
+        } 
+
+    inQuery: boolean = false;
+    onFilter() {
+        this.<#= PermissionsPropName #> = [];
+        let flt: <#= GetInterfaceFilterName(Model) #> = { page: 1, pagesize: 1, orderby: [] };
+        if (Array.isArray(this._<#= HiddenFilterPropName #>)) {
+            this._<#= HiddenFilterPropName #>.forEach(e => {
+                let opNm =  e.fltrName + '<#= OperatorSufix #>';
+                if(typeof flt[e.fltrName] === 'undefined') {
+                    flt[e.fltrName] = [];
+                    flt[opNm] = [];
+                }
+                flt[e.fltrName].push(e.fltrValue);
+                flt[opNm].push(e.fltrOperator);
+            });
+        }
+<#
+    foreach(ModelViewPropertyOfVwSerializable modelViewPropertyOfVwSerializable in Model.ScalarProperties) {
+        if ((modelViewPropertyOfVwSerializable.IsUsedByfilter) && IsPropString(modelViewPropertyOfVwSerializable)) {
+#>
+        if(typeof flt['<#= modelViewPropertyOfVwSerializable.ViewPropertyName  #>'] === 'undefined') flt['<#= modelViewPropertyOfVwSerializable.ViewPropertyName  #>'] = [];
+        if(flt['<#= modelViewPropertyOfVwSerializable.ViewPropertyName  #>'] === null) flt['<#= modelViewPropertyOfVwSerializable.ViewPropertyName  #>'] = [];
+        flt['<#= modelViewPropertyOfVwSerializable.ViewPropertyName  #>'].push('noname');
+        if(typeof flt['<#= GetFilterPropertyOperatorName(modelViewPropertyOfVwSerializable, Model, OperatorSufix)#>'] === 'undefined') flt['<#= GetFilterPropertyOperatorName(modelViewPropertyOfVwSerializable, Model, OperatorSufix)#>'] = [];
+        if(flt['<#= GetFilterPropertyOperatorName(modelViewPropertyOfVwSerializable, Model, OperatorSufix)#>'] === null) flt['<#= GetFilterPropertyOperatorName(modelViewPropertyOfVwSerializable, Model, OperatorSufix)#>'] = [];
+        flt['<#= GetFilterPropertyOperatorName(modelViewPropertyOfVwSerializable, Model, OperatorSufix)#>'].push('<#= EqualOperator #>');
+<#
+        }
+    }
+#>
+        this.inQuery = true;
+        this.<#= formRootService #>.<#= GetWithFilterMethodName #>(flt)
+            .subscribe((v: <#= GetInterfacePageName(Model) #>) =>{
+                this.inQuery = false;
+                this.<#= PermissionsPropName #> = this.<#= formRootService #>.<#= src2arrayMethodName #>(v);
+                this.cd.detectChanges();
+            },
+            error => {
+                this.inQuery = false;
+                this.<#= AppSettingServicePropName #>.<#= ShowErrorMethodName #>('http', error)
+            });
+    }
+
+}
+
+
+<#+
+
+    string GetInterfacePageName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model) {
+        return "I"+model.PageViewName;
+    }
+    string GetCrossComponentFolderName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model, string currFolder, CS2ANGULAR.Model.Serializable.DbContextSerializable context, string refViewName, string refFolder) {
+        string result="./";
+        if ((model == null) || string.IsNullOrEmpty(currFolder) || (context == null) || string.IsNullOrEmpty(refFolder) || string.IsNullOrEmpty(refViewName)) {
+            return result;
+        }
+        if ((model.CommonStaffs == null) || (context.ModelViews == null)) {
+            return result;
+        }
+        ModelViewSerializable refModel = context.ModelViews.Where(v => v.ViewName == refViewName).FirstOrDefault();
+        if (refModel == null) {
+            return result;
+        }
+        if (refModel.CommonStaffs == null)  {
+            return result;
+        }
+        CommonStaffSerializable refItem= 
+            refModel.CommonStaffs.Where(c => c.FileType == refFolder).FirstOrDefault();
+        CommonStaffSerializable curItem= 
+            model.CommonStaffs.Where(c => c.FileType == currFolder).FirstOrDefault();
+        if ((refItem == null) || (curItem == null)) {
+            return result;
+        }
+        string[] refFolders  = new string[] {};
+        if(!string.IsNullOrEmpty(refItem.FileFolder)) {
+            refFolders  = refItem.FileFolder.Split(new string[] { "\\" }, StringSplitOptions.None);
+        }
+        string[] currFolders = new string[]{};
+        if(!string.IsNullOrEmpty(curItem.FileFolder)) {
+            currFolders  = curItem.FileFolder.Split(new string[] { "\\" }, StringSplitOptions.None);
+        }
+        int refLen = refFolders.Length;
+        int currLen = currFolders.Length;
+        int minLen = refLen < currLen ? refLen : currLen;
+        int cnt= 0;
+        for(int i = 0; i < minLen; i++) {
+            if ( !refFolders[i].Equals(currFolders[i], StringComparison.OrdinalIgnoreCase) ) break;
+            cnt++;
+        }
+        if(currLen > cnt) {
+            result += string.Join("",Enumerable.Repeat("../", currLen - cnt));
+        }
+        if(refLen > cnt) {
+            result += string.Join("/", refFolders, cnt, refLen - cnt) + "/";
+        }
+        result += refItem.FileName;
+        return result;
+    }
+
+    string GetInterfaceFilterName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model) {
+        return "I"+model.ViewName + "Filter";
+    }
+
+    string GetInterfaceName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model) {
+        return "I"+model.ViewName;
+    }
+
+    string GetServiceClassName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model, string fileType) {
+        string result="";
+        if ((model == null) || string.IsNullOrEmpty(fileType) ) {
+            return result;
+        }
+        if (model.CommonStaffs == null) {
+            return result;
+        }
+        CommonStaffSerializable refItem= 
+            model.CommonStaffs.Where(c => c.FileType == fileType).FirstOrDefault();
+        if (refItem == null) {
+            return result;
+        }
+        if(string.IsNullOrEmpty(refItem.FileName)) {
+            return result;
+        }
+        string fn = refItem.FileName.Replace(".service","Service");
+        StringBuilder sb = new StringBuilder();
+        bool toUpper = true;
+        foreach (char c in fn)
+        {
+            if( c == '-' )
+            {
+                toUpper = true;
+            } else
+            {
+                if (toUpper)
+                {
+                    sb.Append(Char.ToUpper(c));
+                    toUpper = false;
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+            }
+        }
+        return sb.ToString();
+    }
+
+    string GetFolderName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model, string refFolder, string currFolder) {
+        string result="./";
+        if ((model == null) || string.IsNullOrEmpty(refFolder) || string.IsNullOrEmpty(currFolder)) {
+            return result;
+        }
+        if (model.CommonStaffs == null) {
+            return result;
+        }
+        CommonStaffSerializable refItem= 
+            model.CommonStaffs.Where(c => c.FileType == refFolder).FirstOrDefault();
+        CommonStaffSerializable curItem= 
+            model.CommonStaffs.Where(c => c.FileType == currFolder).FirstOrDefault();
+        if ((refItem == null) || (curItem == null)) {
+            return result;
+        }
+        string[] refFolders  = new string[] {};
+        if(!string.IsNullOrEmpty(refItem.FileFolder)) {
+            refFolders  = refItem.FileFolder.Split(new string[] { "\\" }, StringSplitOptions.None);
+        }
+        string[] currFolders = new string[]{};
+        if(!string.IsNullOrEmpty(curItem.FileFolder)) {
+            currFolders  = curItem.FileFolder.Split(new string[] { "\\" }, StringSplitOptions.None);
+        }
+        int refLen = refFolders.Length;
+        int currLen = currFolders.Length;
+        int minLen = refLen < currLen ? refLen : currLen;
+        int cnt= 0;
+        for(int i = 0; i < minLen; i++) {
+            if ( !refFolders[i].Equals(currFolders[i], StringComparison.OrdinalIgnoreCase) ) break;
+            cnt++;
+        }
+        if(currLen > cnt) {
+            result += string.Join("",Enumerable.Repeat("../", currLen - cnt));
+        }
+        if(refLen > cnt) {
+            result += string.Join("/", refFolders, cnt, refLen - cnt) + "/";
+        }
+        result += refItem.FileName;
+        return result;
+    }
+
+    string GetModelClassName(CS2ANGULAR.Model.Serializable.DbContextSerializable context, string fileType) {
+        string result="";
+        if ((context == null) || string.IsNullOrEmpty(fileType)) {
+            return result;
+        }
+        if (context.CommonStaffs == null) {
+            return result;
+        }
+        CommonStaffSerializable refItem= 
+            context.CommonStaffs.Where(c => c.FileType == fileType).FirstOrDefault();
+        if (refItem == null) {
+            return result;
+        }
+        if(string.IsNullOrEmpty(refItem.FileName)) {
+            return result;
+        }
+        string fn = refItem.FileName.Replace(".interface","");
+        StringBuilder sb = new StringBuilder();
+        bool toUpper = true;
+        foreach (char c in fn)
+        {
+            if( c == '-' )
+            {
+                toUpper = true;
+            } else
+            {
+                if (toUpper)
+                {
+                    sb.Append(Char.ToUpper(c));
+                    toUpper = false;
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+            }
+                
+        }
+        return "I" + sb.ToString();
+    }
+
+    string GetCommonFolderName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model, CS2ANGULAR.Model.Serializable.DbContextSerializable context,  string refFolder, string currFolder) {
+        string result="./";
+        if ((model == null) || (context == null) || string.IsNullOrEmpty(refFolder) || string.IsNullOrEmpty(currFolder)) {
+            return result;
+        }
+        if ((model.CommonStaffs == null) || (context.CommonStaffs == null)) {
+            return result;
+        }
+        CommonStaffSerializable refItem= 
+            context.CommonStaffs.Where(c => c.FileType == refFolder).FirstOrDefault();
+        CommonStaffSerializable curItem= 
+            model.CommonStaffs.Where(c => c.FileType == currFolder).FirstOrDefault();
+        if ((refItem == null) || (curItem == null)) {
+            return result;
+        }
+        string[] refFolders  = new string[] {};
+        if(!string.IsNullOrEmpty(refItem.FileFolder)) {
+            refFolders  = refItem.FileFolder.Split(new string[] { "\\" }, StringSplitOptions.None);
+        }
+        string[] currFolders = new string[]{};
+        if(!string.IsNullOrEmpty(curItem.FileFolder)) {
+            currFolders  = curItem.FileFolder.Split(new string[] { "\\" }, StringSplitOptions.None);
+        }
+        int refLen = refFolders.Length;
+        int currLen = currFolders.Length;
+        int minLen = refLen < currLen ? refLen : currLen;
+        int cnt= 0;
+        for(int i = 0; i < minLen; i++) {
+            if ( !refFolders[i].Equals(currFolders[i], StringComparison.OrdinalIgnoreCase) ) break;
+            cnt++;
+        }
+        if(currLen > cnt) {
+            result += string.Join("",Enumerable.Repeat("../", currLen - cnt));
+        }
+        if(refLen > cnt) {
+            result += string.Join("/", refFolders, cnt, refLen - cnt) + "/";
+        }
+        result += refItem.FileName;
+        return result;
+    }
+
+    string GetComponentClassName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model, string fileType) {
+        string result="";
+        if ((model == null) || string.IsNullOrEmpty(fileType) ) {
+            return result;
+        }
+        if (model.CommonStaffs == null) {
+            return result;
+        }
+        CommonStaffSerializable refItem= 
+            model.CommonStaffs.Where(c => c.FileType == fileType).FirstOrDefault();
+        if (refItem == null) {
+            return result;
+        }
+        if(string.IsNullOrEmpty(refItem.FileName)) {
+            return result;
+        }
+        string fn = refItem.FileName.Replace(".component","Component");
+        StringBuilder sb = new StringBuilder();
+        bool toUpper = true;
+        foreach (char c in fn)
+        {
+            if( c == '-' )
+            {
+                toUpper = true;
+            } else
+            {
+                if (toUpper)
+                {
+                    sb.Append(Char.ToUpper(c));
+                    toUpper = false;
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+            }
+        }
+        return sb.ToString();
+    }
+
+
+        ModelViewSerializable GetFirstModelViewByType(DbContextSerializable context, string fileType) {
+            if ((context == null) || (string.IsNullOrEmpty(fileType))) {
+                return null;
+            }
+            if (context.ModelViews == null) {
+                return null;
+            }
+            return context.ModelViews.Where(v => v.CommonStaffs.Any(f =>f.FileType == fileType)).FirstOrDefault();
+        }
+        string GetComponentSelectorCommonPart(CS2ANGULAR.Model.Serializable.ModelViewSerializable model, string fileType)
+        {
+            string result = "";
+            if ((model == null) || string.IsNullOrEmpty(fileType))
+            {
+                return result;
+            }
+            if (model.CommonStaffs == null)
+            {
+                return result;
+            }
+            CommonStaffSerializable refItem =
+                model.CommonStaffs.Where(c => c.FileType == fileType).FirstOrDefault();
+            if (refItem == null)
+            {
+                return result;
+            }
+            if (string.IsNullOrEmpty(refItem.FileName))
+            {
+                return result;
+            }
+            return refItem.FileName.Replace(".component", "");
+        }
+        bool IsPropString(ModelViewPropertyOfVwSerializable prop) {
+            if(prop == null) return false;
+            if(string.IsNullOrEmpty( prop.TypeFullName )) return false;
+            string tpNm = prop.TypeFullName.ToLower();
+            return 
+                "system.string".Equals(tpNm);
+        }
+    string GetCommonServiceClassName(CS2ANGULAR.Model.Serializable.DbContextSerializable context, string fileType) {
+        string result="";
+        if ((context == null) || string.IsNullOrEmpty(fileType)) {
+            return result;
+        }
+        if (context.CommonStaffs == null) {
+            return result;
+        }
+        CommonStaffSerializable refItem= 
+            context.CommonStaffs.Where(c => c.FileType == fileType).FirstOrDefault();
+        if (refItem == null) {
+            return result;
+        }
+        if(string.IsNullOrEmpty(refItem.FileName)) {
+            return result;
+        }
+        string fn = refItem.FileName.Replace(".service","Service");
+        StringBuilder sb = new StringBuilder();
+        bool toUpper = true;
+        foreach (char c in fn)
+        {
+            if( c == '-' )
+            {
+                toUpper = true;
+            } else
+            {
+                if (toUpper)
+                {
+                    sb.Append(Char.ToUpper(c));
+                    toUpper = false;
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+            }
+                
+        }
+        return sb.ToString();
+    }
+    public string FirstLetterToLower(string str)
+    {
+        if (str == null)
+            return null;
+        if (str.Length > 1)
+            return char.ToLower(str[0]) + str.Substring(1);
+        return str.ToUpper();
+    }
+    string GetFilterPropertyOperatorName(CS2ANGULAR.Model.Serializable.ModelViewPropertyOfVwSerializable prop, CS2ANGULAR.Model.Serializable.ModelViewSerializable model, string operatorSufix) {
+        if (model.GenerateJSonAttribute) {
+            return prop.JsonPropertyName + operatorSufix;
+        } else {
+            return FirstLetterToLower(prop.ViewPropertyName) + operatorSufix;
+        }
+    }
+
+#>

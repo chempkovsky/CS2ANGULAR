@@ -1,0 +1,214 @@
+﻿<#@ template language="C#" HostSpecific="True" Debug="True" #>
+<#@ output extension="html" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="CS2ANGULAR" #>
+<#@ import namespace="CS2ANGULAR.Model" #>
+<#@ import namespace="CS2ANGULAR.Model.Serializable" #>
+<#@ parameter type="CS2ANGULAR.Model.Serializable.ModelViewSerializable" name="Model" #>
+<#@ parameter type="CS2ANGULAR.Model.Serializable.DbContextSerializable" name="Context" #>
+
+<#
+    
+    string CanAddSelector           = "can-add";
+    string CanAddPropName           = "canAdd";
+    string CanUpdSelector           = "can-update";
+    string CanUpdPropName           = "canUpdate";
+    string CanDelSelector           = "can-delete";
+    string CanDelPropName           = "canDelete";
+    string HiddenFilterSelector     = "hidden-filter";
+    string HiddenFilterPropName     = "hiddenFilter";
+    string ShowFilterSelector       = "show-filter";
+    string ShowFilterPropName       = "showFilter";
+
+    string RowCommandsSelector      = "row-commands";
+    string RowCommandsPropName      = "rowCommands";
+    string TableCommandsSelector    = "table-commands";
+    string TableCommandsPropName    = "tableCommands";
+
+    string OnRowCommandSelector     = "on-row-command";
+    string OnRowCommandPropName     = "onRowCommand";
+    string OnTableCommandSelector   = "on-table-command";
+    string OnTableCommandPropName   = "onTableCommand";
+
+    string selectedRowSelector        = "selected-row";
+    string selectedRowPropName        = "selectedRow";
+
+    string applyFilterSelector        = "apply-filter";
+    string applyFilterPropName        = "applyFilter";
+
+    string containerMenuItemsPropName           = "contMenuItems";
+    string containerMenuItemsSelector           = "cont-menu-items";
+    string onContainerMenuItemClickMethodName   = "onContMenuItemClicked";
+    string onContainerMenuItemClickSelector     = "on-cont-menu-item-click";
+    string onContainerMenuItemClickEmitter      = "onContMenuItemEmitter";
+
+
+    string lformComponentFolder         = "01600-Lform.component.ts";
+    string lformModuleFolder            = "01650-L.module.ts";
+    string o2mComponentFolder           = "01700-O2m.component.ts";
+    string o2mformModuleFolder          = "01750-O.module.ts";
+    string routingFormModuleFolder      = "01950-R.module.ts";
+    string rdroutingFormModuleFolder    = "02050-Rd.module.ts";
+
+    string MaxHeightPropSelector        = "max-height";
+    string MaxHeightPropName            = "maxHeight";
+    string FilterMaxHeightPropSelector  = "filter-max-height";
+    string FilterMaxHeightPropName      = "filterMaxHeight";
+
+    string lfrmColsPropName                 = "lfcols";
+    string lfrmRowsPropName                 = "lfrows";
+    string lfrmcontainerMenuItemsPropName   = "lfContMenuItems";
+    string lfrmMaxHeightPropName            = "lfMaxHeight";
+    string lfrmFilterMaxHeightPropName      = "lfFilterMaxHeight";
+
+
+    string o2mColsPropName                  = "o2mcols";
+    string o2mRowsPropName                  = "o2mrows";
+    string o2mcontainerMenuItemsPropName    = "o2mContMenuItems";
+    string o2mMaxHeightPropName             = "o2mMaxHeight";
+    string o2mFilterMaxHeightPropName       = "o2mFilterMaxHeight";
+
+
+    string rtColsPropName             = "rtcols";
+    string rtRowsPropName             = "rtrows";
+    string rtOutletPropName           = "rtoutlet";
+    string rtOnActivateMethodName     = "rtOnActivate";
+    string rtOnDeActivateMethodName   = "rtOnDeActivate";
+
+    string rdColsPropName             = "rdcols";
+    string rdRowsPropName             = "rdrows";
+    string rdOutletPropName           = "rdoutlet";
+    string rdOnActivateMethodName     = "rdOnActivate";
+    string rdOnDeActivateMethodName   = "rdOnDeActivate";
+
+
+#>
+
+<div class="dashboard-grid-container">
+  <h2 class="mat-h2">Dashboard for <#= Model.ViewName #></h2>
+<!-- please remove "style" this was added for demonstration purposes only -->
+  <mat-grid-list cols="2" rowHeight="380px" style="background-color:gold;">
+
+<# if (!isComponentGenerated(Model, lformModuleFolder)) { #> <!-- the module "<#= lformModuleFolder #>" is not generated for the selected model <# } #>
+
+    <mat-grid-tile [colspan]="<#= lfrmColsPropName #>[0]" [rowspan]="<#= lfrmRowsPropName #>[0]">
+      <div class="dashboard-item-container">
+        <mat-card>
+            <app-<#= GetComponentSelectorCommonPart(Model, lformComponentFolder) #>
+                [<#= containerMenuItemsSelector #>]="<#= lfrmcontainerMenuItemsPropName #>"
+                (<#= onContainerMenuItemClickSelector #>)="<#= onContainerMenuItemClickMethodName #>($event)"
+                [<#= MaxHeightPropSelector #>]="<#= lfrmMaxHeightPropName #>[0]"  
+                [<#= FilterMaxHeightPropSelector #>]="<#= lfrmFilterMaxHeightPropName #>[0]"  
+
+            >
+            </app-<#= GetComponentSelectorCommonPart(Model, lformComponentFolder) #>>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+<# if (!isComponentGenerated(Model, lformModuleFolder)) { #> --> <# }  #>
+
+<# if (!isComponentGenerated(Model, o2mformModuleFolder)) { #> <!-- the module "<#= o2mformModuleFolder #>" is not generated for the selected model <# } #>
+
+    <mat-grid-tile [colspan]="<#= o2mColsPropName #>[0]" [rowspan]="<#= o2mRowsPropName #>[0]">
+      <div class="dashboard-item-container">
+        <mat-card>
+            <app-<#= GetComponentSelectorCommonPart(Model, o2mComponentFolder) #>
+                [<#= containerMenuItemsSelector #>]="<#= o2mcontainerMenuItemsPropName #>"
+                (<#= onContainerMenuItemClickSelector #>)="<#= onContainerMenuItemClickMethodName #>($event)"
+                [<#= MaxHeightPropSelector #>]="<#= o2mMaxHeightPropName #>[0]"  
+                [<#= FilterMaxHeightPropSelector #>]="<#= o2mFilterMaxHeightPropName #>[0]"  
+            >
+            </app-<#= GetComponentSelectorCommonPart(Model, o2mComponentFolder) #>>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+<# if (!isComponentGenerated(Model, o2mformModuleFolder)) { #> --> <# } #>
+
+
+<# if (!isComponentGenerated(Model, routingFormModuleFolder)) { #> <!-- the module "<#= routingFormModuleFolder #>" is not generated for the selected model <# } #>
+
+    <mat-grid-tile [colspan]="<#= rtColsPropName #>[0]" [rowspan]="<#= rtRowsPropName #>[0]">
+          <div class="dashboard-item-container">
+            <mat-card>
+                <router-outlet name="<#= GetRtOutletName(Model) #>" (activate)="<#= rtOnActivateMethodName #>($event)"  (deactivate)= "<#= rtOnDeActivateMethodName #>($event)" ></router-outlet>
+            </mat-card>
+          </div>
+    </mat-grid-tile>
+
+<# if (!isComponentGenerated(Model, routingFormModuleFolder)) { #> --> <# }  #>
+
+
+
+<# if (!isComponentGenerated(Model, rdroutingFormModuleFolder)) { #>  <!-- the module "<#= rdroutingFormModuleFolder #>" is not generated for the selected model <# } #>
+
+    <mat-grid-tile [colspan]="<#= rdColsPropName #>[0]" [rowspan]="<#= rdRowsPropName #>[0]">
+      <div class="dashboard-item-container">
+          <mat-card>
+                <router-outlet name="<#= GetRdOutletName(Model) #>" (activate)="<#= rdOnActivateMethodName #>($event)"  (deactivate)= "<#= rdOnDeActivateMethodName #>($event)" ></router-outlet>
+         </mat-card>
+      </div>
+    </mat-grid-tile>
+
+<# if (!isComponentGenerated(Model, rdroutingFormModuleFolder)) { #> --> <# } #>
+
+
+
+  </mat-grid-list>
+</div>
+
+
+<#+
+
+    string GetRtOutletName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model) {
+        string result="rtoutlt";
+        if (model == null) {
+            return result;
+        }
+        return result + model.ViewName.ToLower();
+    }
+    string GetRdOutletName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model) {
+        string result="rdoutlt";
+        if (model == null) {
+            return result;
+        }
+        return result + model.ViewName.ToLower();
+    }
+
+    string GetComponentSelectorCommonPart(CS2ANGULAR.Model.Serializable.ModelViewSerializable model, string fileType) {
+        string result="";
+        if ((model == null) || string.IsNullOrEmpty(fileType)) {
+            return result;
+        }
+        if (model.CommonStaffs == null) {
+            return result;
+        }
+        CommonStaffSerializable refItem= 
+            model.CommonStaffs.Where(c => c.FileType == fileType).FirstOrDefault();
+        if (refItem == null) {
+            return result;
+        }
+        if(string.IsNullOrEmpty(refItem.FileName)) {
+            return result;
+        }
+        return refItem.FileName.Replace(".component","");
+    }
+
+    bool isComponentGenerated(CS2ANGULAR.Model.Serializable.ModelViewSerializable model, string fileType) {
+        if(model == null) {
+            return false;
+        }
+        if (model.CommonStaffs == null) {
+            return false;
+        }
+        CommonStaffSerializable refItem= 
+            model.CommonStaffs.Where(c => c.FileType == fileType).FirstOrDefault();
+        return refItem != null;
+    }
+#>

@@ -1,0 +1,277 @@
+﻿<UserControl x:Class="CS2ANGULAR.View.UserControlVMCFSex"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CS2ANGULAR.View"
+             xmlns:vwmdl="clr-namespace:CS2ANGULAR.ViewModel"
+             xmlns:hlprs="clr-namespace:CS2ANGULAR.Helpers"
+             xmlns:mdl="clr-namespace:CS2ANGULAR.Model"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="TextBlockStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="Margin" Value="3 0 3 0"/>
+            </Style>
+            <Style x:Key="TextBlockBoldStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+            <HierarchicalDataTemplate DataType="{x:Type vwmdl:ClassFiledSelectorRootViewModel}"
+                ItemsSource="{Binding ForeigKeyParentProperties}">
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding IncludeInView}" />
+                    <TextBlock  Text="{Binding DisplayName}" Style="{StaticResource TextBlockBoldStyle}" />
+                </StackPanel>
+            </HierarchicalDataTemplate>
+            <HierarchicalDataTemplate DataType="{x:Type vwmdl:PropertySelectorViewModel}"
+                ItemsSource="{Binding ForeigKeyParentProperties}">
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding IncludeInView}" />
+                    <TextBlock  Text="{Binding DisplayName}" Style="{StaticResource TextBlockBoldStyle}" />
+                </StackPanel>
+            </HierarchicalDataTemplate>
+
+
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="290" Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TreeView Grid.Column="0" Margin="7 0 7 0"   BorderBrush="Gray" SelectedItemChanged="TreeView_SelectedItemChanged"  >
+
+            <TreeViewItem ItemsSource="{Binding ForeigKeyParentProperties}">
+                <TreeViewItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding IncludeInView}" />
+                        <TextBlock  Text="{Binding DisplayName}" Style="{StaticResource TextBlockBoldStyle}" />
+                    </StackPanel>
+                </TreeViewItem.Header>
+            </TreeViewItem>
+
+        </TreeView>
+
+        <Grid  Grid.Column="1" Visibility="{Binding PropertyDetailsVisibility}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0"  Grid.Column="0" Text="Field Type Full Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock   Grid.Row="0"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.TypeFullName}" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="1"  Grid.Column="0" Text="Field Type Is Nullable"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="1"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.TypeIsNullable}" IsHitTestVisible="False"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="2"  Grid.Column="0" Text="Underlying Field Type"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock   Grid.Row="2"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.UnderlyingTypeName}" HorizontalAlignment="Center" />
+
+
+
+            <TextBlock Grid.Row="3"  Grid.Column="0" Text="Field Order"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBox   Grid.Row="3"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.FieldOrder}" Width="30"/>
+            <TextBlock Grid.Row="4"  Grid.Column="0" Text="Hidden"               Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="4"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.IsUIHidden}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Has Required Attribute"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="5" Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.HasRequiredAttribute}" IsHitTestVisible="False"  VerticalAlignment="Center" HorizontalAlignment="Center"  />
+
+            <TextBlock Grid.Row="6"  Grid.Column="0" Text="Is Key Field"         Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="6"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.IsKeyField}" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Center"  />
+            <TextBlock Grid.Row="7"  Grid.Column="0" Text="Is Foreign Key Field"            Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="7"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.IsForeignKeyField}" IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Center"  />
+
+
+            <TextBlock Grid.Row="8"  Grid.Column="0" Text="Detail Foreign Key Prefix"       Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="8"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ChildForeignKeyPrefix}" Style="{StaticResource TextBlockBoldStyle}" HorizontalAlignment="Center"/>
+
+            <TextBlock Grid.Row="9"  Grid.Column="0" Text="Foreign Key (Navigation) Name"       Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="9"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ForeignKeyName}" Style="{StaticResource TextBlockBoldStyle}" HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="10"  Grid.Column="0" Text="Foreign Key (Navigation) Alias"     Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBox   Grid.Row="10"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ForeignKeyAlias, UpdateSourceTrigger=PropertyChanged}" Width="200" />
+            
+            <TextBlock Grid.Row="11"  Grid.Column="0" Text="Upddate Depend"            Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="11"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.UpdateDependent}"   VerticalAlignment="Center" HorizontalAlignment="Center"  />
+            <TextBlock Grid.Row="12"  Grid.Column="0" Text="Update Nested"            Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="12"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.UpdateNested}"    VerticalAlignment="Center" HorizontalAlignment="Center"  />
+            
+            <TextBlock Grid.Row="13"  Grid.Column="0" Text="Foreign Key Prefix"    Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="13"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ForeignKeyPrefix}" Style="{StaticResource TextBlockBoldStyle}" HorizontalAlignment="Center"/>
+            
+            <TextBlock Grid.Row="14"  Grid.Column="0" Text="View Model Field Name"              Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBox   Grid.Row="14"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ViewModelFieldName}" Width="200"/>
+            <TextBlock Grid.Row="15" Grid.Column="0" Text="JSON Field Name"              Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBox   Grid.Row="15" Grid.Column="1" Text="{Binding SelectedTreeViewItem.JsonPropertyFieldName}" Width="200"/>
+            <TextBlock Grid.Row="16" Grid.Column="0" Text="Input Type"            Style="{StaticResource TextBlockBoldStyle}"/>
+            <ComboBox  Grid.Row="16" Grid.Column="1" IsEditable="False" 
+                                       ItemsSource ="{Binding Source={hlprs:EnumBindingSource {x:Type mdl:ViewModelForeigKeyUITypeEnum}}}"
+                                       SelectedItem="{Binding SelectedTreeViewItem.ForeignKeyUIType, Mode=TwoWay}" 
+                                       Width="200">
+            </ComboBox>
+
+
+
+            <TextBlock Grid.Row="17" Grid.Column="0" Text="LookUp View Name"       Style="{StaticResource TextBlockBoldStyle}"/>
+            <ComboBox  Grid.Row="17" Grid.Column="1" IsEditable="False" Name="CbxLookUpViewModelName" 
+                                       ItemsSource ="{Binding Path=DataContext.LookUpViewModels, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                       SelectedValuePath="LookUpViewModelName"
+                                       SelectedValue="{Binding SelectedTreeViewItem.LookUpViewName, Mode=TwoWay}"   Width="200">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding LookUpViewModelName}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Grid.Row="18" Grid.Column="0" Text="LookUp Id"             Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBox   Grid.Row="18" Grid.Column="1" Text="{Binding SelectedTreeViewItem.LookUpId}" Width="30"/>
+            <TextBlock Grid.Row="19" Grid.Column="0" Text="LookUp Field Name"      Style="{StaticResource TextBlockBoldStyle}"/>
+            <ComboBox  Grid.Row="19" Grid.Column="1" IsEditable="False" 
+                                       ItemsSource ="{Binding ElementName=CbxLookUpViewModelName, Path=SelectedItem.LookUpClassFields}"
+                                       SelectedValuePath="ViewModelFieldName"
+                                       SelectedValue="{Binding SelectedTreeViewItem.LookUpFieldName, Mode=TwoWay}"   Width="200">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ViewModelFieldName}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Grid.Row="20" Grid.Column="0" Text="Class Name"             Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="20"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.PocoFullName}" Style="{StaticResource TextBlockBoldStyle}" HorizontalAlignment="Center"/>
+
+
+        </Grid>
+        <Grid Grid.Column="1"  Visibility="{Binding HintVisibility}">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock   FontSize="24" FontWeight="Bold" HorizontalAlignment="Center">Click TreeView Item to get details</TextBlock>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1"  Visibility="{Binding ForeifKeyDetailsVisibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0"  Grid.Column="0" Text="Master Field Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock   Grid.Row="0"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.OriginalPropertyName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="1"  Grid.Column="0" Text="Master Field Type Full Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock   Grid.Row="1"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.TypeFullName}" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="2"  Grid.Column="0" Text="Master Field Type Is Nullable"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="2"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.TypeIsNullable}" IsHitTestVisible="False"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <TextBlock Grid.Row="3"  Grid.Column="0" Text="Master Underlying Field Type"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock   Grid.Row="3"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.UnderlyingTypeName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="4"  Grid.Column="0" Text="Detail Foreign Key Prefix"       Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="4"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ChildForeignKeyPrefix}" Style="{StaticResource TextBlockBoldStyle}" HorizontalAlignment="Center"/>
+
+
+            <TextBlock Grid.Row="5"  Grid.Column="0" Text="Foreign Key (Navigation) Name"       Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="5"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ForeignKeyName}" Style="{StaticResource TextBlockBoldStyle}" HorizontalAlignment="Center"/>
+
+            <TextBlock Grid.Row="6"  Grid.Column="0" Text="Foreign Key (Navigation) Alias"     Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBox   Grid.Row="6"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ForeignKeyAlias, UpdateSourceTrigger=PropertyChanged}" Width="200" />
+
+            <TextBlock Grid.Row="7"  Grid.Column="0" Text="Upddate Depend"            Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="7"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.UpdateDependent}"   VerticalAlignment="Center" HorizontalAlignment="Center"  />
+            <TextBlock Grid.Row="8"  Grid.Column="0" Text="Update Nested"            Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="8"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.UpdateNested}"    VerticalAlignment="Center" HorizontalAlignment="Center"  />
+
+            <TextBlock Grid.Row="9"  Grid.Column="0" Text="Foreign Key Prefix"    Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="9"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ForeignKeyPrefix}"  Style="{StaticResource TextBlockBoldStyle}" HorizontalAlignment="Center"/>
+
+            <TextBlock Grid.Row="10" Grid.Column="0" Text="Class Name"             Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="10"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.PocoFullName}" Style="{StaticResource TextBlockBoldStyle}" HorizontalAlignment="Center"/>
+
+        </Grid>
+        <Grid Grid.Column="1"  Visibility="{Binding RootVisibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0"  Grid.Column="0" Text="Root Source Class Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="0"  Grid.Column="1" Text="{Binding RootNodeClassName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="1"  Grid.Column="0" Text="Root Source NameSpace"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="1"  Grid.Column="1" Text="{Binding RootNodeNameSapce}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="2"  Grid.Column="0" Text="Root Source Project Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="2"  Grid.Column="1" Text="{Binding RootNodeProjectName}" HorizontalAlignment="Center" Style="{StaticResource TextBlockBoldStyle}"/>
+
+            <TextBlock Grid.Row="3"  Grid.Column="0" Text="Output Class Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="3"  Grid.Column="1" Text="{Binding OutputClassName}" HorizontalAlignment="Center" />
+            
+            <TextBlock Grid.Row="4"  Grid.Column="0" Text="Destination Name Space"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="4"  Grid.Column="1" Text="{Binding DestinationNameSpace}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="5"  Grid.Column="0" Text="Destination Project Name"       Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="5"  Grid.Column="1" Text="{Binding DestinationProjectName}"  HorizontalAlignment="Center" Style="{StaticResource TextBlockBoldStyle}"/>
+
+            <TextBlock Grid.Row="6"  Grid.Column="0" Text="Generate JsonProperty Attribute"            Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="6"  Grid.Column="1" IsChecked="{Binding GenerateJSonAttribute}"    VerticalAlignment="Center" HorizontalAlignment="Center"  />
+
+        </Grid>
+
+
+
+    </Grid>
+</UserControl>

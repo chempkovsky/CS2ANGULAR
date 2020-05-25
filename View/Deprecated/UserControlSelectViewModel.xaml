@@ -1,0 +1,249 @@
+﻿<UserControl x:Class="CS2ANGULAR.View.UserControlSelectViewModel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CS2ANGULAR.View"
+             xmlns:mdl="clr-namespace:CS2ANGULAR.Model"
+             xmlns:cnv="clr-namespace:CS2ANGULAR.Helpers"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="TextBlockStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="Margin" Value="3 0 3 0"/>
+            </Style>
+            <Style x:Key="TextBlockBoldStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}">
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Style>
+            <HierarchicalDataTemplate DataType="{x:Type mdl:SerializableViewModel}">
+                <HierarchicalDataTemplate.ItemsSource>
+                    <MultiBinding ConverterParameter="Primary Keys, Properties, Foreign Keys">
+                        <MultiBinding.Converter>
+                            <cnv:SerializableViewModelMultiValueConverter />
+                        </MultiBinding.Converter>
+                        <Binding Path="PrimKeys" />
+                        <Binding Path="Properties" />
+                        <Binding Path="ForeignKeys" />
+                    </MultiBinding>
+                </HierarchicalDataTemplate.ItemsSource>
+                <Label Content="{Binding ViewModelName}" />
+            </HierarchicalDataTemplate>
+            
+            <HierarchicalDataTemplate DataType="{x:Type mdl:TreeViewFolderItem}" ItemsSource="{Binding FolderItems}">
+                <Label  Content="{Binding FolderName}" />
+            </HierarchicalDataTemplate>
+
+            <HierarchicalDataTemplate DataType="{x:Type mdl:SerializableViewModelProperty}" ItemsSource="{Binding Navigations}">
+                <Label  Content="{Binding ViewModelFieldName}" />
+            </HierarchicalDataTemplate>
+            <DataTemplate DataType="{x:Type mdl:SerializableViewModelForeignKey}">
+                <Label Content="{Binding ForeignKeyName}" />
+            </DataTemplate>
+        </Grid.Resources>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="290" Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TreeView Grid.Column="0" Margin="7 0 7 0" ItemsSource="{Binding ViewModelList}"  BorderBrush="Gray" SelectedItemChanged="TreeView_SelectedItemChanged"  />
+
+
+        <Grid Grid.Column="1"  Visibility="{Binding HintVisibility}">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock   FontSize="24" FontWeight="Bold" HorizontalAlignment="Center">Click TreeView Item to get details</TextBlock>
+            </StackPanel>
+        </Grid>
+
+
+        <Grid Grid.Column="1"  Visibility="{Binding SerializableViewModelVisibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0"  Grid.Column="0" Text="Root Source Class Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="0"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.RootNodeClassName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="1"  Grid.Column="0" Text="Root Source NameSpace"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="1"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.RootNodeNameSapce}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="2"  Grid.Column="0" Text="Root Source Project Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="2"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.RootNodeProjectName}" HorizontalAlignment="Center" Style="{StaticResource TextBlockBoldStyle}"/>
+
+            <TextBlock Grid.Row="3"  Grid.Column="0" Text="View Model Class Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="3"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ViewModelName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="4"  Grid.Column="0" Text="View Model Name Space"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="4"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ViewModelNameSpace}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="5"  Grid.Column="0" Text="View Model Folder Chain"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="5"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ViewModelFolderChain}" HorizontalAlignment="Center" />
+            
+            
+            <TextBlock Grid.Row="6"  Grid.Column="0" Text="View Model Project Name"       Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="6"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ViewModelProjectName}"  HorizontalAlignment="Center" Style="{StaticResource TextBlockBoldStyle}"/>
+
+            
+            
+        </Grid>
+
+        <Grid Grid.Column="1"  Visibility="{Binding SerializableViewModelPropertyVisibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0"  Grid.Column="0" Text="View Model Property Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="0"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ViewModelFieldName}" HorizontalAlignment="Center" />
+
+
+            <TextBlock Grid.Row="1"  Grid.Column="0" Text="Property Type Full Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="1"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.PropTypeFullName}" HorizontalAlignment="Center" />
+            
+            <TextBlock Grid.Row="2"  Grid.Column="0" Text="Property Type Is Nullable"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="2"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.PropTypeIsNullable}" IsHitTestVisible="False"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+            
+            <TextBlock Grid.Row="3"  Grid.Column="0" Text="Underlying Property Type"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="3"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.PropUnderlyingTypeName}" HorizontalAlignment="Center" />
+            
+            <TextBlock Grid.Row="4"  Grid.Column="0" Text="Foreign Key Type Is Nullable"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="4"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.RefTypeIsNullable}" IsHitTestVisible="False"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="5"  Grid.Column="0" Text="Json Property Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="5"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.JsonPropertyFieldName}" HorizontalAlignment="Center" />
+
+
+            <TextBlock Grid.Row="6"  Grid.Column="0" Text="Original Property Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="6"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.OriginalPropertyName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="7"  Grid.Column="0" Text="Original Property Class Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="7"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.PocoName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="8"  Grid.Column="0" Text="Original Property Full Class Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="8"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.PocoFullName}" HorizontalAlignment="Center" />
+
+
+            <TextBlock Grid.Row="9"  Grid.Column="0" Text="Property Is Key"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="9"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.PropIsKey}" IsHitTestVisible="False"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="10"  Grid.Column="0" Text="Property Is Foreign Key"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="10"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.PropIsForeignKey}" IsHitTestVisible="False"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="11"  Grid.Column="0" Text="Property Is Hidden"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="11"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.PropIsUIHidden}" IsHitTestVisible="False"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="12"  Grid.Column="0" Text="Property UI Input Type"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="12"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ForeignKeyUIType}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="13"  Grid.Column="0" Text="LookUp View Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="13"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.LookUpViewName}" HorizontalAlignment="Center" />
+
+
+            <TextBlock Grid.Row="14"  Grid.Column="0" Text="LookUp Property Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="14"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.LookUpFieldName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="15"  Grid.Column="0" Text="LookUp Id"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="15"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.LookUpId}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="16"  Grid.Column="0" Text="Foreign Key Name Chain"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="16"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ForeignKeyNameChain}" HorizontalAlignment="Center" />
+        </Grid>
+
+        <Grid Grid.Column="1"  Visibility="{Binding SerializableViewModelForeignKeyVisibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0"  Grid.Column="0" Text="Foreign Key Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="0"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ForeignKeyName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="1"  Grid.Column="0" Text="Master Original Property Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="1"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.MasterOriginalPropertyName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="2"  Grid.Column="0" Text="Master Poco Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="2"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.MasterPocoName}" HorizontalAlignment="Center" Style="{StaticResource TextBlockBoldStyle}"/>
+
+            <TextBlock Grid.Row="3"  Grid.Column="0" Text="Master Class Full Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="3"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.MasterPocoFullName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="4"  Grid.Column="0" Text="Master Type Full Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="4"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.MasterTypeFullName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="5"  Grid.Column="0" Text="Master Underlying Type Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="5"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.MasterUnderlyingTypeName}" HorizontalAlignment="Center" />
+
+
+            <TextBlock Grid.Row="6"  Grid.Column="0" Text="Master Type Is Nullable"       Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="6"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.MasterTypeIsNullable}" IsHitTestVisible="False"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+            
+            <TextBlock Grid.Row="7"  Grid.Column="0" Text="Foreign Type Is Nullable"       Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="7"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.RefTypeIsNullable}" IsHitTestVisible="False"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+
+            <TextBlock Grid.Row="8"  Grid.Column="0" Text="Foreign Key Name Chain"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="8"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.ForeignKeyNameChain}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="9"  Grid.Column="0" Text="Detail Original Property Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="9"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.DetailOriginalPropertyName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="10" Grid.Column="0" Text="Detail Type Full Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="10" Grid.Column="1" Text="{Binding SelectedTreeViewItem.DetailTypeFullName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="11"  Grid.Column="0" Text="Detail Underlying Type Name"  Style="{StaticResource TextBlockBoldStyle}"/>
+            <TextBlock Grid.Row="11"  Grid.Column="1" Text="{Binding SelectedTreeViewItem.DetailUnderlyingTypeName}" HorizontalAlignment="Center" />
+
+            <TextBlock Grid.Row="12"  Grid.Column="0" Text="Detail Type Is Nullable"       Style="{StaticResource TextBlockBoldStyle}"/>
+            <CheckBox  Grid.Row="12"  Grid.Column="1" IsChecked="{Binding SelectedTreeViewItem.DetailIsNullable}" IsHitTestVisible="False"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Grid>
+
+    </Grid>
+</UserControl>
