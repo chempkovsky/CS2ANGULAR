@@ -497,6 +497,7 @@ namespace CS2ANGULAR.ViewModel
 
                 if (existedModelViewSerializable != null)
                 {
+                    existedModelViewSerializable.ScalarProperties = modelViewSerializable.ScalarProperties;
                     existedModelViewSerializable.CommonStaffs = modelViewSerializable.CommonStaffs;
                     existedModelViewSerializable.UIFormProperties = modelViewSerializable.UIFormProperties;
                     existedModelViewSerializable.UIListProperties = modelViewSerializable.UIListProperties;
