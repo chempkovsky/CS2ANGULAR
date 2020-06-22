@@ -12,6 +12,7 @@
 <#@ parameter type="CS2ANGULAR.Model.Serializable.ModelViewSerializable" name="Model" #>
 <#@ parameter type="CS2ANGULAR.Model.Serializable.DbContextSerializable" name="Context" #>
 
+/*
 .mat-column-selectAction {
     width: 10px !important;
     padding-right: 4px;   
@@ -42,3 +43,4 @@ tr.mat-row {
 button.mat-icon-button {
     height: 15px !important;
 }
+*/

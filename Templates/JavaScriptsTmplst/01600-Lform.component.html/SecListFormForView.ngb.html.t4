@@ -1,0 +1,139 @@
+﻿<#@ template language="C#" HostSpecific="True" Debug="True" #>
+<#@ output extension="html" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="CS2ANGULAR" #>
+<#@ import namespace="CS2ANGULAR.Model" #>
+<#@ import namespace="CS2ANGULAR.Model.Serializable" #>
+<#@ parameter type="CS2ANGULAR.Model.Serializable.ModelViewSerializable" name="Model" #>
+<#@ parameter type="CS2ANGULAR.Model.Serializable.DbContextSerializable" name="Context" #>
+
+<#
+    string MaxHeightPropSelector        = "max-height";
+    string MaxHeightPropName            = "maxHeight";
+    string FilterMaxHeightPropSelector  = "filter-max-height";
+    string FilterMaxHeightPropName      = "filterMaxHeight";
+    string ShowFilterSelector           = "show-filter";
+    string ShowFilterPropName           = "showFilter";
+    string showAddFltItemSelector       = "show-add-flt-item";
+    string showAddFltItemPropName       = "showAddFltItem";
+    string PermissionsSelector          = "permissions";
+    string PermissionsPropName          = "permissions";
+    string IsDisabledSelector           = "is-disabled";
+    string IsDisabledPropName           = "isDisabled";
+
+    
+
+    string checkedmodelComponentFolder          = "02200-Checkedmodel.component.ts";
+    string checkedDashboardComponentFolder      = "02205-Checkeddashboard.component.ts";
+
+    ModelViewSerializable checkedmodel          =  GetFirstModelViewByType(Context, checkedmodelComponentFolder);
+    ModelViewSerializable checkeddashmodel      =  GetFirstModelViewByType(Context, checkedDashboardComponentFolder);
+
+    string checkedmodelSelectorCommonPart       = GetComponentSelectorCommonPart(checkedmodel, checkedmodelComponentFolder);
+    string checkeddashboardSelectorCommonPart   = GetComponentSelectorCommonPart(checkeddashmodel, checkedDashboardComponentFolder);
+    
+
+#>
+
+<div class="card">
+    <ul ngbNav #nav="ngbNav" class="nav-tabs">
+<#
+    if(checkedmodel == null)  {
+#>
+<!--  can not find <#= checkedmodelComponentFolder #> generated code
+<#
+    } 
+#>    
+      <li ngbNavItem>
+        <a ngbNavLink>Models</a>
+        <ng-template ngbNavContent>
+        <app-<#= checkedmodelSelectorCommonPart #> 
+            [<#= MaxHeightPropSelector #>]="<#= MaxHeightPropName #>"  
+            [<#= FilterMaxHeightPropSelector #>]="<#= FilterMaxHeightPropName #>"  
+            [<#= ShowFilterSelector #>]="<#= ShowFilterPropName #>"
+            [<#= showAddFltItemSelector #>]="<#= showAddFltItemPropName #>"
+
+            [<#= PermissionsSelector #>]="<#= PermissionsPropName #>"
+            [<#= IsDisabledSelector #>]="<#= IsDisabledPropName #>"
+        ></app-<#= checkedmodelSelectorCommonPart #>>
+        </ng-template>
+      </li> 
+
+<#
+    if(checkedmodel == null)  {
+#>
+-->  
+<#
+    } 
+    if(checkeddashmodel == null)  {
+#>
+<!--  can not find <#= checkedDashboardComponentFolder #> generated code
+<#
+    } 
+#>    
+      <li ngbNavItem>
+        <a ngbNavLink>Dashboards</a>
+        <ng-template ngbNavContent>
+        <app-<#= checkeddashboardSelectorCommonPart #> 
+            [<#= MaxHeightPropSelector #>]="<#= MaxHeightPropName #>"  
+            [<#= FilterMaxHeightPropSelector #>]="<#= FilterMaxHeightPropName #>"  
+            [<#= ShowFilterSelector #>]="<#= ShowFilterPropName #>"
+            [<#= showAddFltItemSelector #>]="<#= showAddFltItemPropName #>"
+
+            [<#= PermissionsSelector #>]="<#= PermissionsPropName #>"
+            [<#= IsDisabledSelector #>]="<#= IsDisabledPropName #>"
+        ></app-<#= checkeddashboardSelectorCommonPart #>>
+        </ng-template>
+      </li> 
+<#
+    if(checkedmodel == null)  {
+#>
+-->  
+<#
+    } 
+#>    
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
+</div>
+
+<#+
+
+        ModelViewSerializable GetFirstModelViewByType(DbContextSerializable context, string fileType) {
+            if ((context == null) || (string.IsNullOrEmpty(fileType))) {
+                return null;
+            }
+            if (context.ModelViews == null) {
+                return null;
+            }
+            return context.ModelViews.Where(v => v.CommonStaffs.Any(f =>f.FileType == fileType)).FirstOrDefault();
+        }
+        string GetComponentSelectorCommonPart(CS2ANGULAR.Model.Serializable.ModelViewSerializable model, string fileType)
+        {
+            string result = "";
+            if ((model == null) || string.IsNullOrEmpty(fileType))
+            {
+                return result;
+            }
+            if (model.CommonStaffs == null)
+            {
+                return result;
+            }
+            CommonStaffSerializable refItem =
+                model.CommonStaffs.Where(c => c.FileType == fileType).FirstOrDefault();
+            if (refItem == null)
+            {
+                return result;
+            }
+            if (string.IsNullOrEmpty(refItem.FileName))
+            {
+                return result;
+            }
+            return refItem.FileName.Replace(".component", "");
+        }
+
+#>

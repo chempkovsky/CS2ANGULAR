@@ -121,6 +121,25 @@ import { <#= GetModuleClassName(aModel, rdroutingFormModuleFolder) #> } from '<#
     }
 #>
 
+//
+//
+// Hint: 
+// add the following line
+// { path: '<#= GetDshbdName(Model) #>', loadChildren: () => import('<#= GetModuleFileName(Model, dashboardModuleFolder) #>').then(m => m.<#= dashboardModuleClassName #>) }, 
+//
+// to the array
+// const routes: Routes = [ ... ]
+//
+// of the "app-routing.module.ts"-file
+// 
+//
+// In the app.component.html-file add the following line
+// <mat-nav-list>
+//  ...
+//    <a mat-list-item [routerLink]="['/<#= GetDshbdName(Model) #>/<#= GetDshbdName(Model) #>',{outlets:{<#= GetRtOutletName(Model) #>:'<#= Model.ViewName #>', <#= GetRdOutletName(Model) #>: '<#= Model.ViewName #>'}}]" routerLinkActive="active">Title for <#= dashboardComponentClassName #></a>  
+//  ...
+// </mat-nav-list>
+//
 
 
 
@@ -171,6 +190,39 @@ export class <#= dashboardModuleClassName #> { }
 
 
 <#+
+
+    string GetDshbdName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model) {
+        string result="dshbd";
+        if (model == null) {
+            return result;
+        }
+        return result + model.ViewName.ToLower();
+    }
+    string GetRtOutletName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model) {
+        string result="rtoutlt";
+        if (model == null) {
+            return result;
+        }
+        return result + model.ViewName.ToLower();
+    }
+    string GetRdOutletName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model) {
+        string result="rdoutlt";
+        if (model == null) {
+            return result;
+        }
+        return result + model.ViewName.ToLower();
+    }
+    string GetModuleFileName(ModelViewSerializable model, string fileType) {
+        string result="./";
+        if ((model == null) || string.IsNullOrEmpty(fileType)) {
+            return result;
+        }
+        CommonStaffSerializable curItem = model.CommonStaffs.Where(c => c.FileType == fileType).FirstOrDefault();
+        if (curItem == null) {
+            return result;
+        }
+        return result + curItem.FileFolder.Replace("\\","/").Replace("app/","").Replace("src/","") + "/" + GetFolderName(model, fileType, fileType).Replace("./","");
+    }
     ModelViewSerializable GetViewByName(CS2ANGULAR.Model.Serializable.DbContextSerializable context, string ViewName) {
         if ( (context == null) || (string.IsNullOrEmpty(ViewName)) ) {
             return null;

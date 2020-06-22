@@ -436,22 +436,15 @@ export class <#= componentClassName #> implements <#= eventEmitterPubModelClassN
     }
 #>
     }
-    onDetailSelectedRow(v: MatSelectChange) {
+    onDetailSelectedRow(v: any) {
         let isNDef = true;
         if(!(typeof v === 'undefined')) {
             isNDef = (v === null);
         }
-        if(!isNDef) {
-            if(!(typeof v.value === 'undefined')) {
-                isNDef = (v.value === null);
-            } else {
-                isNDef = true;
-            }
-        }
         if(isNDef) {
             this.<#= SelectedRowDetailPropName #>.emit(null);
         } else {
-            this.<#= SelectedRowDetailPropName #>.emit(v.value);
+            this.<#= SelectedRowDetailPropName #>.emit(v);
         }
     }
 }

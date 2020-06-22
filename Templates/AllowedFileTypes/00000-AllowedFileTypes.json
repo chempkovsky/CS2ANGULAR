@@ -31,8 +31,8 @@
       "ExpandRows": 2,
       "ColLargeBreakpointMult": 1,
       "ColSmallBreakpointMult": 2,
-      "RowLargeBreakpointMult": 2,
-      "RowSmallBreakpointMult": 2
+      "RowLargeBreakpointMult": 1,
+      "RowSmallBreakpointMult": 1
     },
     {
       "FileType": "01920-Rlist.component.ts",

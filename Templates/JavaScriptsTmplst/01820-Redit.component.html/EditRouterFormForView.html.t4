@@ -41,9 +41,7 @@
     string componentSelectorCommonPart = GetComponentSelectorCommonPart(Model, eformComponentFolder);
 #>
 <mat-card>
-<!--     <mat-card-header>
         <mat-card-subtitle>{{<#= TitlePropName #>}}</mat-card-subtitle>
-    </mat-card-header> -->
     <mat-card-content>
         <app-<#= componentSelectorCommonPart #> 
             [<#= captionSelector #>]="<#= TitlePropName #>" 

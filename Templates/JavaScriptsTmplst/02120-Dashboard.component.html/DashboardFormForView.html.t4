@@ -91,13 +91,12 @@
 
 <div class="dashboard-grid-container">
   <h2 class="mat-h2">Dashboard for <#= Model.ViewName #></h2>
-<!-- please remove "style" this was added for demonstration purposes only -->
-  <mat-grid-list cols="2" rowHeight="380px" style="background-color:gold;">
+  <div class="gridlistcls">
+
 
 <# if (!isComponentGenerated(Model, lformModuleFolder)) { #> <!-- the module "<#= lformModuleFolder #>" is not generated for the selected model <# } #>
 
-    <mat-grid-tile [colspan]="<#= lfrmColsPropName #>[0]" [rowspan]="<#= lfrmRowsPropName #>[0]">
-      <div class="dashboard-item-container">
+    <div  [style.grid-column-end]="'span '+<#= lfrmColsPropName #>[0]"   [style.grid-row-end]="'span '+<#= lfrmRowsPropName #>[0]" [hidden]="<#= lfrmColsPropName #>[0] === 0" >
         <mat-card>
             <app-<#= GetComponentSelectorCommonPart(Model, lformComponentFolder) #>
                 [<#= containerMenuItemsSelector #>]="<#= lfrmcontainerMenuItemsPropName #>"
@@ -108,15 +107,13 @@
             >
             </app-<#= GetComponentSelectorCommonPart(Model, lformComponentFolder) #>>
         </mat-card>
-      </div>
-    </mat-grid-tile>
+    </div>
 
 <# if (!isComponentGenerated(Model, lformModuleFolder)) { #> --> <# }  #>
 
 <# if (!isComponentGenerated(Model, o2mformModuleFolder)) { #> <!-- the module "<#= o2mformModuleFolder #>" is not generated for the selected model <# } #>
 
-    <mat-grid-tile [colspan]="<#= o2mColsPropName #>[0]" [rowspan]="<#= o2mRowsPropName #>[0]">
-      <div class="dashboard-item-container">
+    <div  [style.grid-column-end]="'span '+<#= o2mColsPropName #>[0]"   [style.grid-row-end]="'span '+<#= o2mRowsPropName #>[0]" [hidden]="<#= o2mColsPropName #>[0] === 0" >
         <mat-card>
             <app-<#= GetComponentSelectorCommonPart(Model, o2mComponentFolder) #>
                 [<#= containerMenuItemsSelector #>]="<#= o2mcontainerMenuItemsPropName #>"
@@ -126,21 +123,18 @@
             >
             </app-<#= GetComponentSelectorCommonPart(Model, o2mComponentFolder) #>>
         </mat-card>
-      </div>
-    </mat-grid-tile>
+    </div>
 
 <# if (!isComponentGenerated(Model, o2mformModuleFolder)) { #> --> <# } #>
 
 
 <# if (!isComponentGenerated(Model, routingFormModuleFolder)) { #> <!-- the module "<#= routingFormModuleFolder #>" is not generated for the selected model <# } #>
 
-    <mat-grid-tile [colspan]="<#= rtColsPropName #>[0]" [rowspan]="<#= rtRowsPropName #>[0]">
-          <div class="dashboard-item-container">
+    <div  [style.grid-column-end]="'span '+<#= rtColsPropName #>[0]"   [style.grid-row-end]="'span '+<#= rtRowsPropName #>[0]" [hidden]="<#= rtColsPropName #>[0] === 0" >
             <mat-card>
                 <router-outlet name="<#= GetRtOutletName(Model) #>" (activate)="<#= rtOnActivateMethodName #>($event)"  (deactivate)= "<#= rtOnDeActivateMethodName #>($event)" ></router-outlet>
             </mat-card>
-          </div>
-    </mat-grid-tile>
+    </div>
 
 <# if (!isComponentGenerated(Model, routingFormModuleFolder)) { #> --> <# }  #>
 
@@ -148,19 +142,15 @@
 
 <# if (!isComponentGenerated(Model, rdroutingFormModuleFolder)) { #>  <!-- the module "<#= rdroutingFormModuleFolder #>" is not generated for the selected model <# } #>
 
-    <mat-grid-tile [colspan]="<#= rdColsPropName #>[0]" [rowspan]="<#= rdRowsPropName #>[0]">
-      <div class="dashboard-item-container">
+    <div  [style.grid-column-end]="'span '+<#= rdColsPropName #>[0]"   [style.grid-row-end]="'span '+<#= rdRowsPropName #>[0]"  [hidden]="<#= rdColsPropName #>[0] === 0">
           <mat-card>
                 <router-outlet name="<#= GetRdOutletName(Model) #>" (activate)="<#= rdOnActivateMethodName #>($event)"  (deactivate)= "<#= rdOnDeActivateMethodName #>($event)" ></router-outlet>
          </mat-card>
-      </div>
-    </mat-grid-tile>
+    </div>
 
 <# if (!isComponentGenerated(Model, rdroutingFormModuleFolder)) { #> --> <# } #>
 
-
-
-  </mat-grid-list>
+  </div>
 </div>
 
 

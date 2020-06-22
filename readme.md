@@ -4,17 +4,357 @@
 
 
 ### Table of content
-#### [01 INTRODUCTION](#01-INTRODUCTION)
-#### [02 INSTALLATION AND T4-SCRIPS](#02-INSTALLATION-AND-T4-SCRIPS)
-#### [03 CREATING PROJECTS TO START DEVELOPMENT](#03-CREATING-PROJECTS-TO-START-DEVELOPMENT)
-#### [04 PREPARATION STEPS AFTER CREATING PROJECTS](#04-PREPARATION-STEPS-AFTER-CREATING-PROJECTS)
-#### [05 FIRST ENTITY AND DBCONTEXT](#05-FIRST-ENTITY-AND-DBCONTEXT)
-#### [06 FIRST VIEW AND WIZARD REPOSITORY](#06-FIRST-VIEW-AND-WIZARD-REPOSITORY)
-#### [07 FIRST WEB API SERVICE](#07-FIRST-WEB-API-SERVICE)
-#### [08 AUXILIARY ANGULAR TYPESCRIPT CLASSES](#08-AUXILIARY-ANGULAR-TYPESCRIPT-CLASSES)
-#### [09 AUXILIARY CLASSES. WHAT IS IN THE BOX](#09-AUXILIARY-CLASSES.-WHAT-IS-IN-THE-BOX)
-#### [10 ANGULAR CLASSES FOR THE FIRST VIEW](#10-ANGULAR-CLASSES-FOR-THE-FIRST-VIEW)
-#### [11 SOME NOTES ABOUT AUTHORIZATION](#11-SOME-NOTES-ABOUT-AUTHORIZATION)
+#### [000 SUMMARY](#00-SUMMARY) 
+##### [SUMMARY 00.1 CREATING PROJECT FOR ANGULAR MATERIAL AND ANGULAR MATERIAL DESIGN ICONS](#001-CREATING-PROJECT-FOR-ANGULAR-MATERIAL-AND-ANGULAR-MATERIAL-DESIGN-ICONS)
+##### [SUMMARY 00.2 CREATING PROJECT FOR NG BOOTSTRAP AND MATERIAL DESIGN ICONS](#002-CREATING-PROJECT-FOR-NG-BOOTSTRAP-AND-MATERIAL-DESIGN-ICONS)
+##### [SUMMARY 00.3 CREATING PROJECT FOR NG BOOTSTRAP AND AWESOME ICONS](#003-CREATING-PROJECT-FOR-NG-BOOTSTRAP-AND-AWESOME-ICONS)
+#### [001 INTRODUCTION](#01-INTRODUCTION)
+#### [002 INSTALLATION AND T4-SCRIPS](#02-INSTALLATION-AND-T4-SCRIPS)
+#### [003 CREATING PROJECTS TO START DEVELOPMENT](#03-CREATING-PROJECTS-TO-START-DEVELOPMENT)
+#### [004 PREPARATION STEPS AFTER CREATING PROJECTS](#04-PREPARATION-STEPS-AFTER-CREATING-PROJECTS)
+#### [005 FIRST ENTITY AND DBCONTEXT](#05-FIRST-ENTITY-AND-DBCONTEXT)
+#### [006 FIRST VIEW AND WIZARD REPOSITORY](#06-FIRST-VIEW-AND-WIZARD-REPOSITORY)
+#### [007 FIRST WEB API SERVICE](#07-FIRST-WEB-API-SERVICE)
+#### [008 AUXILIARY ANGULAR TYPESCRIPT CLASSES](#08-AUXILIARY-ANGULAR-TYPESCRIPT-CLASSES)
+#### [009 AUXILIARY CLASSES. WHAT IS IN THE BOX](#09-AUXILIARY-CLASSES.-WHAT-IS-IN-THE-BOX)
+#### [010 ANGULAR CLASSES FOR THE FIRST VIEW](#10-ANGULAR-CLASSES-FOR-THE-FIRST-VIEW)
+#### [011 SOME NOTES ABOUT AUTHORIZATION](#11-SOME-NOTES-ABOUT-AUTHORIZATION)
+
+## 00 SUMMARY
+##### [SUMMARY 00.1 CREATING PROJECT FOR ANGULAR MATERIAL AND ANGULAR MATERIAL DESIGN ICONS](#001-CREATING-PROJECT-FOR-ANGULAR-MATERIAL-AND-ANGULAR-MATERIAL-DESIGN-ICONS)
+##### [SUMMARY 00.2 CREATING PROJECT FOR NG BOOTSTRAP AND MATERIAL DESIGN ICONS](#002-CREATING-PROJECT-FOR-NG-BOOTSTRAP-AND-MATERIAL-DESIGN-ICONS)
+##### [SUMMARY 00.3 CREATING PROJECT FOR NG BOOTSTRAP AND AWESOME ICONS](#003-CREATING-PROJECT-FOR-NG-BOOTSTRAP-AND-AWESOME-ICONS)
+
+### 001 CREATING PROJECT FOR ANGULAR MATERIAL AND ANGULAR MATERIAL DESIGN ICONS
+### Step #1
+- Run Windows command prompt cmd.exe
+- Go to the parent folder for your app
+```java
+   cd PARENT_FOLDER_FOR_YOUR_APP
+```
+### Step #2
+- To create the angular project enter the command:
+```java
+   ng new YOUR_APP
+```
+-   Select Angular routing = yes
+-   Select  Stylesheet format = css
+### Step #3
+-   enter command
+```java
+   cd YOUR_APP
+```
+### Step #4
+-   enter command
+```java
+   ng add @angular/material
+```
+-   Choose Analytics  = no
+-   Choose “Indigo/Pink”
+-   Set up global Angular Material typography styles = yes
+-   Set up browser animations for Angular Material = yes
+
+### Step #5
+- After creating very first view (C# part of the project)
+- Launch Visual Studio 2019 and open the server-side solution. The server-side solution includes C # Entity, C # Views, and C # WebApi Services. 
+-   In the solution explorer right click solution node add select “Add/Existing Web site” menu item
+-   In the dialog select the folder:
+```java
+   YOUR_APP\src
+```
+-   Note: DO NOT select a folder for the entire angular application:
+```java
+                YOUR_APP
+```
+
+### Step #6
+- After creating very first view (C# part of the project)
+- Launch Visual Studio 2019 
+- Right Click the following folder of your angular project
+```java
+                src\app
+```
+- In the context menu select Add/JavaScripts Wizard
+
+![picture](img/img00s01.png)
+
+- On the first page click next
+
+![picture](img/img00s02.png)
+
+- On the second page select the project and Db context of your Entities. Click Next.
+
+![picture](img/img00s03.png)
+
+- On the third page select "==Context==". Click Next.
+
+![picture](img/img00s04.png)
+
+- On the fourth page click "Batch processing"-button.
+
+![picture](img/img00s05.png)
+
+
+- In the "Batch actions" dialog select "00000-ContextLevelBatch.json"  and click "start"-button.
+
+![picture](img/img00s06.png)
+
+
+- In the "Batch actions" dialog select "00200-app-glbl-auth.json"  and click "start"-button.
+
+![picture](img/img00s09.png)
+
+
+- In the "Batch actions" dialog select "00230-appCompAndModule.json"  and click "start"-button.
+ 
+![picture](img/img00s10.png)
+
+### Step #9
+- Note: to generate components for the given view please use the batch actions with the sufix
+
+```java
+   ...NGB-awesome.json
+```
+
+- with the following two exceptions:
+
+```java
+   01100-Interfaces.json
+   01400-WebApiService.json
+```
+
+- these two batches apply to any user interface library
+
+
+
+## 002 CREATING PROJECT FOR NG BOOTSTRAP AND MATERIAL DESIGN ICONS
+### Step #1
+- Run Windows command prompt cmd.exe
+- Go to the parent folder for your app
+```java
+   cd PARENT_FOLDER_FOR_YOUR_APP
+```
+### Step #2
+- To create the angular project enter the command:
+```java
+   ng new YOUR_APP
+```
+-   Select Angular routing = yes
+-   Select  Stylesheet format = css
+### Step #3
+-   enter command
+```java
+   cd YOUR_APP
+```
+### Step #4
+-   enter command
+```java
+   npm install material-design-icons
+```
+- in the file styles.css add the following line: 
+```java
+   @import '~material-design-icons/iconfont/material-icons.css'; 
+```
+
+### Step #5
+-   enter command
+```java
+   npm i -s @angular/flex-layout@9.0.0-beta.31 @angular/cdk
+```
+
+### Step #6
+-   enter command
+```java
+   ng add @ng-bootstrap/ng-bootstrap
+```
+
+### Step #7
+- After creating very first view (C# part of the project)
+- Launch Visual Studio 2019 and open the server-side solution. The server-side solution includes C # Entity, C # Views, and C # WebApi Services. 
+-   In the solution explorer right click solution node add select “Add/Existing Web site” menu item
+-   In the dialog select the folder:
+```java
+                YOUR_APP\src
+```
+-   NOTE: DO NOT select a folder for the entire angular application:
+```java
+                YOUR_APP
+```
+
+### Step #8
+- After creating very first view (C# part of the project)
+- Launch Visual Studio 2019 
+- Right Click the following folder of your angular project
+```java
+                src\app
+```
+- In the context menu select Add/JavaScripts Wizard
+
+![picture](img/img00s01.png)
+
+- On the first page click next
+
+![picture](img/img00s02.png)
+
+- On the second page select the project and Db context of your Entities. Click Next.
+
+![picture](img/img00s03.png)
+
+- On the third page select "==Context==". Click Next.
+
+![picture](img/img00s04.png)
+
+- On the fourth page click "Batch processing"-button.
+
+![picture](img/img00s05.png)
+
+
+- In the "Batch actions" dialog select "00000-ContextLevelBatchNGB.json"  and click "start"-button.
+
+![picture](img/img00s11.png)
+
+
+- In the "Batch actions" dialog select "00200-app-glbl-authNGB.json"  and click "start"-button.
+
+![picture](img/img00s12.png)
+
+
+- In the "Batch actions" dialog select "00230-appCompAndModuleNGB.json"  and click "start"-button.
+ 
+![picture](img/img00s14.png)
+ 
+
+### Step #9
+- Note: to generate components for the given view please use the batch actions with the sufix
+
+```java
+   ...NGB-awesome.json
+```
+
+- with the following two exceptions:
+
+```java
+   01100-Interfaces.json
+   01400-WebApiService.json
+```
+
+- these two batches apply to any user interface library
+
+
+
+
+## 003 CREATING PROJECT FOR NG BOOTSTRAP AND AWESOME ICONS
+### Step #1
+- Run Windows command prompt cmd.exe
+- Go to the parent folder for your app
+```java
+   cd PARENT_FOLDER_FOR_YOUR_APP
+```
+### Step #2
+- To create the angular project enter the command:
+```java
+   ng new YOUR_APP
+```
+-   Select Angular routing = yes
+-   Select  Stylesheet format = css
+### Step #3
+-   enter command
+```java
+   cd YOUR_APP
+```
+### Step #4
+-   enter command
+```java
+   ng add @fortawesome/angular-fontawesome@0.6.1
+```
+- choose: 
+    - free regular icons (far for fontawesome-free-regular)
+    - free solid icons (fas for fontawesome-free-solid)
+    - free brands icons (fab for fontawesome-free-brands)
+
+### Step #5
+-   enter command
+```java
+   npm i -s @angular/flex-layout@9.0.0-beta.31 @angular/cdk
+```
+
+### Step #6
+-   enter command
+```java
+   ng add @ng-bootstrap/ng-bootstrap
+```
+
+### Step #7
+- After creating very first view (C# part of the project)
+- Launch Visual Studio 2019 and open the server-side solution. The server-side solution includes C # Entity, C # Views, and C # WebApi Services. 
+-   In the solution explorer right click solution node add select “Add/Existing Web site” menu item
+-   In the dialog select the folder:
+```java
+   YOUR_APP\src
+```
+-   NOTE: DO NOT select a folder for the entire angular application:
+```java
+                YOUR_APP
+```
+
+### Step #8
+- After creating very first view (C# part of the project)
+- Launch Visual Studio 2019 
+- Right Click the following folder of your angular project
+```java
+                src\app
+```
+- In the context menu select Add/JavaScripts Wizard
+
+![picture](img/img00s01.png)
+
+- On the first page click next
+
+![picture](img/img00s02.png)
+
+- On the second page select the project and Db context of your Entities. Click Next.
+
+![picture](img/img00s03.png)
+
+- On the third page select "==Context==". Click Next.
+
+![picture](img/img00s04.png)
+
+- On the fourth page click "Batch processing"-button.
+
+![picture](img/img00s05.png)
+
+
+- In the "Batch actions" dialog select "00000-ContextLevelBatchNGB-awesome.json"  and click "start"-button.
+
+![picture](img/img00s15.png)
+
+
+- In the "Batch actions" dialog select "00200-app-glbl-authNGB-awesome.json"  and click "start"-button.
+
+![picture](img/img00s16.png)
+
+
+- In the "Batch actions" dialog select "00230-appCompAndModuleNGB-awesome.json"  and click "start"-button.
+ 
+![picture](img/img00s17.png)
+
+### Step #9
+- Note: to generate components for the given view please use the batch actions with the sufix
+
+```java
+   ...NGB-awesome.json
+```
+
+- with the following two exceptions:
+
+```java
+   01100-Interfaces.json
+   01400-WebApiService.json
+```
+
+- these two batches apply to any user interface library
+
 
 ## 01 INTRODUCTION
 - implemented as Microsoft Visual Studio Extension (.vsix)

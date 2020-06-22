@@ -204,19 +204,19 @@
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\sform",
       "GeneratorType": "01420-Sform.component.css",
-      "GeneratorSript": "SearchFormForView.css.t4",
+      "GeneratorSript": "SearchFormForView.ngb.css.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\sform",
       "GeneratorType": "01420-Sform.component.html",
-      "GeneratorSript": "SearchFormForView.html.t4",
+      "GeneratorSript": "SearchFormForView.ngb-awesome.html.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\sform",
       "GeneratorType": "01420-Sform.component.ts",
-      "GeneratorSript": "SearchFormForView.ts.t4",
+      "GeneratorSript": "SearchFormForView.ngb.ts.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
@@ -234,19 +234,19 @@
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\sdlg",
       "GeneratorType": "01440-Sdlg.component.html",
-      "GeneratorSript": "SearchDlgFormForView.html.t4",
+      "GeneratorSript": "SearchDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\sdlg",
       "GeneratorType": "01440-Sdlg.component.ts",
-      "GeneratorSript": "SearchDlgFormForView.ts.t4",
+      "GeneratorSript": "SearchDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view",
       "GeneratorType": "01450-S.module.ts",
-      "GeneratorSript": "SearchModuleForView.ts.t4",
+      "GeneratorSript": "SearchModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetdashboardView"
     },
 
@@ -254,19 +254,19 @@
     {
       "DestinationFolder": "components\\aspnetmodel-view\\sform",
       "GeneratorType": "01420-Sform.component.css",
-      "GeneratorSript": "SearchFormForView.css.t4",
+      "GeneratorSript": "SearchFormForView.ngb.css.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view\\sform",
       "GeneratorType": "01420-Sform.component.html",
-      "GeneratorSript": "SearchFormForView.html.t4",
+      "GeneratorSript": "SearchFormForView.ngb-awesome.html.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view\\sform",
       "GeneratorType": "01420-Sform.component.ts",
-      "GeneratorSript": "SearchFormForView.ts.t4",
+      "GeneratorSript": "SearchFormForView.ngb.ts.t4",
       "ViewModel": "aspnetmodelView"
     },
 
@@ -285,19 +285,19 @@
     {
       "DestinationFolder": "components\\aspnetmodel-view\\sdlg",
       "GeneratorType": "01440-Sdlg.component.html",
-      "GeneratorSript": "SearchDlgFormForView.html.t4",
+      "GeneratorSript": "SearchDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view\\sdlg",
       "GeneratorType": "01440-Sdlg.component.ts",
-      "GeneratorSript": "SearchDlgFormForView.ts.t4",
+      "GeneratorSript": "SearchDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view",
       "GeneratorType": "01450-S.module.ts",
-      "GeneratorSript": "SearchModuleForView.ts.t4",
+      "GeneratorSript": "SearchModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetmodelView"
     },
 
@@ -305,19 +305,19 @@
     {
       "DestinationFolder": "components\\aspnetrole-view\\sform",
       "GeneratorType": "01420-Sform.component.css",
-      "GeneratorSript": "SearchFormForView.css.t4",
+      "GeneratorSript": "SearchFormForView.ngb.css.t4",
       "ViewModel": "aspnetroleView"
     },
     {
       "DestinationFolder": "components\\aspnetrole-view\\sform",
       "GeneratorType": "01420-Sform.component.html",
-      "GeneratorSript": "SearchFormForView.html.t4",
+      "GeneratorSript": "SearchFormForView.ngb-awesome.html.t4",
       "ViewModel": "aspnetroleView"
     },
     {
       "DestinationFolder": "components\\aspnetrole-view\\sform",
       "GeneratorType": "01420-Sform.component.ts",
-      "GeneratorSript": "SearchFormForView.ts.t4",
+      "GeneratorSript": "SearchFormForView.ngb.ts.t4",
       "ViewModel": "aspnetroleView"
     },
     {
@@ -335,19 +335,19 @@
     {
       "DestinationFolder": "components\\aspnetrole-view\\sdlg",
       "GeneratorType": "01440-Sdlg.component.html",
-      "GeneratorSript": "SearchDlgFormForView.html.t4",
+      "GeneratorSript": "SearchDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetroleView"
     },
     {
       "DestinationFolder": "components\\aspnetrole-view\\sdlg",
       "GeneratorType": "01440-Sdlg.component.ts",
-      "GeneratorSript": "SearchDlgFormForView.ts.t4",
+      "GeneratorSript": "SearchDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetroleView"
     },
     {
       "DestinationFolder": "components\\aspnetrole-view",
       "GeneratorType": "01450-S.module.ts",
-      "GeneratorSript": "SearchModuleForView.ts.t4",
+      "GeneratorSript": "SearchModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetroleView"
     },
 
@@ -355,19 +355,19 @@
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\sform",
       "GeneratorType": "01420-Sform.component.css",
-      "GeneratorSript": "SearchFormForView.css.t4",
+      "GeneratorSript": "SearchFormForView.ngb.css.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\sform",
       "GeneratorType": "01420-Sform.component.html",
-      "GeneratorSript": "SearchFormForView.html.t4",
+      "GeneratorSript": "SearchFormForView.ngb-awesome.html.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\sform",
       "GeneratorType": "01420-Sform.component.ts",
-      "GeneratorSript": "SearchFormForView.ts.t4",
+      "GeneratorSript": "SearchFormForView.ngb.ts.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
@@ -385,38 +385,38 @@
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\sdlg",
       "GeneratorType": "01440-Sdlg.component.html",
-      "GeneratorSript": "SearchDlgFormForView.html.t4",
+      "GeneratorSript": "SearchDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\sdlg",
       "GeneratorType": "01440-Sdlg.component.ts",
-      "GeneratorSript": "SearchDlgFormForView.ts.t4",
+      "GeneratorSript": "SearchDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
       "DestinationFolder": "components\\aspnetrolemask-view",
       "GeneratorType": "01450-S.module.ts",
-      "GeneratorSript": "SearchModuleForView.ts.t4",
+      "GeneratorSript": "SearchModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetrolemaskView"
     },
 
     {
       "DestinationFolder": "components\\aspnetuser-view\\sform",
       "GeneratorType": "01420-Sform.component.css",
-      "GeneratorSript": "SearchFormForView.css.t4",
+      "GeneratorSript": "SearchFormForView.ngb.css.t4",
       "ViewModel": "aspnetuserView"
     },
     {
       "DestinationFolder": "components\\aspnetuser-view\\sform",
       "GeneratorType": "01420-Sform.component.html",
-      "GeneratorSript": "SearchFormForView.html.t4",
+      "GeneratorSript": "SearchFormForView.ngb-awesome.html.t4",
       "ViewModel": "aspnetuserView"
     },
     {
       "DestinationFolder": "components\\aspnetuser-view\\sform",
       "GeneratorType": "01420-Sform.component.ts",
-      "GeneratorSript": "SearchFormForView.ts.t4",
+      "GeneratorSript": "SearchFormForView.ngb.ts.t4",
       "ViewModel": "aspnetuserView"
     },
     {
@@ -434,38 +434,38 @@
     {
       "DestinationFolder": "components\\aspnetuser-view\\sdlg",
       "GeneratorType": "01440-Sdlg.component.html",
-      "GeneratorSript": "SearchDlgFormForView.html.t4",
+      "GeneratorSript": "SearchDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetuserView"
     },
     {
       "DestinationFolder": "components\\aspnetuser-view\\sdlg",
       "GeneratorType": "01440-Sdlg.component.ts",
-      "GeneratorSript": "SearchDlgFormForView.ts.t4",
+      "GeneratorSript": "SearchDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetuserView"
     },
     {
       "DestinationFolder": "components\\aspnetuser-view",
       "GeneratorType": "01450-S.module.ts",
-      "GeneratorSript": "SearchModuleForView.ts.t4",
+      "GeneratorSript": "SearchModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetuserView"
     },
 
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\sform",
       "GeneratorType": "01420-Sform.component.css",
-      "GeneratorSript": "SearchFormForView.css.t4",
+      "GeneratorSript": "SearchFormForView.ngb.css.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\sform",
       "GeneratorType": "01420-Sform.component.html",
-      "GeneratorSript": "SearchFormForView.html.t4",
+      "GeneratorSript": "SearchFormForView.ngb-awesome.html.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\sform",
       "GeneratorType": "01420-Sform.component.ts",
-      "GeneratorSript": "SearchFormForView.ts.t4",
+      "GeneratorSript": "SearchFormForView.ngb.ts.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
@@ -483,38 +483,38 @@
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\sdlg",
       "GeneratorType": "01440-Sdlg.component.html",
-      "GeneratorSript": "SearchDlgFormForView.html.t4",
+      "GeneratorSript": "SearchDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\sdlg",
       "GeneratorType": "01440-Sdlg.component.ts",
-      "GeneratorSript": "SearchDlgFormForView.ts.t4",
+      "GeneratorSript": "SearchDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
       "DestinationFolder": "components\\aspnetuserroles-view",
       "GeneratorType": "01450-S.module.ts",
-      "GeneratorSript": "SearchModuleForView.ts.t4",
+      "GeneratorSript": "SearchModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetuserrolesView"
     },
 
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\eform",
       "GeneratorType": "01500-Eform.component.css",
-      "GeneratorSript": "EditFormForView.css.t4",
+      "GeneratorSript": "EditFormForView.ngb.css.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\eform",
       "GeneratorType": "01500-Eform.component.html",
-      "GeneratorSript": "EditFormForView.html.t4",
+      "GeneratorSript": "EditFormForView.ngb-awesome.html.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\eform",
       "GeneratorType": "01500-Eform.component.ts",
-      "GeneratorSript": "EditFormForView.ts.t4",
+      "GeneratorSript": "EditFormForView.ngb.ts.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
@@ -532,38 +532,38 @@
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\edlg",
       "GeneratorType": "01520-Edlg.component.html",
-      "GeneratorSript": "EditDlgFormForView.html.t4",
+      "GeneratorSript": "EditDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\edlg",
       "GeneratorType": "01520-Edlg.component.ts",
-      "GeneratorSript": "EditDlgFormForView.ts.t4",
+      "GeneratorSript": "EditDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view",
       "GeneratorType": "01550-E.module.ts",
-      "GeneratorSript": "eformModuleForView.ts.t4",
+      "GeneratorSript": "eformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetdashboardView"
     },
 
     {
       "DestinationFolder": "components\\aspnetmodel-view\\eform",
       "GeneratorType": "01500-Eform.component.css",
-      "GeneratorSript": "EditFormForView.css.t4",
+      "GeneratorSript": "EditFormForView.ngb.css.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view\\eform",
       "GeneratorType": "01500-Eform.component.html",
-      "GeneratorSript": "EditFormForView.html.t4",
+      "GeneratorSript": "EditFormForView.ngb-awesome.html.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view\\eform",
       "GeneratorType": "01500-Eform.component.ts",
-      "GeneratorSript": "EditFormForView.ts.t4",
+      "GeneratorSript": "EditFormForView.ngb.ts.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
@@ -581,38 +581,38 @@
     {
       "DestinationFolder": "components\\aspnetmodel-view\\edlg",
       "GeneratorType": "01520-Edlg.component.html",
-      "GeneratorSript": "EditDlgFormForView.html.t4",
+      "GeneratorSript": "EditDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view\\edlg",
       "GeneratorType": "01520-Edlg.component.ts",
-      "GeneratorSript": "EditDlgFormForView.ts.t4",
+      "GeneratorSript": "EditDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view",
       "GeneratorType": "01550-E.module.ts",
-      "GeneratorSript": "eformModuleForView.ts.t4",
+      "GeneratorSript": "eformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetmodelView"
     },
 
     {
       "DestinationFolder": "components\\aspnetrole-view\\eform",
       "GeneratorType": "01500-Eform.component.css",
-      "GeneratorSript": "EditFormForView.css.t4",
+      "GeneratorSript": "EditFormForView.ngb.css.t4",
       "ViewModel": "aspnetroleView"
     },
     {
       "DestinationFolder": "components\\aspnetrole-view\\eform",
       "GeneratorType": "01500-Eform.component.html",
-      "GeneratorSript": "EditFormForView.html.t4",
+      "GeneratorSript": "EditFormForView.ngb-awesome.html.t4",
       "ViewModel": "aspnetroleView"
     },
     {
       "DestinationFolder": "components\\aspnetrole-view\\eform",
       "GeneratorType": "01500-Eform.component.ts",
-      "GeneratorSript": "EditFormForView.ts.t4",
+      "GeneratorSript": "EditFormForView.ngb.ts.t4",
       "ViewModel": "aspnetroleView"
     },
     {
@@ -630,38 +630,38 @@
     {
       "DestinationFolder": "components\\aspnetrole-view\\edlg",
       "GeneratorType": "01520-Edlg.component.html",
-      "GeneratorSript": "EditDlgFormForView.html.t4",
+      "GeneratorSript": "EditDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetroleView"
     },
     {
       "DestinationFolder": "components\\aspnetrole-view\\edlg",
       "GeneratorType": "01520-Edlg.component.ts",
-      "GeneratorSript": "EditDlgFormForView.ts.t4",
+      "GeneratorSript": "EditDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetroleView"
     },
     {
       "DestinationFolder": "components\\aspnetrole-view",
       "GeneratorType": "01550-E.module.ts",
-      "GeneratorSript": "eformModuleForView.ts.t4",
+      "GeneratorSript": "eformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetroleView"
     },
 
     {
       "DestinationFolder": "components\\aspnetuser-view\\eform",
       "GeneratorType": "01500-Eform.component.css",
-      "GeneratorSript": "EditFormForView.css.t4",
+      "GeneratorSript": "EditFormForView.ngb.css.t4",
       "ViewModel": "aspnetuserView"
     },
     {
       "DestinationFolder": "components\\aspnetuser-view\\eform",
       "GeneratorType": "01500-Eform.component.html",
-      "GeneratorSript": "EditFormForView.html.t4",
+      "GeneratorSript": "EditFormForView.ngb-awesome.html.t4",
       "ViewModel": "aspnetuserView"
     },
     {
       "DestinationFolder": "components\\aspnetuser-view\\eform",
       "GeneratorType": "01500-Eform.component.ts",
-      "GeneratorSript": "EditFormForView.ts.t4",
+      "GeneratorSript": "EditFormForView.ngb.ts.t4",
       "ViewModel": "aspnetuserView"
     },
     {
@@ -679,38 +679,38 @@
     {
       "DestinationFolder": "components\\aspnetuser-view\\edlg",
       "GeneratorType": "01520-Edlg.component.html",
-      "GeneratorSript": "EditDlgFormForView.html.t4",
+      "GeneratorSript": "EditDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetuserView"
     },
     {
       "DestinationFolder": "components\\aspnetuser-view\\edlg",
       "GeneratorType": "01520-Edlg.component.ts",
-      "GeneratorSript": "EditDlgFormForView.ts.t4",
+      "GeneratorSript": "EditDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetuserView"
     },
     {
       "DestinationFolder": "components\\aspnetuser-view",
       "GeneratorType": "01550-E.module.ts",
-      "GeneratorSript": "eformModuleForView.ts.t4",
+      "GeneratorSript": "eformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetuserView"
     },
 
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\eform",
       "GeneratorType": "01500-Eform.component.css",
-      "GeneratorSript": "EditFormForView.css.t4",
+      "GeneratorSript": "EditFormForView.ngb.css.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\eform",
       "GeneratorType": "01500-Eform.component.html",
-      "GeneratorSript": "EditFormForView.html.t4",
+      "GeneratorSript": "EditFormForView.ngb-awesome.html.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\eform",
       "GeneratorType": "01500-Eform.component.ts",
-      "GeneratorSript": "EditFormForView.ts.t4",
+      "GeneratorSript": "EditFormForView.ngb.ts.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
@@ -728,19 +728,19 @@
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\edlg",
       "GeneratorType": "01520-Edlg.component.html",
-      "GeneratorSript": "EditDlgFormForView.html.t4",
+      "GeneratorSript": "EditDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\edlg",
       "GeneratorType": "01520-Edlg.component.ts",
-      "GeneratorSript": "EditDlgFormForView.ts.t4",
+      "GeneratorSript": "EditDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
       "DestinationFolder": "components\\aspnetrolemask-view",
       "GeneratorType": "01550-E.module.ts",
-      "GeneratorSript": "eformModuleForView.ts.t4",
+      "GeneratorSript": "eformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetrolemaskView"
     },
 
@@ -748,19 +748,19 @@
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\eform",
       "GeneratorType": "01500-Eform.component.css",
-      "GeneratorSript": "EditFormForView.css.t4",
+      "GeneratorSript": "EditFormForView.ngb.css.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\eform",
       "GeneratorType": "01500-Eform.component.html",
-      "GeneratorSript": "EditFormForView.html.t4",
+      "GeneratorSript": "EditFormForView.ngb-awesome.html.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\eform",
       "GeneratorType": "01500-Eform.component.ts",
-      "GeneratorSript": "EditFormForView.ts.t4",
+      "GeneratorSript": "EditFormForView.ngb.ts.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
@@ -778,19 +778,19 @@
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\edlg",
       "GeneratorType": "01520-Edlg.component.html",
-      "GeneratorSript": "EditDlgFormForView.html.t4",
+      "GeneratorSript": "EditDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\edlg",
       "GeneratorType": "01520-Edlg.component.ts",
-      "GeneratorSript": "EditDlgFormForView.ts.t4",
+      "GeneratorSript": "EditDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
       "DestinationFolder": "components\\aspnetuserroles-view",
       "GeneratorType": "01550-E.module.ts",
-      "GeneratorSript": "eformModuleForView.ts.t4",
+      "GeneratorSript": "eformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetuserrolesView"
     },
 
@@ -809,7 +809,7 @@
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\lform",
       "GeneratorType": "01600-Lform.component.ts",
-      "GeneratorSript": "ListFormForView.ts.t4",
+      "GeneratorSript": "ListFormForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
@@ -821,19 +821,19 @@
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\ldlg",
       "GeneratorType": "01620-Ldlg.component.html",
-      "GeneratorSript": "ListDlgFormForView.html.t4",
+      "GeneratorSript": "ListDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\ldlg",
       "GeneratorType": "01620-Ldlg.component.ts",
-      "GeneratorSript": "ListDlgFormForView.ts.t4",
+      "GeneratorSript": "ListDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view",
       "GeneratorType": "01650-L.module.ts",
-      "GeneratorSript": "lformModuleForView.ts.t4",
+      "GeneratorSript": "lformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetdashboardView"
     },
 
@@ -852,7 +852,7 @@
     {
       "DestinationFolder": "components\\aspnetmodel-view\\lform",
       "GeneratorType": "01600-Lform.component.ts",
-      "GeneratorSript": "ListFormForView.ts.t4",
+      "GeneratorSript": "ListFormForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
@@ -864,19 +864,19 @@
     {
       "DestinationFolder": "components\\aspnetmodel-view\\ldlg",
       "GeneratorType": "01620-Ldlg.component.html",
-      "GeneratorSript": "ListDlgFormForView.html.t4",
+      "GeneratorSript": "ListDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view\\ldlg",
       "GeneratorType": "01620-Ldlg.component.ts",
-      "GeneratorSript": "ListDlgFormForView.ts.t4",
+      "GeneratorSript": "ListDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view",
       "GeneratorType": "01650-L.module.ts",
-      "GeneratorSript": "lformModuleForView.ts.t4",
+      "GeneratorSript": "lformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetmodelView"
     },
 
@@ -895,7 +895,7 @@
     {
       "DestinationFolder": "components\\aspnetrole-view\\lform",
       "GeneratorType": "01600-Lform.component.ts",
-      "GeneratorSript": "ListFormForView.ts.t4",
+      "GeneratorSript": "ListFormForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetroleView"
     },
     {
@@ -907,19 +907,19 @@
     {
       "DestinationFolder": "components\\aspnetrole-view\\ldlg",
       "GeneratorType": "01620-Ldlg.component.html",
-      "GeneratorSript": "ListDlgFormForView.html.t4",
+      "GeneratorSript": "ListDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetroleView"
     },
     {
       "DestinationFolder": "components\\aspnetrole-view\\ldlg",
       "GeneratorType": "01620-Ldlg.component.ts",
-      "GeneratorSript": "ListDlgFormForView.ts.t4",
+      "GeneratorSript": "ListDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetroleView"
     },
     {
       "DestinationFolder": "components\\aspnetrole-view",
       "GeneratorType": "01650-L.module.ts",
-      "GeneratorSript": "lformModuleForView.ts.t4",
+      "GeneratorSript": "lformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetroleView"
     },
 
@@ -938,7 +938,7 @@
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\lform",
       "GeneratorType": "01600-Lform.component.ts",
-      "GeneratorSript": "ListFormForView.ts.t4",
+      "GeneratorSript": "ListFormForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
@@ -950,19 +950,19 @@
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\ldlg",
       "GeneratorType": "01620-Ldlg.component.html",
-      "GeneratorSript": "ListDlgFormForView.html.t4",
+      "GeneratorSript": "ListDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\ldlg",
       "GeneratorType": "01620-Ldlg.component.ts",
-      "GeneratorSript": "ListDlgFormForView.ts.t4",
+      "GeneratorSript": "ListDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
       "DestinationFolder": "components\\aspnetrolemask-view",
       "GeneratorType": "01650-L.module.ts",
-      "GeneratorSript": "lformModuleForView.ts.t4",
+      "GeneratorSript": "lformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetrolemaskView"
     },
 
@@ -981,7 +981,7 @@
     {
       "DestinationFolder": "components\\aspnetuser-view\\lform",
       "GeneratorType": "01600-Lform.component.ts",
-      "GeneratorSript": "ListFormForView.ts.t4",
+      "GeneratorSript": "ListFormForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetuserView"
     },
     {
@@ -993,19 +993,19 @@
     {
       "DestinationFolder": "components\\aspnetuser-view\\ldlg",
       "GeneratorType": "01620-Ldlg.component.html",
-      "GeneratorSript": "ListDlgFormForView.html.t4",
+      "GeneratorSript": "ListDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetuserView"
     },
     {
       "DestinationFolder": "components\\aspnetuser-view\\ldlg",
       "GeneratorType": "01620-Ldlg.component.ts",
-      "GeneratorSript": "ListDlgFormForView.ts.t4",
+      "GeneratorSript": "ListDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetuserView"
     },
     {
       "DestinationFolder": "components\\aspnetuser-view",
       "GeneratorType": "01650-L.module.ts",
-      "GeneratorSript": "lformModuleForView.ts.t4",
+      "GeneratorSript": "lformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetuserView"
     },
 
@@ -1024,7 +1024,7 @@
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\lform",
       "GeneratorType": "01600-Lform.component.ts",
-      "GeneratorSript": "ListFormForView.ts.t4",
+      "GeneratorSript": "ListFormForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
@@ -1036,69 +1036,69 @@
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\ldlg",
       "GeneratorType": "01620-Ldlg.component.html",
-      "GeneratorSript": "ListDlgFormForView.html.t4",
+      "GeneratorSript": "ListDlgFormForView.ngb.html.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
       "DestinationFolder": "components\\aspnetuserroles-view\\ldlg",
       "GeneratorType": "01620-Ldlg.component.ts",
-      "GeneratorSript": "ListDlgFormForView.ts.t4",
+      "GeneratorSript": "ListDlgFormForView.ngb.ts.t4",
       "ViewModel": "aspnetuserrolesView"
     },
     {
       "DestinationFolder": "components\\aspnetuserroles-view",
       "GeneratorType": "01650-L.module.ts",
-      "GeneratorSript": "lformModuleForView.ts.t4",
+      "GeneratorSript": "lformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetuserrolesView"
     },
 
     {
       "DestinationFolder": "components\\aspnetmodel-view\\chkform",
       "GeneratorType": "02200-Checkedmodel.component.css",
-      "GeneratorSript": "CheckedmodelFormForView.css.t4",
+      "GeneratorSript": "CheckedmodelFormForView.ngb.css.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view\\chkform",
       "GeneratorType": "02200-Checkedmodel.component.html",
-      "GeneratorSript": "CheckedmodelFormForView.html.t4",
+      "GeneratorSript": "CheckedmodelFormForView.ngb.html.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view\\chkform",
       "GeneratorType": "02200-Checkedmodel.component.ts",
-      "GeneratorSript": "CheckedmodelFormForView.ts.t4",
+      "GeneratorSript": "CheckedmodelFormForView.ngb.ts.t4",
       "ViewModel": "aspnetmodelView"
     },
     {
       "DestinationFolder": "components\\aspnetmodel-view",
       "GeneratorType": "02202-Chckmdl.module.ts",
-      "GeneratorSript": "ChckmdlModuleForView.ts.t4",
+      "GeneratorSript": "ChckmdlModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetmodelView"
     },
 
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\chkform",
       "GeneratorType": "02205-Checkeddashboard.component.css",
-      "GeneratorSript": "CheckeddashboardFormForView.css.t4",
+      "GeneratorSript": "CheckeddashboardFormForView.ngb.css.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\chkform",
       "GeneratorType": "02205-Checkeddashboard.component.html",
-      "GeneratorSript": "CheckeddashboardFormForView.html.t4",
+      "GeneratorSript": "CheckeddashboardFormForView.ngb.html.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view\\chkform",
       "GeneratorType": "02205-Checkeddashboard.component.ts",
-      "GeneratorSript": "CheckeddashboardFormForView.ts.t4",
+      "GeneratorSript": "CheckeddashboardFormForView.ngb.ts.t4",
       "ViewModel": "aspnetdashboardView"
     },
     {
       "DestinationFolder": "components\\aspnetdashboard-view",
       "GeneratorType": "02207-Chckdshbd.module.ts",
-      "GeneratorSript": "ChckdshbdModuleForView.ts.t4",
+      "GeneratorSript": "ChckdshbdModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetdashboardView"
     },
 
@@ -1111,19 +1111,19 @@
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\chkform",
       "GeneratorType": "02210-Checkedrole.component.html",
-      "GeneratorSript": "CheckedroleForView.html.t4",
+      "GeneratorSript": "CheckedroleForView.ngb.html.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
       "DestinationFolder": "components\\aspnetrolemask-view\\chkform",
       "GeneratorType": "02210-Checkedrole.component.ts",
-      "GeneratorSript": "CheckedroleForView.ts.t4",
+      "GeneratorSript": "CheckedroleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetrolemaskView"
     },
     {
       "DestinationFolder": "components\\aspnetrolemask-view",
       "GeneratorType": "02212-Chckrole.module.ts",
-      "GeneratorSript": "ChckroleModuleForView.ts.t4",
+      "GeneratorSript": "ChckroleModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetrolemaskView"
     },
 
@@ -1136,7 +1136,7 @@
     {
       "DestinationFolder": "components\\aspnetusermask-view\\lform",
       "GeneratorType": "01600-Lform.component.html",
-      "GeneratorSript": "SecListFormForView.html.t4",
+      "GeneratorSript": "SecListFormForView.ngb.html.t4",
       "ViewModel": "aspnetusermaskView"
     },
     {
@@ -1148,7 +1148,7 @@
     {
       "DestinationFolder": "components\\aspnetusermask-view",
       "GeneratorType": "01650-L.module.ts",
-      "GeneratorSript": "securityModuleForView.ts.t4",
+      "GeneratorSript": "securityModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetusermaskView"
     },
 
@@ -1161,19 +1161,19 @@
     {
       "DestinationFolder": "components\\aspnetuser-view\\o2m",
       "GeneratorType": "01700-O2m.component.html",
-      "GeneratorSript": "O2mFormForView.html.t4",
+      "GeneratorSript": "O2mFormForView.ngb.html.t4",
       "ViewModel": "aspnetuserView"
     },
     {
       "DestinationFolder": "components\\aspnetuser-view\\o2m",
       "GeneratorType": "01700-O2m.component.ts",
-      "GeneratorSript": "O2mFormForView.ts.t4",
+      "GeneratorSript": "O2mFormForView.ngb.ts.t4",
       "ViewModel": "aspnetuserView"
     },
     {
       "DestinationFolder": "components\\aspnetuser-view",
       "GeneratorType": "01750-O.module.ts",
-      "GeneratorSript": "one2manyformModuleForView.ts.t4",
+      "GeneratorSript": "one2manyformModuleForView.ngb-awesome.ts.t4",
       "ViewModel": "aspnetuserView"
     }
 

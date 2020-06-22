@@ -1,6 +1,9 @@
 {
   "Description": [
     "",
+    "                                Deprecated",
+    "               https://github.com/angular/angular/issues/18271",
+    "",
     "                                BEFORE YOU START !!!",
     "1.",
     "Please make sure that you have already run the following scripts for the current ViewModel",
@@ -41,18 +44,29 @@
   "BatchItems": [
     {
       "DestinationFolder": "dshbd",
-      "GeneratorType":  "02120-Dashboard.component.css",
+      "GeneratorType": "02120-Dashboard.component.css",
       "GeneratorSript": "DashboardFormForView.css.t4"
     },
     {
       "DestinationFolder": "dshbd",
-      "GeneratorType":  "02120-Dashboard.component.html",
+      "GeneratorType": "02120-Dashboard.component.html",
       "GeneratorSript": "DashboardFormForView.html.t4"
     },
     {
       "DestinationFolder": "dshbd",
-      "GeneratorType":  "02120-Dashboard.component.ts",
+      "GeneratorType": "02120-Dashboard.component.ts",
       "GeneratorSript": "DashboardFormForView.ts.t4"
+    },
+    {
+      "DestinationFolder": "",
+      "GeneratorType": "02140-Dashboard.routing.module.ts",
+      "GeneratorSript": "DashboardRoutingModuleForView.ts.t4"
+    },
+    {
+      "DestinationFolder": "",
+      "GeneratorType": "02150-Dashboard.module.ts",
+      "GeneratorSript": "DashboardModuleForView.ts.t4"
     }
+
   ]
 }

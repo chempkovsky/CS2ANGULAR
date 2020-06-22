@@ -150,9 +150,9 @@ import { <#= dashboardComponentClassName #> } from '<#=  GetCrossComponentFolder
 
 
 const routes: Routes = [
-    { path: '',   redirectTo: 'w', pathMatch: 'full' },
+    { path: '',   redirectTo: '<#= GetDshbdName(Model) #>', pathMatch: 'full' },
     {
-        path: 'w',
+        path: '<#= GetDshbdName(Model) #>',
         component: <#= dashboardComponentClassName #>,
         children: [
 
@@ -877,6 +877,13 @@ export class <#= dshbrdRoutingModuleClassName #> { }
     }
     string GetRdOutletName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model) {
         string result="rdoutlt";
+        if (model == null) {
+            return result;
+        }
+        return result + model.ViewName.ToLower();
+    }
+    string GetDshbdName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model) {
+        string result="dshbd";
         if (model == null) {
             return result;
         }

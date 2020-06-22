@@ -433,7 +433,6 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= eve
         this.onFilter();
     }
     onPage(pg: PageEvent) {
-        console.log('onPage');
         this.currentPageIndex = pg.pageIndex;
         this.currentPageSize = pg.pageSize;
         this.onFilter();
