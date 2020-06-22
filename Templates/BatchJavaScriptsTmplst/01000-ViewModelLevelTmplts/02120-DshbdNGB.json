@@ -45,7 +45,7 @@
     {
       "DestinationFolder": "dshbd",
       "GeneratorType": "02120-Dashboard.component.css",
-      "GeneratorSript": "DashboardFormForView.ngb.css.t4"
+      "GeneratorSript": "DashboardFormForView.css.t4"
     },
     {
       "DestinationFolder": "dshbd",
