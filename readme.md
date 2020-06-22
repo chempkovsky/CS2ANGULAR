@@ -110,9 +110,10 @@
 ![picture](img/img00s10.png)
 
 ### Step #9
-- Note: to generate components for the given view please use the batch actions with the sufix
+- Note: to generate components for the given view please use the batch actions without any suffix. There two possible ones.
 
 ```java
+   ...NGB.json
    ...NGB-awesome.json
 ```
 
@@ -225,10 +226,10 @@
  
 
 ### Step #9
-- Note: to generate components for the given view please use the batch actions with the sufix
+- Note: to generate components for the given view please use the batch actions with the suffix
 
 ```java
-   ...NGB-awesome.json
+   ...NGB.json
 ```
 
 - with the following two exceptions:
