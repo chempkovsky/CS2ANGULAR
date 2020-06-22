@@ -26,6 +26,12 @@
 ##### [SUMMARY 00.3 CREATING PROJECT FOR NG BOOTSTRAP AND AWESOME ICONS](#003-CREATING-PROJECT-FOR-NG-BOOTSTRAP-AND-AWESOME-ICONS)
 
 ### 001 CREATING PROJECT FOR ANGULAR MATERIAL AND ANGULAR MATERIAL DESIGN ICONS
+- For more information, please visit ANGULAR MATERIAL and MATERIAL DESIGN ICONS sites
+
+https://material.angular.io/
+
+https://material.io/resources/icons/?style=baseline
+
 ### Step #1
 - Run Windows command prompt cmd.exe
 - Go to the parent folder for your app
@@ -129,6 +135,12 @@
 
 
 ## 002 CREATING PROJECT FOR NG BOOTSTRAP AND MATERIAL DESIGN ICONS
+- For more information, please visit NG BOOTSTRAP and MATERIAL DESIGN ICONS sites
+
+https://ng-bootstrap.github.io/
+
+https://material.io/resources/icons/?style=baseline
+
 ### Step #1
 - Run Windows command prompt cmd.exe
 - Go to the parent folder for your app
@@ -245,6 +257,12 @@
 
 
 ## 003 CREATING PROJECT FOR NG BOOTSTRAP AND AWESOME ICONS
+- For more information, please visit NG BOOTSTRAP and AWESOME ICONS sites
+
+https://ng-bootstrap.github.io/
+
+https://www.npmjs.com/package/@fortawesome/angular-fontawesome
+
 ### Step #1
 - Run Windows command prompt cmd.exe
 - Go to the parent folder for your app
