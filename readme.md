@@ -116,6 +116,25 @@ https://material.io/resources/icons/?style=baseline
 ![picture](img/img00s10.png)
 
 ### Step #9
+- Configure URLs to connect to server-side servicesConfigure URLs to connect to server-side services.
+-   open src\app\shared\services\app-glbl-settings.service.ts
+-   modify two methods:
+```java
+    public getWebApiPrefix(vwNm: string): string {
+        let reslt: string = '';
+        if(!(vwNm === null)) {
+            if(!(vwNm === null)) {
+                reslt = 'https://localhost:44312/'; // Set up URLs to connect to server-side services.
+            }
+        }
+        return reslt;
+    } 
+    public getSecurityWebApiPrefix(): string {
+        return 'https://localhost:44312/'; // Set up URLs to connect to server-side services.
+    } 
+```
+
+### Step #10
 - Note: to generate components for the given view please use the batch actions without any suffix. There two possible ones.
 
 ```java
@@ -131,6 +150,22 @@ https://material.io/resources/icons/?style=baseline
 ```
 
 - these two batches apply to any user interface library
+
+### Notes about Authorization
+- Authorization is turned off by default. To turn it on
+-   open src\app\shared\services\app-glbl-settings.service.ts
+-   modify two methods:
+```java
+    getViewModelMask(vwModel: string): number {
+      return 15; // delete this line when vwModels is ready
+      ...
+    } 
+    getDashBrdMask(dshBrd: string): number {
+      return 1; // delete this line when dshBrds is ready
+      ...
+    } 
+```
+
 
 
 
@@ -238,6 +273,41 @@ https://material.io/resources/icons/?style=baseline
  
 
 ### Step #9
+- Configure URLs to connect to server-side servicesConfigure URLs to connect to server-side services.
+-   open src\app\shared\services\app-glbl-settings.service.ts
+-   modify two methods:
+```java
+    public getWebApiPrefix(vwNm: string): string {
+        let reslt: string = '';
+        if(!(vwNm === null)) {
+            if(!(vwNm === null)) {
+                reslt = 'https://localhost:44312/'; // Set up URLs to connect to server-side services.
+            }
+        }
+        return reslt;
+    } 
+    public getSecurityWebApiPrefix(): string {
+        return 'https://localhost:44312/'; // Set up URLs to connect to server-side services.
+    } 
+```
+
+### Notes about Authorization
+- Authorization is turned off by default. To turn it on
+-   open src\app\shared\services\app-glbl-settings.service.ts
+-   modify two methods:
+```java
+    getViewModelMask(vwModel: string): number {
+      return 15; // delete this line when vwModels is ready
+      ...
+    } 
+    getDashBrdMask(dshBrd: string): number {
+      return 1; // delete this line when dshBrds is ready
+      ...
+    } 
+```
+
+
+### Step #10
 - Note: to generate components for the given view please use the batch actions with the suffix
 
 ```java
@@ -359,6 +429,25 @@ https://www.npmjs.com/package/@fortawesome/angular-fontawesome
 ![picture](img/img00s17.png)
 
 ### Step #9
+- Configure URLs to connect to server-side servicesConfigure URLs to connect to server-side services.
+-   open src\app\shared\services\app-glbl-settings.service.ts
+-   modify two methods:
+```java
+    public getWebApiPrefix(vwNm: string): string {
+        let reslt: string = '';
+        if(!(vwNm === null)) {
+            if(!(vwNm === null)) {
+                reslt = 'https://localhost:44312/'; // Set up URLs to connect to server-side services.
+            }
+        }
+        return reslt;
+    } 
+    public getSecurityWebApiPrefix(): string {
+        return 'https://localhost:44312/'; // Set up URLs to connect to server-side services.
+    } 
+```
+
+### Step #10
 - Note: to generate components for the given view please use the batch actions with the sufix
 
 ```java
@@ -373,6 +462,21 @@ https://www.npmjs.com/package/@fortawesome/angular-fontawesome
 ```
 
 - these two batches apply to any user interface library
+
+### Notes about Authorization
+- Authorization is turned off by default. To turn it on
+-   open src\app\shared\services\app-glbl-settings.service.ts
+-   modify two methods:
+```java
+    getViewModelMask(vwModel: string): number {
+      return 15; // delete this line when vwModels is ready
+      ...
+    } 
+    getDashBrdMask(dshBrd: string): number {
+      return 1; // delete this line when dshBrds is ready
+      ...
+    } 
+```
 
 
 ## 01 INTRODUCTION
