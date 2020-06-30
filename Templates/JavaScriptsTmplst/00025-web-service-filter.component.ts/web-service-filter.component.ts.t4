@@ -327,7 +327,7 @@ export class <#= filterComponentClassName#> implements OnInit, <#= eventEmitterP
                     flt.fltrValue.setValidators(validators);
                     break;
                 default:
-                    flt.fltrValue.reset({ value: '', disabled: false });
+                    flt.fltrValue.reset({ value: null, disabled: false });
                     flt.fltrValue.setValidators(validators);
                     break;
             }

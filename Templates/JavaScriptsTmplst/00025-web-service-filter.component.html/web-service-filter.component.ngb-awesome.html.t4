@@ -61,52 +61,60 @@
     </div>
 
     <div *ngIf="showFilter" style="padding-right:18px;padding-left:5px;" [style.maxHeight.em]="<#= MaxHeightPropName #>X" [style.overflow-y]="<#= OverflowPropName #>">
-        <div class="row" *ngFor="let flt of webServiceFilters;" >
-            <div class="col-5 form-group">
-                <small >Column name</small>
-                <select class="form-control form-control" [formControl]="flt.fltrName" (change)="onSelectionChanged($event.target, flt)">
-                    <option *ngFor="let fltDef of webServiceFilterDefs;" [value]="fltDef.fltrName">{{fltDef.fltrCaption}}</option>
-                </select>
-            </div>
-            <div class="col-2 form-group">
-                <small >Operator</small>
-                <select class="form-control form-control" [formControl]="flt.fltrOperator">
-                    <option *ngFor="let oprtr of webServiceOperators;" [value]="oprtr.oName">{{oprtr.oCaption}}</option>
-                </select>
-            </div>
-
-            <div class="col-5 form-group" *ngIf="flt.fltrDataType !== 'datetime'" >
-                <small>Filter value</small>
-                <div class="input-group" >
-                    <input  class="form-control form-control" placeholder="Placeholder" [formControl]="flt.fltrValue" [(maxlength)]="flt.fltrMaxLen">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary " type="button"   (click)="removeFltr(flt)" data-toggle="tooltip" title="Remove current filter item">
-                            <fa-icon [icon]="['fas', 'trash']"  size="sm" class="text-danger"></fa-icon> 
-                        </button>
-                    </div>
+        <div 
+            fxLayout
+            fxLayout.xs="column"
+            fxLayoutAlign="left"
+            fxLayoutGap="1px"
+            fxLayoutGap.xs="0px" *ngFor="let flt of webServiceFilters;" >
+            <span fxFlex="39%" fxFlex.xs="99%">
+               <span fxFlex="1%"></span>        
+               <div class="form-group" fxFlex="99%">
+                    <small >Column name</small>
+                    <select class="form-control form-control" [formControl]="flt.fltrName" (change)="onSelectionChanged($event.target, flt)">
+                        <option *ngFor="let fltDef of webServiceFilterDefs;" [value]="fltDef.fltrName">{{fltDef.fltrCaption}}</option>
+                    </select>
                 </div>
-                <small class="text-danger" *ngIf="flt.fltrValue.invalid">{{getErrorMessage(flt.fltrValue)}}</small>
-                <small class="text-muted" *ngIf="flt.fltrMaxLen">{{flt.fltrValue.value?.length || 0}}/{{flt.fltrMaxLen}}</small>
-            </div>
-
-            <div class="col-5 form-group" *ngIf="flt.fltrDataType === 'datetime'" >
-                <small>Filter value</small>
-                <div class="input-group" >
-                    <input class="form-control form-control" ngbDatepicker #d="ngbDatepicker" container="body"
-                    (click)="d.toggle()" [formControl]="flt.fltrValue" [min]="flt.fltrMin" [max]="flt.fltrMax">
-                    <div class="input-group-append" >
-                        <button class="btn btn-outline-secondary " type="button"   (click)="d.toggle()" data-toggle="tooltip" title="Show date dialog">
-                            <fa-icon [icon]="['fas', 'calendar-alt']"  size="sm" class="text-primary"></fa-icon> 
-                        </button>
-                        <button class="btn btn-outline-secondary " type="button"   (click)="removeFltr(flt)" data-toggle="tooltip" title="Remove current filter item">
-                            <fa-icon [icon]="['fas', 'trash']"  size="sm" class="text-danger"></fa-icon>
-                        </button>
-                    </div>
+            </span>
+            <div fxFlex="59%" fxFlex.xs="99%" fxLayout="row">
+                <span fxFlex="1%"></span>
+                <div class="form-group" fxFlex="20%">
+                    <small >Operator</small>
+                    <select class="form-control form-control" [formControl]="flt.fltrOperator">
+                        <option *ngFor="let oprtr of webServiceOperators;" [value]="oprtr.oName">{{oprtr.oCaption}}</option>
+                    </select>
                 </div>
-                <small class="text-danger" *ngIf="flt.fltrValue.invalid">{{getErrorMessage(flt.fltrValue)}}</small>
+                <span fxFlex="1%"></span>
+                <div class="form-group" *ngIf="flt.fltrDataType !== 'datetime'" fxFlex="72%">
+                    <small>Filter value</small>
+                    <div class="input-group" >
+                        <input  class="form-control form-control" placeholder="Placeholder" [formControl]="flt.fltrValue" [(maxlength)]="flt.fltrMaxLen">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary " type="button"   (click)="removeFltr(flt)" data-toggle="tooltip" title="Remove current filter item">
+                                <fa-icon [icon]="['fas', 'trash']"  size="sm" class="text-danger"></fa-icon> 
+                            </button>
+                        </div>
+                    </div>
+                    <small class="text-danger" *ngIf="flt.fltrValue.invalid">{{getErrorMessage(flt.fltrValue)}}</small>
+                    <small class="text-muted" *ngIf="flt.fltrMaxLen">{{flt.fltrValue.value?.length || 0}}/{{flt.fltrMaxLen}}</small>
+                </div>
+                <div class="form-group" *ngIf="flt.fltrDataType === 'datetime'"  fxFlex="72%">
+                    <small>Filter value</small>
+                    <div class="input-group" >
+                        <input class="form-control form-control" ngbDatepicker #d="ngbDatepicker" container="body"
+                        (click)="d.toggle()" [formControl]="flt.fltrValue" [min]="flt.fltrMin" [max]="flt.fltrMax">
+                        <div class="input-group-append" >
+                            <button class="btn btn-outline-secondary " type="button"   (click)="d.toggle()" data-toggle="tooltip" title="Show date dialog">
+                                <fa-icon [icon]="['fas', 'calendar-alt']"  size="sm" class="text-primary"></fa-icon> 
+                            </button>
+                            <button class="btn btn-outline-secondary " type="button"   (click)="removeFltr(flt)" data-toggle="tooltip" title="Remove current filter item">
+                                <fa-icon [icon]="['fas', 'trash']"  size="sm" class="text-danger"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <small class="text-danger" *ngIf="flt.fltrValue.invalid">{{getErrorMessage(flt.fltrValue)}}</small>
+                </div>
             </div>
-
-
         </div>
     </div>
 </div>

@@ -124,7 +124,7 @@
 
 #>
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap, UrlSegment, ActivatedRouteSnapshot } from '@angular/router';
 // import { MatDialog } from '@angular/material/dialog';
 
 import { <#= appSettingServiceClassName #> } from '<#=  GetCommonFolderName(Model, Context,  appSettingServiceFolder, rlistComponentFolder)#>';
@@ -184,6 +184,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
     tableMenuItemsData: Array<<#= menuItemDataModelClassName #>> = [
          {id: '<#= ActionParamAddMode #>', caption: 'Add Item', iconName: 'create', iconColor: 'primary', enabled: true},
       ];
+    currSnapshot: ActivatedRouteSnapshot = null;
 
     constructor(protected route: ActivatedRoute, protected router: Router, protected  <#= formRootService #>: <#= serviceClassName #>, protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #>, 
         // public dialog: MatDialog, 
@@ -207,13 +208,19 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
                 }
             }
         }
+        if (this.route.snapshot.url.length < 1) {
+            this.currSnapshot = this.route.snapshot.pathFromRoot[this.route.snapshot.pathFromRoot.length-2];
+        } else {
+            this.currSnapshot = this.route.snapshot;
+        }
+
 <#
     if (Model.ForeignKeys != null) {
         if (Model.ForeignKeys.Count > 0) {
 #>
-        let url: UrlSegment[] = this.route.snapshot.url;
+        let url: UrlSegment[] = this.currSnapshot.url;
         let len: number = url.length;
-        let paramMap: ParamMap = this.route.snapshot.paramMap;
+        let paramMap: ParamMap = this.currSnapshot.paramMap;
         if(paramMap.has('<#= DepthParamName #>')) {
             let depth: number = parseInt(paramMap.get('<#= DepthParamName #>'));
             if (depth > 1) {
@@ -418,13 +425,13 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
         let qp = ['./'];
         if  (!((v.id === '<#= ActionParamUpdateMode #>') || (v.id === '<#= ActionParamDeleteMode #>'))) {
             //let depth: number = 1;
-            //let paramMap: ParamMap = this.route.snapshot.paramMap;
+            //let paramMap: ParamMap = this.currSnapshot.paramMap;
             //if(paramMap.has('depth')) {
                 //depth = parseInt(paramMap.get('depth'))+1;
             //} 
             //if(depth < 2) depth = 2;
             //qp.push(depth.toString());
-            let paramMap: ParamMap = this.route.snapshot.paramMap;
+            let paramMap: ParamMap = this.currSnapshot.paramMap;
             if(!paramMap.has('depth')) {
                 qp.push('2');
             }
@@ -466,7 +473,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
             return;
         }
         this.isPostNavApplied = true;
-        let paramMap: ParamMap = this.route.snapshot.queryParamMap;
+        let paramMap: ParamMap = this.currSnapshot.queryParamMap;
         if(!paramMap.has('<#= ActionParamName #>')) {
             return;
         }
@@ -540,8 +547,8 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
     if (Model.ForeignKeys != null) {
         if (Model.ForeignKeys.Count > 0) {
 #>
-        let paramMap: ParamMap = this.route.snapshot.paramMap;
-        let url: UrlSegment[] = this.route.snapshot.url;
+        let paramMap: ParamMap = this.currSnapshot.paramMap;
+        let url: UrlSegment[] = this.currSnapshot.url;
         let len: number = url.length;
         if(paramMap.has('<#= DepthParamName #>')) {
             let depth: number = parseInt(paramMap.get('<#= DepthParamName #>'));
@@ -694,7 +701,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
             message:'Incorrect Url.'
         };
         this.<#= AppSettingServicePropName #>.<#= ShowErrorMethodName #>('Navigation Error', msg)
-        let url: UrlSegment[] = this.route.snapshot.url;
+        let url: UrlSegment[] = this.currSnapshot.url;
         let len: number = url.length;
         let shft: number = 0;
         for (var i = len-1; i > -1; i--) {

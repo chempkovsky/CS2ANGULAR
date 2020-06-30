@@ -71,7 +71,7 @@
             fxLayoutAlign="left"
             fxLayoutGap="1px"
             fxLayoutGap.xs="0px" *ngFor="let flt of webServiceFilters;" >
-            <span fxFlex="39%">
+            <span fxFlex="39%" fxFlex.xs="99%">
                 <span fxFlex="1%"></span>
 
                 <mat-form-field [appearance]="<#= AppearancePropName #>" fxFlex="99%">
@@ -82,7 +82,7 @@
                 </mat-form-field>
             </span>
 
-            <div fxFlex="59%" fxLayout="row">
+            <div fxFlex="59%" fxFlex.xs="99%" fxLayout="row">
                 <span fxFlex="1%"></span>
 
                 <mat-form-field [appearance]="<#= AppearancePropName #>" fxFlex="20%">

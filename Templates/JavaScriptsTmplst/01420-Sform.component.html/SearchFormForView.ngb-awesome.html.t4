@@ -130,6 +130,7 @@
 
 <div class="ngb-tbl-outer-container">  
     <div  [style.maxHeight.px]="<#= MaxHeightPropName #>X" [style.overflow-y]="<#= OverflowPropName #>"  class="ngb-tbl-container"> 
+      <div ngbRadioGroup>
         <table class="table table-sm table-striped tblwidthclss">
           <thead >
             <tr >
@@ -168,7 +169,7 @@
             <ng-template ngFor let-e [ngForOf]="dataSource" >
                 <tr>
                   <td class="stickyfirstclss">
-                     <input type="checkbox" (change)="<#= OnSelectRowMethodName #>(e)" [value]="e" [checked]="e === currentRow" >
+                     <input type="radio" (change)="<#= OnSelectRowMethodName #>(e)" [value]="e" [checked]="e === currentRow" >
                   </td>
 <#
     foreach(ModelViewUIListPropertySerializable modelViewUIListPropertySerializable in Model.UIListProperties) {
@@ -197,6 +198,7 @@
             </ng-template>
           </tbody>
         </table>
+      </div> 
     </div> 
 </div> 
 <div class="pagination-container">

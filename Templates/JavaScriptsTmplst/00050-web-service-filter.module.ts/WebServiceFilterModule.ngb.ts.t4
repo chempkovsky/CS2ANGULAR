@@ -13,8 +13,7 @@
 <#@ parameter type="CS2ANGULAR.Model.Serializable.DbContextSerializable" name="Context" #>
 <#
 
-    string bootstrapModuleFolder =      "00009-app-bootstrap.module.ts";
-
+    string bootstrapModuleFolder        = "00009-app-bootstrap.module.ts";
     string flexModuleFolder             = "00011-app-flex-layout.module.ts";
 
     string appSettingServiceFolder      = "00015-app-glbl-settings.service.ts";
@@ -61,7 +60,7 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
-
+import { <#= flexModuleClassName #> } from '<#= GetFolderName(Model, flexModuleFolder, filterModuleFolder)#>';
 import { <#= bootstrapModuleClassName #> } from '<#= GetFolderName(Model, bootstrapModuleFolder, filterModuleFolder)#>';
 import { <#= filterModelClassName #> } from '<#= GetFolderName(Model, filterModelFolder, filterModuleFolder)#>';
 import { <#= filterDefModelClassName #> } from '<#= GetFolderName(Model, filterDefModelFolder, filterModuleFolder)#>';
@@ -88,6 +87,7 @@ import { <#= messageDialogComponentClassName #> } from '<#= GetFolderName(Model,
         CommonModule,
         <#= bootstrapModuleClassName #>,
         NgbModule,
+        <#= flexModuleClassName #>,
     ],
     exports: [
         <#= filterComponentClassName #>,

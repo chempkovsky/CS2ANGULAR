@@ -291,22 +291,6 @@ https://material.io/resources/icons/?style=baseline
     } 
 ```
 
-### Notes about Authorization
-- Authorization is turned off by default. To turn it on
--   open src\app\shared\services\app-glbl-settings.service.ts
--   modify two methods:
-```java
-    getViewModelMask(vwModel: string): number {
-      return 15; // delete this line when vwModels is ready
-      ...
-    } 
-    getDashBrdMask(dshBrd: string): number {
-      return 1; // delete this line when dshBrds is ready
-      ...
-    } 
-```
-
-
 ### Step #10
 - Note: to generate components for the given view please use the batch actions with the suffix
 
@@ -323,6 +307,20 @@ https://material.io/resources/icons/?style=baseline
 
 - these two batches apply to any user interface library
 
+### Notes about Authorization
+- Authorization is turned off by default. To turn it on
+-   open src\app\shared\services\app-glbl-settings.service.ts
+-   modify two methods:
+```java
+    getViewModelMask(vwModel: string): number {
+      return 15; // delete this line when vwModels is ready
+      ...
+    } 
+    getDashBrdMask(dshBrd: string): number {
+      return 1; // delete this line when dshBrds is ready
+      ...
+    } 
+```
 
 
 

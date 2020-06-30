@@ -196,7 +196,7 @@ import { <#= filterModelClassName #> } from '<#=  GetCommonFolderName(Model, Con
 import { <#= filterDefModelClassName #> } from '<#=  GetCommonFolderName(Model, Context,  filterDefModelFolder, lformComponentFolder)#>';
 import { <#= filterOperatorModelClassName #> } from '<#=  GetCommonFolderName(Model, Context,  filterOperatorModelFolder, lformComponentFolder)#>';
 import { <#= filterResultModelClassName #> } from '<#=  GetCommonFolderName(Model, Context,  filterResultModelFolder, lformComponentFolder)#>';
-import { <#= filterComponentClassName #> } from '<#=  GetCommonFolderName(Model, Context,  filterComponentFolder, lformComponentFolder)#>';
+// import { <#= filterComponentClassName #> } from '<#=  GetCommonFolderName(Model, Context,  filterComponentFolder, lformComponentFolder)#>';
 import { <#= searchComponentClassName #> } from '<#=  GetFolderName(Model, sformComponentFolder, lformComponentFolder) #>';
 import { <#= eventEmitterDataModelClassName #> } from '<#=  GetCommonFolderName(Model, Context,  eventEmitterDataModelFolder, lformComponentFolder)#>';
 import { <#= menuItemDataModelClassName #> } from '<#=  GetCommonFolderName(Model, Context,  menuItemDataModelFolder, lformComponentFolder)#>';

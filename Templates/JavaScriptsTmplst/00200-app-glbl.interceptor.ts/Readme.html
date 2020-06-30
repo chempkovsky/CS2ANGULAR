@@ -19,6 +19,14 @@
         </tr>
         <tr>
             <td>
+                Status
+            </td>
+            <td>
+                <strong style="color:green">Active.</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 Recomended folder
             </td>
             <td>
@@ -65,27 +73,23 @@
     <em>1. Run the command</em><br>
     <pre>
     <code>
-            ng g module <b>web-service-filter</b>
+            ng g class <b>app-glbl</b> --type=interceptor
         </code>
     </pre>
-    <kbd>It will create the file <b>web-service-filter.module.ts</b></kbd><br>
-    <em>2. In Visual Studio right-click the folder with a file and generate the module-body</em><br>
+    <kbd>It will create the file <b>app-glbl.interceptor.ts</b></kbd><br>
+    <em>2. In Visual Studio right-click the folder with a file and generate the interceptor-body</em><br>
     <p />
     <strong>Project-related information</strong><br>
     <kbd>Step 0: Do not run the command described under <b>CLI-related information</b>. It's for information purpose only and makes you hint about the type of component you are going to generate</kbd><br>
     <kbd>Step 1: Inside folder <b>src/app</b> create the folder <b>'shared'</b> (You can choose any folder name you like: 'common' or 'global' and so on) </kbd><br>
-    <kbd>Step 2: Inside folder of step 1 (recommended <b>'shared'</b>) create the folder <b>'modules'</b> (You can choose any folder name you like: 'myfolder' or 'fooooo' and so on) </kbd><br>
-    <kbd>Step 3: In Visual Studio right-click the <strong>'modules'</strong>-folder that you created in step 2 and generate the following items</kbd><br>
+    <kbd>Step 2: Inside folder of step 1 (recommended <b>'shared'</b>) create the folder <b>'interceptors'</b> (You can choose any folder name you like: 'myfolder' or 'fooooo' and so on) </kbd><br>
+    <kbd>Step 3: In Visual Studio right-click the <strong>'interceptors'</strong>-folder that you created in step 2 and generate the following items</kbd><br>
     <ul>
-        <li>00050-web-service-filter.module.ts</li>
+        <li>00200-app-glbl.interceptor.ts</li>
     </ul>
     <strong>Don't forget to click save-button. Even if the file is empty!!!</strong> It saves the code into the file and adds some information into repository of the Wizards.
     Repository information is actively used by all other generators that you will run later.
     <p />
-    web-service-filter.module.ts imports and exports '00025-web-service-filter.component.ts'.<br>
-    This module depends on
-    <ul>
-        <li>00025-web-service-filter.component.ts</li>
-    </ul>
+    app-glbl.interceptor.ts is an HTTP-interceptor.<br>
 </body>
 </html>

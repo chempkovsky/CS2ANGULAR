@@ -1,0 +1,100 @@
+﻿<#@ template language="C#" HostSpecific="True" Debug="True" #>
+<#@ output extension="ts" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="CS2ANGULAR" #>
+<#@ import namespace="CS2ANGULAR.Model" #>
+<#@ import namespace="CS2ANGULAR.Model.Serializable" #>
+<#@ parameter type="CS2ANGULAR.Model.Serializable.ModelViewSerializable" name="Model" #>
+<#@ parameter type="CS2ANGULAR.Model.Serializable.DbContextSerializable" name="Context" #>
+<#
+
+    string sharedModuleFolder = "00008-app-shared.module.ts";
+    string sharedModuleClassName = GetModuleClassName(Model, sharedModuleFolder);
+
+#>
+
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from '@angular/cdk/layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { NbFormFieldModule, NbIconModule, NbButtonModule, NbInputModule, NbSelectModule, NbDatepickerModule, NbTooltipModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+
+
+const SharedComponents = [
+    FormsModule,
+    ReactiveFormsModule,
+    LayoutModule,
+    FlexLayoutModule,
+    NbFormFieldModule, 
+    NbIconModule, 
+    NbButtonModule, 
+    NbInputModule, 
+    NbSelectModule, 
+    NbDatepickerModule, 
+    NbTooltipModule
+];
+
+
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    SharedComponents
+  ],
+  exports:[
+    SharedComponents
+  ]
+})
+export class <#= sharedModuleClassName #>  { }
+
+<#+
+    string GetModuleClassName(CS2ANGULAR.Model.Serializable.ModelViewSerializable model, string fileType) {
+        string result="";
+        if ((model == null) || string.IsNullOrEmpty(fileType)) {
+            return result;
+        }
+        if (model.CommonStaffs == null) {
+            return result;
+        }
+        CommonStaffSerializable refItem= 
+            model.CommonStaffs.Where(c => c.FileType == fileType).FirstOrDefault();
+        if (refItem == null) {
+            return result;
+        }
+        if(string.IsNullOrEmpty(refItem.FileName)) {
+            return result;
+        }
+        string fn = refItem.FileName.Replace(".module","Module").Replace(".routing","Routing");
+        StringBuilder sb = new StringBuilder();
+        bool toUpper = true;
+        foreach (char c in fn)
+        {
+            if( c == '-' )
+            {
+                toUpper = true;
+            } else
+            {
+                if (toUpper)
+                {
+                    sb.Append(Char.ToUpper(c));
+                    toUpper = false;
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+            }
+                
+        }
+        return sb.ToString();
+    }
+#>

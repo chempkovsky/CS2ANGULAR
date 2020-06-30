@@ -79,7 +79,7 @@
 #>
 
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Inject } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap, UrlSegment } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap, UrlSegment, ActivatedRouteSnapshot } from '@angular/router';
 
 import { <#= eformModeEnumName #> } from '<#=  GetCommonFolderName(Model, Context,  eformModeEnumlFolder, eformComponentFolder)#>';
 import { <#= GetComponentClassName(Model, eformComponentFolder) #> } from '<#=  GetFolderName(Model, eformComponentFolder, reditComponentFolder) #>';
@@ -111,6 +111,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
     <#= HiddenFilterPropName #>: Array<<#= filterResultModelClassName #>> = [];
     <#= EformModePropName #>: <#= eformModeEnumName #> = <#= eformModeEnumName #>.DeleteMode;
     <#= FormControlModelPropName #>: <#= GetInterfaceName(Model) #> | null = null;
+    currSnapshot: ActivatedRouteSnapshot = null;
 
     constructor(protected route: ActivatedRoute, protected router: Router, protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #>, protected <#= formRootService #>: <#= serviceClassName #>) { }
     ngOnInit() {
@@ -121,14 +122,19 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
                 }
             }
         }
+        if (this.route.snapshot.url.length < 1) {
+            this.currSnapshot = this.route.snapshot.pathFromRoot[this.route.snapshot.pathFromRoot.length-2];
+        } else {
+            this.currSnapshot = this.route.snapshot;
+        }
 
-        let url: UrlSegment[] = this.route.snapshot.url;
+        let url: UrlSegment[] = this.currSnapshot.url;
         let len: number = url.length;
         if(len < 2) {
             this.onNavError();
             return;
         }
-        let paramMap: ParamMap = this.route.snapshot.paramMap;
+        let paramMap: ParamMap = this.currSnapshot.paramMap;
         if(!paramMap.has('<#= ActionParamName #>')) {
             this.onNavError();
             return;
@@ -371,7 +377,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
             message:'Incorrect Url.'
         };
         this.<#= AppSettingServicePropName #>.<#= ShowErrorMethodName #>('Navigation Error', msg)
-        let url: UrlSegment[] = this.route.snapshot.url;
+        let url: UrlSegment[] = this.currSnapshot.url;
         let len: number = url.length;
         let shft: number = 0;
         for (var i = len-1; i > -1; i--) {
@@ -412,7 +418,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
         let qp = {
             <#= ActionParamName #>: '<#= ActionParamCancelMode #>'
         };
-        let url: UrlSegment[] = this.route.snapshot.url;
+        let url: UrlSegment[] = this.currSnapshot.url;
         let len: number = url.length;
         if (this.<#= EformModePropName #> !== <#= eformModeEnumName #>.AddMode) {
             shft = <#= primKeys.Count + 1 #>;

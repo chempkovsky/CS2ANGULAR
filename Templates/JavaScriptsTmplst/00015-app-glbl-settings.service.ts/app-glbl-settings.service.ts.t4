@@ -18,6 +18,8 @@
     string AppearancePropName           = "appearance";
     string ShowErrorMethodName          = "showError";
     string ShowMessageMethodName        = "showMsg";
+    string AppSettingServicePropName    = "appGlblSettings";
+
 #>
 
 import { Injectable } from '@angular/core';
@@ -256,7 +258,17 @@ export class <#= appSettingServiceClassName #> implements CanActivate, CanActiva
     }
     
     public userName: string;
+}
 
+@Injectable({
+  providedIn: 'root'
+})
+export class <#= appSettingServiceClassName + "Activator" #> implements CanActivate {
+    constructor(protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #>) {}
+    
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+        return this.<#= AppSettingServicePropName #>.canActivateChild(route, state);
+    }
 }
 
 <#+
