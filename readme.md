@@ -832,7 +832,7 @@ public class LitGenre {
 - Step #9:
     - Add ”GenreId” to the primary key list. 
     - Select “HasKey.Net.cs.t4” template
-    - Click “Create(Modify)” button.It will add Fluent Api definition of the primary key for “LitGenre”.
+    - Click “Create(Modify)” button. It will add Fluent Api definition of the primary key for “LitGenre”.
 
     ![picture](img/img0512.png)
 
@@ -934,9 +934,9 @@ public class LitGenre {
     ![picture](img/img0613.png)
 
     - Note #1:
-        - The repo file is updated only when you click the save button.
+        - The repo file is updated only when you click the save button.
     - Note #2:
-        - A separate repo file is created for each DBContext.
+        - A separate repo file is created for each DBContext.
 
 ## 07 FIRST WEB API SERVICE
 - Before generating Web Api service the developer must define the set of View’s properties that will be used for filtering and the set of View’s properties that will be used for sorting.
@@ -989,7 +989,7 @@ public class LitGenre {
     ![picture](img/img0709.png)
 
 - Note:
-    - The Wizard’s repo file is updated only when you click “save” button
+    - The Wizard’s repo file is updated only when you click “save” button
 
 - After generating very first Web Api service the developer must add references on Entity’s, Context’s and View’s projects.
     - In out case, we should add references on
@@ -1047,10 +1047,10 @@ public class LitGenre {
 
     ![picture](img/img0809.png)
 
-    - Close the dialog at the endof the generation process
+    - Close the dialog at the end of the generation process
 
 - Note:
-    - After closing “batch actions” dialog the “Created Action types” panelhas been populatedwith a list of created files.
+    - After closing “batch actions” dialog the “Created Action types” panel has been populated with a list of created files.
 
     ![picture](img/img0810.png)
 
@@ -1069,13 +1069,13 @@ public class LitGenre {
     - Methods
         - getWebApiPrefix and getSecurityWebApiPrefix return root URL for the view’s and security’s WebApi
     - Methods
-        - getDialogWidth and getDialogMaxWidthReturn the width of the dialogs for the given view
+        - getDialogWidth and getDialogMaxWidth Return the width of the dialogs for the given view
     - Methods
-        - getViewModelMask and getDashBrdMaskare the implementation of the authorization “Bit Mask” security. The first line in the body of each method turns security off.
+        - getViewModelMask and getDashBrdMask are the implementation of the authorization “Bit Mask” security. The first line in the body of each method turns security off.
     - Methods
-        - canActivateChild and canActivateare the implementation of the CanActivate, CanActivateChild interfaces.
+        - canActivateChild and canActivate are the implementation of the CanActivate, CanActivateChild interfaces.
     - Method
-        - getValidationErrorMessagereturns a validation error message
+        - getValidationErrorMessage returns a validation error message
 
 - to-binary.pipe.ts
     - Located: shared/pipes
@@ -1104,7 +1104,7 @@ public class LitGenre {
     - The component is used by all View’s tabular forms
     - Using the functionality of this component the end user can define the filter.
 
-- app-glbl.interceptor.tsLocated: shared/interceptors
+- app-glbl.interceptor.ts Located: shared/interceptors
     - Impements “HttpInterceptor” interface
     - Adds access_token to each Http request
 
@@ -1135,7 +1135,7 @@ public class LitGenre {
          connectionString="Data Source=SRV2016SQL2019;Initial Catalog=AALitStorage;Persist Security Info=True;User ID=sa;Password=YOUR_PASSWORD" 
          providerName="System.Data.SqlClient" />
 ```
-    - Db Migration is not used for this demo app. Instead the following code have been executed in the small console app to create Data Baseon the SQL server
+    - Db Migration is not used for this demo app. Instead the following code have been executed in the small console app to create Data Base on the SQL server
 
 ```java
         Database.SetInitializer(new DropCreateDatabaseAlways<LitDbContext>());
@@ -1183,7 +1183,7 @@ public class LitGenre {
 
     - Click “Next”-button
 
-- On the fourth page click “batch processing”-button. “Batch actions” dialog will be shown.
+- On the fourth page click “batch processing”-button. “Batch actions” dialog will be shown.
     - Select “01100-Intefaces.json”
     - Click “Start”-button
 
