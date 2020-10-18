@@ -32,7 +32,7 @@ export class <#= toBinaryPipeClassName #> implements PipeTransform {
     return  integer.toString(2).replace(/\B(?=(\d{4})+(?!\d))/g, this.SEPARATOR);
   }
   parse(value: string): string {
-    return  parseInt( ((value || '0').toString()).replace(this.SEPARATOR, ''), 10).toString(10);
+    return  parseInt( ((value || '0').toString()).split(this.SEPARATOR).join(''), 10).toString(10);
   }
 }
 
