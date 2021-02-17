@@ -16,96 +16,64 @@
     string appSettingServiceFolder          = "00015-app-glbl-settings.service.ts";
     string appRegisterInterfaceFolder       = "00118-app-glbl-register.interface.ts";
     string appLoginInterfaceFolder          = "00120-app-glbl-login.interface.ts";
-    string appChangePasswordInterfaceFolder = "00122-app-glbl-chngpswd.interface.ts";
-
     string appLoginServiceFolder            = "00130-app-glbl-login.service.ts";
 
-    string appChangePasswordHtmlComponentFolder   = "00144-app-glbl-chngpswd.component.html";
-    string appChangePasswordCssComponentFolder    = "00144-app-glbl-chngpswd.component.css";
-    string appChangePasswordComponentFolder       = "00144-app-glbl-chngpswd.component.ts";
+
+    string appLoginHtmlComponentFolder      = "00140-app-glbl-login.component.html";
+    string appLoginCssComponentFolder       = "00140-app-glbl-login.component.css";
+    string appLoginComponentFolder          = "00140-app-glbl-login.component.ts";
+
+
+    string appLogoutCssComponentFolder      = "00142-app-glbl-logout.component.css";
+    string appLogoutHtmlComponentFolder     = "00142-app-glbl-logout.component.html";
+    string appLogoutComponentFolder         = "00142-app-glbl-logout.component.ts";
 
     string appRegisterModelClassName        = GetModelClassName(Model, appRegisterInterfaceFolder);
     string appLoginModelClassName           = GetModelClassName(Model, appLoginInterfaceFolder);
-    string appChangePasswordModelClassName  = GetModelClassName(Model, appChangePasswordInterfaceFolder);
     string appSettingServiceClassName       = GetServiceClassName(Model, appSettingServiceFolder);
     string appLoginServiceClassName         = GetServiceClassName(Model, appLoginServiceFolder);
+    string appLoginComponentClassName       = GetComponentClassName(Model, appLoginComponentFolder);
+    string appLogoutComponentClassName      = GetComponentClassName(Model, appLogoutComponentFolder);
 
-    string appChangePasswordComponentClassName    = GetComponentClassName(Model, appChangePasswordComponentFolder);
-
-    string appChangePasswordComponentSelectorCommonPart = GetComponentSelectorCommonPart(Model, appChangePasswordComponentFolder);
+    string appLogoutComponentSelectorCommonPart = GetComponentSelectorCommonPart(Model, appLogoutComponentFolder);
 
     string AppearancePropName           = "appearance";
     string ShowErrorMethodName          = "showError";
     string securityServiceName          = "scrtSvr";
     string registerMethodName           = "register";
-    string changePasswordMethodName     = "changePassword";
+    string loginMethodName              = "login";
+    string logoutMethodName             = "logout";
     string AppSettingServicePropName    = "appGlblSettings";
+    string getAuthIntoMethodName        = "getAuthInto";
+    string setAuthIntoMethodName        = "setAuthInto";
                                 
 #>
 import { Component } from '@angular/core';
-import { FormControl, Validators, ValidatorFn, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatFormFieldAppearance } from '@angular/material/form-field';
 
-import { <#= appSettingServiceClassName #> } from '<#= GetFolderName(Model, appSettingServiceFolder, appChangePasswordComponentFolder)#>';
-import { <#= appLoginServiceClassName #> } from '<#= GetFolderName(Model, appLoginServiceFolder, appChangePasswordComponentFolder)#>';
-import { <#= appChangePasswordModelClassName #> } from '<#= GetFolderName(Model, appChangePasswordInterfaceFolder, appChangePasswordComponentFolder)#>';
+import { <#= appSettingServiceClassName #> } from '<#= GetFolderName(Model, appSettingServiceFolder, appLogoutComponentFolder)#>';
+import { <#= appLoginServiceClassName #> } from '<#= GetFolderName(Model, appLoginServiceFolder, appLogoutComponentFolder)#>';
 
 
 @Component({
-  selector: 'app-<#= appChangePasswordComponentSelectorCommonPart #>',
-  templateUrl: '<#= GetFolderName(Model, appChangePasswordHtmlComponentFolder, appChangePasswordComponentFolder) #>.html',
-  styleUrls: ['<#= GetFolderName(Model, appChangePasswordCssComponentFolder, appChangePasswordComponentFolder) #>.css']
+  selector: 'app-<#= appLogoutComponentSelectorCommonPart #>',
+  templateUrl: '<#= GetFolderName(Model, appLogoutHtmlComponentFolder, appLogoutComponentFolder) #>.html',
+  styleUrls: ['<#= GetFolderName(Model, appLogoutCssComponentFolder, appLogoutComponentFolder) #>.css']
 })
-export class <#= appChangePasswordComponentClassName #> {
-    title: string = 'Change Password';
-    cnfPwdhide: boolean = true;
-    pwdhide: boolean = true;
-    oldpwdhide: boolean = true;
-    public <#= AppearancePropName #>: MatFormFieldAppearance = 'outline';
-    chngpswdFormGroup: FormGroup;
-
+export class <#= appLogoutComponentClassName #> {
+    title: string = 'Do you want to Sign Out?';
+    public appearance: string = 'outline';
 
     constructor(private <#= securityServiceName #>: <#= appLoginServiceClassName #>, protected router: Router, protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #> ) {
-        this.<#= AppearancePropName #> = this.<#= AppSettingServicePropName #>.<#= AppearancePropName #>;
-
-        this.chngpswdFormGroup =  new FormGroup({});
-        let locValidators: ValidatorFn[]; 
-
-        locValidators = [ Validators.required,Validators.minLength(6) ];
-        this.chngpswdFormGroup.addControl('oldpassword', new FormControl({ value: null, disabled: false}, locValidators));
-
-        locValidators = [ Validators.required,Validators.minLength(6) ];
-        this.chngpswdFormGroup.addControl('newPassword', new FormControl({ value: null, disabled: false}, locValidators));
-
-        locValidators = [ Validators.required,Validators.minLength(6) ];
-        this.chngpswdFormGroup.addControl('confirmPassword', new FormControl({ value: null, disabled: false}, locValidators));
-    } 
-    getErrorMessage(fc: AbstractControl): string {
-        return this.<#= AppSettingServicePropName #>.getValidationErrorMessage(fc);
+        this.appearance = this.<#= AppSettingServicePropName #>.appearance;
     } 
     doSubmit() {
-        if(typeof this.chngpswdFormGroup === 'undefined') return;
-        if(this.chngpswdFormGroup === null) return;
-        if (this.chngpswdFormGroup.invalid) {
-            this.chngpswdFormGroup.markAllAsTouched();
-            return;
-        }
-        if(!(this.chngpswdFormGroup.controls['newPassword'].value === this.chngpswdFormGroup.controls['confirmPassword'].value)) {
-            let msg = {
-                message: 'New Password and Confirm Password must be identical'
-            };
-            this.<#= AppSettingServicePropName #>.<#= ShowErrorMethodName #>('Input Error', msg);
-            return;
-        }
-        let chPwd: <#= appChangePasswordModelClassName #> = {
-           OldPassword: this.chngpswdFormGroup.controls['oldpassword'].value,
-           NewPassword: this.chngpswdFormGroup.controls['newPassword'].value,
-           ConfirmPassword: this.chngpswdFormGroup.controls['confirmPassword'].value,
-        }
-        this.<#= securityServiceName #>.<#= changePasswordMethodName #>(chPwd)
+        this.<#= securityServiceName #>.<#= logoutMethodName #>()
         .subscribe(
             (respdata: any ) => { // success path
+                this.<#= AppSettingServicePropName #>.perms = [0,0,0,0,  0,0,0,0,  0,0,0,0,  0,0,  1,0,0];
+                this.<#= AppSettingServicePropName #>.<#= setAuthIntoMethodName #>(null);
+                this.<#= AppSettingServicePropName #>.userName = null;
                 this.router.navigate(['/']);
             },
             error => { // error path

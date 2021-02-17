@@ -187,6 +187,7 @@
 #>
 import { Component,  Input, Output, EventEmitter, Inject, ChangeDetectorRef } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 import { <#= appSettingServiceClassName #> } from '<#=  GetCommonFolderName(Model, Context,  appSettingServiceFolder, o2mComponentFolder)#>';
 import { <#= detailViewSelModelClassName #> } from '<#=  GetCommonFolderName(Model, Context,  detailViewSelModelFolder, o2mComponentFolder)#>';
@@ -255,7 +256,7 @@ export class <#= componentClassName #> implements <#= eventEmitterPubModelClassN
     public <#= HiddenFilterDetailPropName #>: Array<<#= filterResultModelClassName #>> | null = null;
     public <#= DetailViewNamePropName #>: string | null = null;
     public <#= DetailViewSelModels #>: Array<<#= detailViewSelModelClassName #>> | null = [];
-    public <#= AppearancePropName #>: string = 'outline';
+    public <#= AppearancePropName #>: MatFormFieldAppearance = 'outline';
 
     constructor(protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #>, private cd: ChangeDetectorRef) {
         this.<#= AppearancePropName #> = this.<#= AppSettingServicePropName #>.<#= AppearancePropName #>;

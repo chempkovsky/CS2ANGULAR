@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
         });
     }
 
-    get userName(): string {
+    get userName(): string|null {
         return this.<#= AppSettingServicePropName #>.userName;
     }  
 }

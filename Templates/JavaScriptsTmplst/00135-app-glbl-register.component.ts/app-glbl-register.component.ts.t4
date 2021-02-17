@@ -43,6 +43,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators, ValidatorFn, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 import { <#= appSettingServiceClassName #> } from '<#= GetFolderName(Model, appSettingServiceFolder, appRegisterComponentFolder)#>';
 import { <#= appLoginServiceClassName #> } from '<#= GetFolderName(Model, appLoginServiceFolder, appRegisterComponentFolder)#>';
@@ -57,12 +58,12 @@ export class <#= appRegisterComponentClassName #> {
     title: string = 'Registration';
     cnfPwdhide: boolean = true;
     pwdhide: boolean = true;
-    public appearance: string = 'outline';
+    public <#= AppearancePropName #>: MatFormFieldAppearance = 'outline';
     registerFormGroup: FormGroup;
 
 
     constructor(private <#= securityServiceName #>: <#= appLoginServiceClassName #>, protected router: Router, protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #> ) {
-        this.appearance = this.<#= AppSettingServicePropName #>.appearance;
+        this.<#= AppearancePropName #> = this.<#= AppSettingServicePropName #>.<#= AppearancePropName #>;
 
         this.registerFormGroup =  new FormGroup({});
         let locValidators: ValidatorFn[]; 

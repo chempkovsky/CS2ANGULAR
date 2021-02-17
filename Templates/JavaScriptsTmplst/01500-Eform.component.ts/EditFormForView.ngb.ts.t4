@@ -262,7 +262,7 @@ import { <#=  GetInterfaceNameEx(Context, viewNm) #> } from '<#=  GetCrossCompon
 })
 export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubModelClassName #> {
     // start: variable declaration section
-    @Input('<#= captionSelector #>') <#= captionPropName #>: string = 'Add(Modify/Delete) Item';
+    @Input('<#= captionSelector #>') <#= captionPropName #>: string|any = 'Add(Modify/Delete) Item';
 
     @Output('<#= onContainerMenuItemClickSelector #>') <#= onContainerMenuItemClickEmitter #> = new EventEmitter<<#= eventEmitterDataModelClassName #>>();
     @Input('<#= containerMenuItemsSelector #>') <#= containerMenuItemsPropName #>: Array<<#= menuItemDataModelClassName #>> = [];
@@ -280,7 +280,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
     public <#= AppearancePropName #>: string = 'outline';
     private ngOnInitCalled: boolean = false;
     private _eformMode: <#= eformModeEnumName #> = <#= eformModeEnumName #>.DeleteMode;
-    public <#= MainFormGroupName #>: FormGroup = null;
+    public <#= MainFormGroupName #>: FormGroup|any = null;
 <#    //////////////////////////// start helper variable and FormControl -generator 
     foreach(ModelViewUIFormPropertySerializable modelViewUIFormPropertySerializable in Model.UIFormProperties) {
         if (HasCombo(modelViewUIFormPropertySerializable, Model) && modelViewUIFormPropertySerializable.IsShownInView) { 
@@ -335,9 +335,9 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
 #>
 <#    //////////////////////////// start Input Model -generator 
 #>
-    protected _<#= FormControlModelPropName #>: <#= GetInterfaceName(Model) #> | null = null;
+    protected _<#= FormControlModelPropName #>: <#= GetInterfaceName(Model) #> | any = null;
     @Input('<#= FormControlModelSelector #>') 
-        set <#= FormControlModelPropName #> (inFormControlModel : <#= GetInterfaceName(Model) #>) {
+        set <#= FormControlModelPropName #> (inFormControlModel : <#= GetInterfaceName(Model) #>| any) {
             let isInputNull: boolean = true;
             if (typeof inFormControlModel !== 'undefined') {
                 isInputNull = (inFormControlModel === null);
@@ -353,7 +353,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
                 this.DoInit();
             }
         }
-        get <#=  FormControlModelPropName #>(): <#= GetInterfaceName(Model) #> {
+        get <#=  FormControlModelPropName #>(): <#= GetInterfaceName(Model) #>| any {
             return this._<#= FormControlModelPropName #>;
         } // end of get <#=        FormControlModelPropName #>
 <#    //////////////////////////// end Input Model -generator 

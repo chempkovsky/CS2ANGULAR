@@ -44,7 +44,7 @@ import { <#= toBinaryPipeClassName #> } from '<#= GetFolderName(Model, toBinaryP
    ],   
  })
 export class <#= toBinaryFormatterDirectiveClassName #> implements ControlValueAccessor, OnInit {
-  protected _value: string | null;
+  protected _value: string | null = null;
     
     constructor(protected elementRef: ElementRef<HTMLInputElement>, protected tobinaryPipe: <#= toBinaryPipeClassName #>) {
     }
@@ -75,7 +75,7 @@ export class <#= toBinaryFormatterDirectiveClassName #> implements ControlValueA
       }
     }
     @HostListener('input', ['$event.target.value'])
-    onInput(value) {
+    onInput(value: any) {
       this._value = this.tobinaryPipe.parse(value);
       this._onChange(this._value);
     }    

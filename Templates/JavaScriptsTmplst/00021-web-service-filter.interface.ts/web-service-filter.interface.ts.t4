@@ -24,7 +24,7 @@ export interface <#= filterModelClassName #> {
     fltrDataType: string; 
     fltrOperator: FormControl;
     fltrValue: FormControl;
-    fltrMaxLen: number|null;
+    fltrMaxLen: number|any;
     fltrMin: any;
     fltrMax: any;
 }

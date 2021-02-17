@@ -244,8 +244,8 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= eve
     <#= DisplayedColumnsProperty #>:  Array<string> = ['<#= SelectColumnDefProperty #>', <#= GetDisplayedColumns(Model) #>, '<#= ActionColumnDefProperty #>'];
     @Input('<#= captionSelector #>') <#= captionPropName #>: string = '<#= Model.ViewName #>';
     @Input('<#= ShowFilterSelector #>') <#= ShowFilterPropName #>: boolean = true;
-    @Input('<#= RowCommandsSelector #>')  <#= RowCommandsPropName #>:Array<<#= menuItemDataModelClassName #>>;
-    @Input('<#= TableCommandsSelector #>')  <#= TableCommandsPropName #>:Array<<#= menuItemDataModelClassName #>>;
+    @Input('<#= RowCommandsSelector #>')  <#= RowCommandsPropName #>:Array<<#= menuItemDataModelClassName #>>|any;
+    @Input('<#= TableCommandsSelector #>')  <#= TableCommandsPropName #>:Array<<#= menuItemDataModelClassName #>>|any;
     @Input('<#= showAddFltItemSelector #>') <#= showAddFltItemPropName #>: boolean = true;
 
     @Input('<#= showBackBtnSelector #>') <#= showBackBtnPropName #>: boolean = false;
@@ -267,10 +267,10 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= eve
     public <#= MaxHeightPropName #>X: number|null = null;
     protected _<#= MaxHeightPropName #>: number|null = null;
     @Input('<#= MaxHeightPropSelector #>')
-        get <#= MaxHeightPropName #>(): number {
+        get <#= MaxHeightPropName #>(): number|null {
             return this._<#= MaxHeightPropName #>;
         }
-      set <#= MaxHeightPropName #>(inp: number) {
+      set <#= MaxHeightPropName #>(inp: number|null) {
         if (!(typeof inp === 'undefined')) {
           if(!(inp === null)) {
             this._<#= MaxHeightPropName #> = inp;
@@ -313,10 +313,10 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= eve
 
     protected _<#= HiddenFilterPropName #>: Array<<#= filterResultModelClassName #>> = [];
     @Input('<#= HiddenFilterSelector #>') 
-        get <#= HiddenFilterPropName #>(): Array<<#= filterResultModelClassName #>> {
+        get <#= HiddenFilterPropName #>(): Array<<#= filterResultModelClassName #>> | any {
           return this._<#= HiddenFilterPropName #>;
         }
-        set <#= HiddenFilterPropName #>(inDef: Array<<#= filterResultModelClassName #>>) {
+        set <#= HiddenFilterPropName #>(inDef: Array<<#= filterResultModelClassName #>> | any) {
           if (typeof inDef === 'undefined') {
             this._<#= HiddenFilterPropName #> = [];
           } else if(!Array.isArray(inDef)) {
@@ -324,7 +324,7 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= eve
           } else {
             this._<#= HiddenFilterPropName #> =  inDef;
           }
-          this.currentFilter = this.<#= HiddenFilterPropName #>;
+          this.currentFilter = this._<#= HiddenFilterPropName #>;
           this.currentPageIndex = 0;
           this.onHiddenFilter();
           if(this.isOnInitCalled) {
@@ -333,8 +333,8 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= eve
         } 
 
     public <#= currentRowPropName #>: <#= GetInterfaceName(Model) #> | null = null;
-    @Output('<#= selectedRowSelector #>') <#= selectedRowPropName #>: EventEmitter<<#= GetInterfaceName(Model) #>> = new EventEmitter<<#= GetInterfaceName(Model) #>>();
-    @Output('<#= applyFilterSelector #>') <#= applyFilterPropName #>: EventEmitter<<#= componentClassName #>> = new EventEmitter<<#= componentClassName #>>();
+    @Output('<#= selectedRowSelector #>') <#= selectedRowPropName #>: EventEmitter<<#= GetInterfaceName(Model) #>|null> = new EventEmitter<<#= GetInterfaceName(Model) #>|null>();
+    @Output('<#= applyFilterSelector #>') <#= applyFilterPropName #>: EventEmitter<<#= componentClassName #>|null> = new EventEmitter<<#= componentClassName #>|null>();
 
 
     constructor(private  <#= formRootService #>: <#= serviceClassName #>, protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #>, protected dialog: MatDialog, private cd: ChangeDetectorRef) {
@@ -445,7 +445,7 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= eve
 
     inQuery: boolean = false;
     onFilter() {
-        let flt: <#= GetInterfaceFilterName(Model) #> = { page: this.currentPageIndex, pagesize: this.currentPageSize };
+        let flt: <#= GetInterfaceFilterName(Model) #>|any = { page: this.currentPageIndex, pagesize: this.currentPageSize };
         if (!(typeof this.currentSortColumn === 'undefined')) {
             if (!(this.currentSortColumn === null)) {
                 if(!(this.currentSortColumn === '')) {
@@ -484,7 +484,7 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= eve
                     }
                 }
                 this.matPaginatorLen = pl;
-                let rslt = [];
+                let rslt: Array<<#= GetInterfaceName(Model) #>> = [];
                 if (!(typeof v.items === 'undefined')) {
                     if(!(v.items === null)) {
                         rslt = v.items;
@@ -507,7 +507,7 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= eve
             });
     }
 
-    onSelectRow(e: <#= GetInterfaceName(Model) #>) {
+    onSelectRow(e: <#= GetInterfaceName(Model) #>|any) {
         if (typeof e === 'undefined') {
             this.<#= currentRowPropName #> = null;
         } else {
@@ -564,7 +564,7 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= eve
             if (!(typeof rslt === 'undefined')) {
                 if (!(rslt === null)) {
                     let r: string[] = ['<#= SelectColumnDefProperty #>'];
-                    rslt.forEach(e => { if (e.checked) { r.push(e.name) }});
+                    rslt.forEach((e: { checked: any; name: string; }) => { if (e.checked) { r.push(e.name) }});
                     r.push('<#= ActionColumnDefProperty #>');
                     this.<#= DisplayedColumnsProperty #> = r;
                     this.cd.detectChanges();

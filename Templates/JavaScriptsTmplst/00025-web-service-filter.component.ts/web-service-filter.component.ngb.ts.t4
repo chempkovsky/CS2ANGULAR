@@ -131,10 +131,10 @@ export class <#= filterComponentClassName#> implements OnInit, <#= eventEmitterP
     public  <#= MaxHeightPropName #>X: number|null = null;
     protected _<#= MaxHeightPropName #>: number|null = null;
     @Input('<#= MaxHeightPropSelector #>')
-        get <#= MaxHeightPropName #>(): number {
+        get <#= MaxHeightPropName #>(): number|null {
             return this._<#= MaxHeightPropName #>;
         }
-      set <#= MaxHeightPropName #>(inp: number) {
+      set <#= MaxHeightPropName #>(inp: number|null) {
         if (!(typeof inp === 'undefined')) {
           if(!(inp === null)) {
             this.<#= MaxHeightPropName #>X = inp * this.<#= AppSettingServicePropName #>.filterHeightFactor + this.<#= AppSettingServicePropName #>.filterHeightAddition;
@@ -184,16 +184,16 @@ export class <#= filterComponentClassName#> implements OnInit, <#= eventEmitterP
     protected _<#= HiddenFilterPropName #>: Array<<#= filterResultModelClassName #>> = [];
 
     @Input('<#= HiddenFilterSelector #>') 
-        get <#= HiddenFilterPropName #>(): Array<<#= filterResultModelClassName #>> {
+        get <#= HiddenFilterPropName #>(): Array<<#= filterResultModelClassName #>>|any {
           return this._<#= HiddenFilterPropName #>;
         }
-        set <#= HiddenFilterPropName #>(inDef: Array<<#= filterResultModelClassName #>>) {
+        set <#= HiddenFilterPropName #>(inDef: Array<<#= filterResultModelClassName #>>|any) {
           if (typeof inDef === 'undefined') {
             this._<#= HiddenFilterPropName #> = [];
           } else if(!Array.isArray(inDef)) {
             this._<#= HiddenFilterPropName #> = [];
           } else {
-            this._<#= HiddenFilterPropName #> =  inDef;
+            this._<#= HiddenFilterPropName #> =  inDef as Array<<#= filterResultModelClassName #>>;
           }
           if(this.isOnInitCalled) {
             this.onFilterDefsChanged();
@@ -246,7 +246,7 @@ export class <#= filterComponentClassName#> implements OnInit, <#= eventEmitterP
     onFilterDefsChanged(): void {
         this.webServiceFilterDefs = [{fltrName: '', fltrCaption: '--No filter--',  fltrDataType: '', fltrMaxLen: null, fltrMin: null, fltrMax: null }];
         this.<#= inputFilterDefsPropName #>.forEach(i => {
-            if(this.<#= HiddenFilterPropName #>.findIndex(h => { return (h.fltrName === i.fltrName); }) < 0) {
+            if(this.<#= HiddenFilterPropName #>.findIndex((h: { fltrName: string; }) => { return (h.fltrName === i.fltrName); }) < 0) {
             this.webServiceFilterDefs.push({ fltrName: i.fltrName, fltrCaption: i.fltrCaption, fltrDataType: i.fltrDataType, fltrMaxLen: i.fltrMaxLen, fltrMin: i.fltrMin, fltrMax: i.fltrMax });
             }
         });    
@@ -279,7 +279,7 @@ export class <#= filterComponentClassName#> implements OnInit, <#= eventEmitterP
         if (typeof event.value === 'undefined')  return;
         if ((flt === null) || (event.value === null))  return;
 
-        let itm: <#= filterDefModelClassName #> | null = this.webServiceFilterDefs.find((e,i,a) => {
+        let itm: <#= filterDefModelClassName #> | any = this.webServiceFilterDefs.find((e,i,a) => {
             return (e.fltrName === event.value);
         });
         if(typeof itm === 'undefined') {
@@ -377,7 +377,8 @@ export class <#= filterComponentClassName#> implements OnInit, <#= eventEmitterP
         if (fc === null) {
           return rslt;
         }
-        const errs: ValidationErrors = fc.errors;
+        if (fc.errors === null) return rslt;
+        const errs: ValidationErrors = fc.errors as ValidationErrors;
         Object.keys(errs).forEach(k => {
           switch(k) {
             case 'max':
@@ -408,7 +409,7 @@ export class <#= filterComponentClassName#> implements OnInit, <#= eventEmitterP
 
     onApplyFilterClicked(): void {
         let result: Array<<#= filterResultModelClassName #>> = [];
-        this.<#= HiddenFilterPropName #>.forEach(i => {
+        this.<#= HiddenFilterPropName #>.forEach((i: IWebServiceFilterRslt) => {
           result.push(i);
         });
         this.webServiceFilters.forEach(i => {

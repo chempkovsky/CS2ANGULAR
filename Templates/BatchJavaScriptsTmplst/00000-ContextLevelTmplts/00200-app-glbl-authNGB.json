@@ -44,7 +44,7 @@
     {
       "DestinationFolder": "shared\\components\\app-glbl-register",
       "GeneratorType": "00135-app-glbl-register.component.ts",
-      "GeneratorSript": "app-glbl-register.component.ts.t4"
+      "GeneratorSript": "app-glbl-register.component.ngb.ts.t4"
     },
     {
       "DestinationFolder": "shared\\components\\app-glbl-login",
@@ -59,7 +59,7 @@
     {
       "DestinationFolder": "shared\\components\\app-glbl-login",
       "GeneratorType": "00140-app-glbl-login.component.ts",
-      "GeneratorSript": "app-glbl-login.component.ts.t4"
+      "GeneratorSript": "app-glbl-login.component.ngb.ts.t4"
     },
     {
       "DestinationFolder": "shared\\components\\app-glbl-logout",
@@ -74,7 +74,7 @@
     {
       "DestinationFolder": "shared\\components\\app-glbl-logout",
       "GeneratorType": "00142-app-glbl-logout.component.ts",
-      "GeneratorSript": "app-glbl-logout.component.ts.t4"
+      "GeneratorSript": "app-glbl-logout.component.ngb.ts.t4"
     },
     {
       "DestinationFolder": "shared\\components\\app-glbl-chngpswd",
@@ -89,7 +89,7 @@
     {
       "DestinationFolder": "shared\\components\\app-glbl-chngpswd",
       "GeneratorType": "00144-app-glbl-chngpswd.component.ts",
-      "GeneratorSript": "app-glbl-chngpswd.component.ts.t4"
+      "GeneratorSript": "app-glbl-chngpswd.component.ngb.ts.t4"
     },
     {
       "DestinationFolder": "shared\\components\\app-scrt-dashboard",
