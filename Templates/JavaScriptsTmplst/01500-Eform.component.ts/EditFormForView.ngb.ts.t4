@@ -285,7 +285,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
     foreach(ModelViewUIFormPropertySerializable modelViewUIFormPropertySerializable in Model.UIFormProperties) {
         if (HasCombo(modelViewUIFormPropertySerializable, Model) && modelViewUIFormPropertySerializable.IsShownInView) { 
 #>
-    public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>: FormControl = null;
+    public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>: FormControl | any = null;
     public <#=  GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, ComboSufix) #> : <#= 
                 string.Join(" | ", CollectComboListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | null = null;
 <#
@@ -299,7 +299,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
         } // if (HasButton(modelViewUIFormPropertySerializable, Model)) { 
         if (HasTypeahead(modelViewUIFormPropertySerializable, Model)  && modelViewUIFormPropertySerializable.IsShownInView) {  
 #>
-    public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, TypeaheadSufix) #>: FormControl = null;
+    public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, TypeaheadSufix) #>: FormControl | any = null;
     public <#=  GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, TypeaheadSufix) #> : any;
     // <#= string.Join(" | ", CollectTypeaheadListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | null = null;
 
@@ -1425,7 +1425,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
             if (modelViewUIFormPropertySerializable.IsShownInView) { 
                 if(HasTypeahead(modelViewUIFormPropertySerializable, Model)) {
 #>
-    <#= GetExpressionForOnFilterTypeaheadControlListMethod(modelViewUIFormPropertySerializable, Model, TypeaheadSufix) #>(inFilter: string): <#= string.Join(" | ", CollectTypeaheadListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> {
+    <#= GetExpressionForOnFilterTypeaheadControlListMethod(modelViewUIFormPropertySerializable, Model, TypeaheadSufix) #>(inFilter: string): <#= string.Join(" | ", CollectTypeaheadListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | any {
 <#  
                     bool genElse = false;
                     for(int inptTp = 1; inptTp < 4; inptTp++) {

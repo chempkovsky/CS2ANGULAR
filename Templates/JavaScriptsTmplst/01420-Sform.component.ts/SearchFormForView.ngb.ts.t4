@@ -397,7 +397,7 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= eve
                     }
                     foreach(ModelViewPropertyOfVwSerializable fKprop in fKprops) {
 #>
-        isDsbl = isDsbl && this.<#= HiddenFilterPropName #>.some(v => v.fltrName === '<#= GetTypeScriptPropertyName(fKprop, Model) #>');
+        isDsbl = isDsbl && this.<#= HiddenFilterPropName #>.some((v: { fltrName: string; }) => v.fltrName === '<#= GetTypeScriptPropertyName(fKprop, Model) #>');
 <#
                     }
 #>
