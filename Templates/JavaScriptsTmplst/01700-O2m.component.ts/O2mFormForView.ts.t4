@@ -255,7 +255,7 @@ export class <#= componentClassName #> implements <#= eventEmitterPubModelClassN
 
     public <#= HiddenFilterDetailPropName #>: Array<<#= filterResultModelClassName #>> | null = null;
     public <#= DetailViewNamePropName #>: string | null = null;
-    public <#= DetailViewSelModels #>: Array<<#= detailViewSelModelClassName #>> | null = [];
+    public <#= DetailViewSelModels #>: Array<<#= detailViewSelModelClassName #>> | any = [];
     public <#= AppearancePropName #>: MatFormFieldAppearance = 'outline';
 
     constructor(protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #>, private cd: ChangeDetectorRef) {
@@ -304,7 +304,7 @@ export class <#= componentClassName #> implements <#= eventEmitterPubModelClassN
         this.<#= HiddenFilterDetailPropName #> = flt;
         this.cd.detectChanges();
     }
-    public mstrRow: <#= GetInterfaceName(Model) #> | null = null; 
+    public mstrRow: <#= GetInterfaceName(Model) #> | any = null; 
     onSelectedRow(row: <#= GetInterfaceName(Model) #> | null) {
         let isNDef = true;
         if(!(typeof row === 'undefined')) {
@@ -318,7 +318,7 @@ export class <#= componentClassName #> implements <#= eventEmitterPubModelClassN
         this.<#= SelectedRowPropName #>.emit(this.mstrRow);
         this.defineHiddenDetailFilter();
     }
-    public dtlVw: <#= detailViewSelModelClassName #> | null = null;
+    public dtlVw: <#= detailViewSelModelClassName #> | any = null;
     onSelectionChanged(v: MatSelectChange) {
         let isNDef = true;
         if(!(typeof v === 'undefined')) {
