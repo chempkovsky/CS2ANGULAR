@@ -272,12 +272,12 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
 #>
     public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>: FormControl | any = null;
     public <#=  GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, ComboSufix) #> : <#= 
-                string.Join(" | ", CollectComboListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | null = null;
+                string.Join(" | ", CollectComboListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | any = null;
 <#
         } // if (HasCombo(modelViewUIFormPropertySerializable, Model)) {
         if (HasButton(modelViewUIFormPropertySerializable, Model)  && modelViewUIFormPropertySerializable.IsShownInView) {  
 #>
-    public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ButtonSufix) #>: <#= string.Join(" | ", CollectButtonItemInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | null = null;
+    public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ButtonSufix) #>: <#= string.Join(" | ", CollectButtonItemInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | any = null;
     public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ButtonDisable) #>: boolean = true;
 
 <#
@@ -286,7 +286,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
 #>
     public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, TypeaheadSufix) #>: FormControl | any = null;
     public <#=  GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, TypeaheadSufix) #> : <#= 
-                string.Join(" | ", CollectTypeaheadListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | null = null;
+                string.Join(" | ", CollectTypeaheadListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | any = null;
 <#
         } // if (HasTypeahead(modelViewUIFormPropertySerializable, Model)) {  
     } // end of foreach(ModelViewUIFormPropertySerializable modelViewUIFormPropertySerializable in Model.UIFormProperties) {
@@ -1125,7 +1125,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
                                     let lfc: any = this.<#= GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.value;
                                     if (!(typeof lfc === 'undefined')) {
                                         if (!(lfc === null)) {
-                                            let ind: number = this.<#= GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.findIndex(e => {
+                                            let ind: number = this.<#= GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.findIndex((e: any) => {
                                                         return  <#= GetPrimKeyFilterForFindIndexMethod(Context, viewName, "e","lfc") #> ;
                                                 });                            
                                             if (ind > -1) {
@@ -1161,7 +1161,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
 #>
             let hasNoVal: boolean = typeof this.<#= GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.value === 'undefined';
             hasNoVal = hasNoVal ? hasNoVal : (this.<#= GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.value === null);
-            let flt: <#= GetInterfaceFilterName(locView) #> | null = null;
+            let flt: <#= GetInterfaceFilterName(locView) #> | any = null;
             if (! hasNoVal) {
                 let lfc: <#= GetInterfaceNameEx(Context, viewName) #> = this.<#= GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.value;
 <#
@@ -1350,7 +1350,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
                                             let lfc: any = this.<#= GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.value;
                                             if (!(typeof lfc === 'undefined')) {
                                                 if (!(lfc === null)) {
-                                                    let ind: number = this.<#= GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.findIndex(e => {
+                                                    let ind: number = this.<#= GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.findIndex((e: any) => {
                                                                 return  <#= GetPrimKeyFilterForFindIndexMethod(Context, viewName, "e","lfc") #> ;
                                                         });                            
                                                     if (ind > -1) {
