@@ -184,7 +184,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
     tableMenuItemsData: Array<<#= menuItemDataModelClassName #>> = [
          {id: '<#= ActionParamAddMode #>', caption: 'Add Item', iconName: 'create', iconColor: 'primary', enabled: true},
       ];
-    currSnapshot: ActivatedRouteSnapshot = null;
+    currSnapshot: ActivatedRouteSnapshot | any = null;
 
     constructor(protected route: ActivatedRoute, protected router: Router, protected  <#= formRootService #>: <#= serviceClassName #>, protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #>, 
         // public dialog: MatDialog, 
@@ -222,7 +222,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
         let len: number = url.length;
         let paramMap: ParamMap = this.currSnapshot.paramMap;
         if(paramMap.has('<#= DepthParamName #>')) {
-            let depth: number = parseInt(paramMap.get('<#= DepthParamName #>'));
+            let depth: number = parseInt(paramMap.get('<#= DepthParamName #>') as string);
             if (depth > 1) {
                 if(len < 5) {
                     this.onNavError();
@@ -427,7 +427,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
             //let depth: number = 1;
             //let paramMap: ParamMap = this.currSnapshot.paramMap;
             //if(paramMap.has('depth')) {
-                //depth = parseInt(paramMap.get('depth'))+1;
+                //depth = parseInt(paramMap.get('depth') as string)+1;
             //} 
             //if(depth < 2) depth = 2;
             //qp.push(depth.toString());
@@ -468,7 +468,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
         qp.push(sfx);  
         this.router.navigate(qp, {relativeTo: this.route});
     }
-    <#= applyFilterPropName #>(frm: <#= searchComponentClassName #>) {
+    <#= applyFilterPropName #>(frm: <#= searchComponentClassName #> | any) {
         if(this.isPostNavApplied) {
             return;
         }
@@ -477,7 +477,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
         if(!paramMap.has('<#= ActionParamName #>')) {
             return;
         }
-        let act: string = paramMap.get('<#= ActionParamName #>');
+        let act: string | any = paramMap.get('<#= ActionParamName #>');
         if(typeof act === 'undefined') {
             return;
         }
@@ -511,7 +511,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
                         if (data === null) return;
                         if(typeof frm.dataSource === 'undefined') return;
                         if(!Array.isArray(frm.dataSource)) return;
-                        let i: number = frm.dataSource.findIndex(e => {
+                        let i: number = frm.dataSource.findIndex((e:any) => {
                             return <# {int k = 0;
                                     foreach(ModelViewPropertyOfVwSerializable primKey in primKeys) { if (k > 0)  { #> && <# } 
                                     #> (e.<#= GetTypeScriptPropertyName(primKeys[k], Model) #> === data.<#= GetTypeScriptPropertyName(primKeys[k], Model) #>)<#
@@ -551,7 +551,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
         let url: UrlSegment[] = this.currSnapshot.url;
         let len: number = url.length;
         if(paramMap.has('<#= DepthParamName #>')) {
-            let depth: number = parseInt(paramMap.get('<#= DepthParamName #>'));
+            let depth: number = parseInt(paramMap.get('<#= DepthParamName #>') as string);
             if (depth > 1) {
                 if(len < 5) {
                     this.onNavError();
@@ -565,7 +565,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
                     return;
                 }
                 nvgNm = nvgNm.toLowerCase();
-                let flt = {
+                let flt: any = {
                     <#= ActionParamName #>: '<#= ActionParamCancelMode #>'
                 };
 <#
