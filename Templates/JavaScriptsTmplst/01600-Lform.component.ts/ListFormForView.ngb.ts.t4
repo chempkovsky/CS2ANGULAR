@@ -228,8 +228,8 @@ import { <#=  dlgComponentClassName #> } from '<#= GetFolderName(Model, edlgComp
 export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= eventEmitterPubModelClassName #>, <#= itemHeightDataModelClassName #> {
     @Input('<#= captionSelector #>') <#= captionPropName #>: string = '<#= Model.ViewName #>';
 
-    @Input('<#= FilterMaxHeightPropSelector #>')  <#= FilterMaxHeightPropName #>: number | null = null;
-    @Input('<#= MaxHeightPropSelector #>') <#= MaxHeightPropName #>: number | null = null;
+    @Input('<#= FilterMaxHeightPropSelector #>')  <#= FilterMaxHeightPropName #>: number | any = null;
+    @Input('<#= MaxHeightPropSelector #>') <#= MaxHeightPropName #>: number | any = null;
 
     @Output('<#= onContainerMenuItemClickSelector #>') <#= onContainerMenuItemClickEmitter #> = new EventEmitter<<#= eventEmitterDataModelClassName #>>();
     @Input('<#= containerMenuItemsSelector #>') <#= containerMenuItemsPropName #>: Array<<#= menuItemDataModelClassName #>> = [];

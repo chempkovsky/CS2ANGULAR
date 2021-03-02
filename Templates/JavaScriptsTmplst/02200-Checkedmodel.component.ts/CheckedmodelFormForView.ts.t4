@@ -237,16 +237,16 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= ite
     @Input('<#= ShowFilterSelector #>') <#= ShowFilterPropName #>: boolean = true;
     @Input('<#= showAddFltItemSelector #>') <#= showAddFltItemPropName #>: boolean = false;
 
-    @Input('<#= FilterMaxHeightPropSelector #>')  <#= FilterMaxHeightPropName #>: number | null = null;
+    @Input('<#= FilterMaxHeightPropSelector #>')  <#= FilterMaxHeightPropName #>: number | any = null;
     public <#= OverflowPropName #>: string | null = null;   
 
-    public <#= MaxHeightPropName #>X: number|null = null;
-    protected _<#= MaxHeightPropName #>: number|null = null;
+    public <#= MaxHeightPropName #>X: number| any = null;
+    protected _<#= MaxHeightPropName #>: number| any = null;
     @Input('<#= MaxHeightPropSelector #>')
-        get <#= MaxHeightPropName #>(): number {
+        get <#= MaxHeightPropName #>(): number | any {
             return this._<#= MaxHeightPropName #>;
         }
-        set <#= MaxHeightPropName #>(inp: number) {
+        set <#= MaxHeightPropName #>(inp: number | any) {
             if (!(typeof inp === 'undefined')) {
                 if(!(inp === null)) {
                     this._<#= MaxHeightPropName #> = inp;
@@ -329,7 +329,7 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= ite
     }
     inQuery: boolean = false;
     onFilter() {
-        let flt: <#= GetInterfaceFilterName(Model) #> = { page: this.currentPageIndex, pagesize: this.currentPageSize };
+        let flt: <#= GetInterfaceFilterName(Model) #> | any = { page: this.currentPageIndex, pagesize: this.currentPageSize };
         if (!(typeof this.currentSortColumn === 'undefined')) {
             if (!(this.currentSortColumn === null)) {
                 if(!(this.currentSortColumn === '')) {
@@ -368,7 +368,7 @@ export class <#= componentClassName #> implements OnInit, AfterViewInit, <#= ite
                     }
                 }
                 this.matPaginatorLen = pl;
-                let rslt = [];
+                let rslt: any = [];
                 if (!(typeof v.items === 'undefined')) {
                     if(!(v.items === null)) {
                         rslt = v.items;

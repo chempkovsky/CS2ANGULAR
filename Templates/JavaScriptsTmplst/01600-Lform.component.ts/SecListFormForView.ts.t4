@@ -90,8 +90,8 @@ import { <#= serviceClassName #> } from '<#=  GetCrossComponentFolderName(Model,
 })
 export class <#= componentClassName #> implements OnInit,  <#= itemHeightDataModelClassName #> {
 
-    @Input('<#= FilterMaxHeightPropSelector #>')  <#= FilterMaxHeightPropName #>: number | null = null;
-    @Input('<#= MaxHeightPropSelector #>') <#= MaxHeightPropName #>: number | null = null;
+    @Input('<#= FilterMaxHeightPropSelector #>')  <#= FilterMaxHeightPropName #>: number | any = null;
+    @Input('<#= MaxHeightPropSelector #>') <#= MaxHeightPropName #>: number | any = null;
 
     isOnInitCalled: boolean = false;
 
@@ -111,12 +111,12 @@ export class <#= componentClassName #> implements OnInit,  <#= itemHeightDataMod
         this.isOnInitCalled = true;
     }
 
-    protected _<#= HiddenFilterPropName #>: Array<<#= filterResultModelClassName #>> = [];
+    protected _<#= HiddenFilterPropName #>: Array<<#= filterResultModelClassName #>> | any = [];
     @Input('<#= HiddenFilterSelector #>') 
-        get <#= HiddenFilterPropName #>(): Array<<#= filterResultModelClassName #>> {
+        get <#= HiddenFilterPropName #>(): Array<<#= filterResultModelClassName #>> | any {
           return this._<#= HiddenFilterPropName #>;
         }
-        set <#= HiddenFilterPropName #>(inDef: Array<<#= filterResultModelClassName #>>) {
+        set <#= HiddenFilterPropName #>(inDef: Array<<#= filterResultModelClassName #>> | any) {
           if (typeof inDef === 'undefined') {
             this._<#= HiddenFilterPropName #> = [];
           } else if(!Array.isArray(inDef)) {
@@ -131,8 +131,8 @@ export class <#= componentClassName #> implements OnInit,  <#= itemHeightDataMod
 
     inQuery: boolean = false;
     onFilter() {
-        this.<#= PermissionsPropName #> = [];
-        let flt: <#= GetInterfaceFilterName(Model) #> = { page: 1, pagesize: 1, orderby: [] };
+        this.<#= PermissionsPropName #>  = [];
+        let flt: <#= GetInterfaceFilterName(Model) #> | any = { page: 1, pagesize: 1, orderby: [] };
         if (Array.isArray(this._<#= HiddenFilterPropName #>)) {
             this._<#= HiddenFilterPropName #>.forEach(e => {
                 let opNm =  e.fltrName + '<#= OperatorSufix #>';
