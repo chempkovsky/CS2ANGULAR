@@ -1,6 +1,9 @@
 # CS2Angular
 ## Free Open Source tool
 
+## Hands on Lab
+- Goto wiki to get practical skills
+https://github.com/chempkovsky/CS2ANGULAR/wiki
 
 
 ### Table of content
