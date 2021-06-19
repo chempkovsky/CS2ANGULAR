@@ -17,6 +17,7 @@ using CS2ANGULAR.Helpers;
 
 namespace CS2ANGULAR.ViewModel
 {
+#pragma warning disable VSTHRD010
     public class FeatureViewModel : IsReadyViewModel
     {
 

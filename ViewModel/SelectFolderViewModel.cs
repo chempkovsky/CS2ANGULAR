@@ -19,8 +19,6 @@ using Microsoft.VisualStudio.Shell.Interop;
 using EnvDTE;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using Microsoft.Build.Tasks;
-using CS2ANGULAR.Helpers;
 using static CS2ANGULAR.Helpers.ContextChangedNotificationService;
 
 namespace CS2ANGULAR.ViewModel
