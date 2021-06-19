@@ -46,7 +46,7 @@ import { <#= GetInterfaceName(Model) #> } from '<#= GetFolderName(Model, viewInt
   styleUrls: ['<#= GetFolderName(Model, edlgCssFolder, edlgComponentFolder) #>.css']
 })
 export class <#= componentClassName #>  {
-    @ViewChild(<#= GetComponentClassName(Model, eformComponentFolder) #>) childForm: <#= GetComponentClassName(Model, eformComponentFolder) #>;
+    @ViewChild(<#= GetComponentClassName(Model, eformComponentFolder) #>) childForm: <#= GetComponentClassName(Model, eformComponentFolder) #>|any;
     constructor(public dialogRef: MatDialogRef<<#= componentClassName #>>, @Inject(MAT_DIALOG_DATA) public data: <#= GetInterfaceEDlgName(Model) #> ) { }
     <#= OnAfterSubmitMethodName #>(newVal: <#= GetInterfaceName(Model) #>) {
         this.data.<#= FormControlNewModelPropName #> = newVal; 

@@ -38,7 +38,7 @@ import { <#= GetInterfaceName(Model) #> } from '<#=  GetFolderName(Model, viewIn
 })
 export class <#= componentClassName #> { 
     @Input('data')
-    public data: <#= GetInterfaceDlgName(Model) #>;
+    public data: <#= GetInterfaceDlgName(Model) #> | any;
     constructor(public dialogRef: NgbActiveModal) { }
     //public dialogRef: MatDialogRef<<#= componentClassName #>>, @Inject(MAT_DIALOG_DATA) public data: <#= GetInterfaceDlgName(Model) #> ) { }
     currentRow: <#= GetInterfaceName(Model) #> |null = null;

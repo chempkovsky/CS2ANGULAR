@@ -37,10 +37,10 @@ import { <#= GetComponentClassName(Model, columnSelectorComponentFolder) #> } fr
 })
 
 export class <#= GetComponentClassName(Model, columnSelectorDlgComponentFolder) #> { 
-    @ViewChild(<#= GetComponentClassName(Model, columnSelectorComponentFolder) #>) childForm: <#= GetComponentClassName(Model, columnSelectorComponentFolder) #>;
+    @ViewChild(<#= GetComponentClassName(Model, columnSelectorComponentFolder) #>) childForm: <#= GetComponentClassName(Model, columnSelectorComponentFolder) #>|any;
 
     @Input('data')
-    data: Array<<#=  GetModelClassName(Model, columnSelectorItemInterfaceFolder) #>>
+    data: Array<<#=  GetModelClassName(Model, columnSelectorItemInterfaceFolder) #>>|any;
     constructor(
         public dialogRef: NgbActiveModal
         // public dialogRef: MatDialogRef<<#= GetComponentClassName(Model, columnSelectorDlgComponentFolder) #>>, 
@@ -52,7 +52,7 @@ export class <#= GetComponentClassName(Model, columnSelectorDlgComponentFolder) 
     onOk() {
         if (typeof this.childForm === 'undefined') return;
         if (this.childForm === null) return;
-        let ind = this.childForm.colums.findIndex(e => { return e.checked === true; })
+        let ind = this.childForm.colums.findIndex((e: { checked: boolean; }) => { return e.checked === true; })
         if(ind < 0) {
             this.childForm.shwoError('No columns selected');
             return;

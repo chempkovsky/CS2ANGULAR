@@ -47,9 +47,9 @@ import { <#= GetInterfaceName(Model) #> } from '<#= GetFolderName(Model, viewInt
 })
 export class <#= componentClassName #>  {
 
-    @ViewChild(<#= GetComponentClassName(Model, eformComponentFolder) #>) childForm: <#= GetComponentClassName(Model, eformComponentFolder) #>;
+    @ViewChild(<#= GetComponentClassName(Model, eformComponentFolder) #>) childForm: <#= GetComponentClassName(Model, eformComponentFolder) #>|any;
     @Input('data')
-    public data: <#= GetInterfaceEDlgName(Model) #>;
+    public data: <#= GetInterfaceEDlgName(Model) #> | any;
     constructor(public dialogRef: NgbActiveModal) { }
         // public dialogRef: MatDialogRef<<#= componentClassName #>>) { }
     <#= OnAfterSubmitMethodName #>(newVal: <#= GetInterfaceName(Model) #>) {

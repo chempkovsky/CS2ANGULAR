@@ -25,13 +25,14 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild } from '@angular/router';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild, Route } from '@angular/router';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 @Injectable({
   providedIn: 'root'
 })
 export class <#= appSettingServiceClassName #> implements CanActivate, CanActivateChild {
-    public <#= AppearancePropName #>: string = 'outline';
+    public <#= AppearancePropName #>: MatFormFieldAppearance = 'outline';
     public filterHeightAddition: number = 0.5;
     public filterHeightFactor: number = 5;
     public tableHeightAddition: number = 0;
@@ -98,7 +99,8 @@ export class <#= appSettingServiceClassName #> implements CanActivate, CanActiva
         if (fc === null) {
           return rslt;
         }
-        const errs: ValidationErrors = fc.errors;
+        if (fc.errors === null) return rslt;
+        const errs: ValidationErrors = fc.errors as ValidationErrors;
         Object.keys(errs).forEach(k => {
           switch(k) {
             case 'maxlength':
@@ -218,7 +220,9 @@ export class <#= appSettingServiceClassName #> implements CanActivate, CanActiva
       return rslt; 
     }
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
-      let pth: string[] = childRoute.routeConfig.path.split('/');
+      if (childRoute.routeConfig === null) return false;
+      if ( typeof ((childRoute.routeConfig as Route).path) === 'undefined') return false;
+      let pth: string[] = ((childRoute.routeConfig as Route).path as string).split('/');
       let vnm: string = '';
       let act: number = 1;
       let vid: number = -1;
@@ -254,10 +258,13 @@ export class <#= appSettingServiceClassName #> implements CanActivate, CanActiva
       return (this.getViewModelMask(vnm) & act) === act;
     }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
-      return ( this.getDashBrdMask(route.routeConfig.component['name']) & 1) === 1;
+      if(route.routeConfig === null) return false;
+      if( typeof ((route.routeConfig as Route).component) === 'undefined') return false;
+      return ( this.getDashBrdMask(((route.routeConfig as Route).component as any)['name']) & 1) === 1;
+
     }
     
-    public userName: string;
+    public userName: string|null=null;
 }
 
 @Injectable({

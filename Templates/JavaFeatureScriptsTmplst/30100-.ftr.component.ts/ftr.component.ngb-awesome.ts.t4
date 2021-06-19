@@ -221,7 +221,7 @@ export class <#= featureClassName #>  {
 #>
     }
 
-    <#= onContainerMenuItemClickMethodName #>(v: <#= menuItemDataModelClassName #>) {
+    <#= onContainerMenuItemClickMethodName #>(v: <#= menuItemDataModelClassName #> | any) {
         let setDefault = true;
         let locId = parseInt(v.id);
         this.isExp[locId] = !(this.isExp[locId]);
@@ -288,7 +288,7 @@ export class <#= featureClassName #>  {
 #>
 
     routForm: any = null;
-    routSbscrptn: Subscription;
+    routSbscrptn: Subscription | any;
     <#= onActivateMethodName #>(r: any) {
         this.routForm = r;
         (r as <#= itemHeightDataModelClassName #>).maxHeight = this.<#= MaxHeightPropName #>[<#= rotedId #>][0];  

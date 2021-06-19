@@ -209,6 +209,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs/internal/Observable';
 import { switchMap,  catchError, debounceTime } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 import { <#= eformModeEnumName #> } from '<#=  GetCommonFolderName(Model, Context,  eformModeEnumlFolder, eformComponentFolder)#>';
 import { <#= appSettingServiceClassName #> } from '<#=  GetCommonFolderName(Model, Context,  appSettingServiceFolder, eformComponentFolder)#>';
@@ -246,7 +247,7 @@ import { <#=  GetInterfaceNameEx(Context, viewNm) #> } from '<#=  GetCrossCompon
 })
 export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubModelClassName #> {
     // start: variable declaration section
-    @Input('<#= captionSelector #>') <#= captionPropName #>: string = 'Add(Modify/Delete) Item';
+    @Input('<#= captionSelector #>') <#= captionPropName #>: string|any = 'Add(Modify/Delete) Item';
 
     @Output('<#= onContainerMenuItemClickSelector #>') <#= onContainerMenuItemClickEmitter #> = new EventEmitter<<#= eventEmitterDataModelClassName #>>();
     @Input('<#= containerMenuItemsSelector #>') <#= containerMenuItemsPropName #>: Array<<#= menuItemDataModelClassName #>> = [];
@@ -261,31 +262,31 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
 
 
 
-    public <#= AppearancePropName #>: string = 'outline';
+    public <#= AppearancePropName #>: MatFormFieldAppearance = 'outline';
     private ngOnInitCalled: boolean = false;
     private _eformMode: <#= eformModeEnumName #> = <#= eformModeEnumName #>.DeleteMode;
-    public <#= MainFormGroupName #>: FormGroup = null;
+    public <#= MainFormGroupName #>: FormGroup|any = null;
 <#    //////////////////////////// start helper variable and FormControl -generator 
     foreach(ModelViewUIFormPropertySerializable modelViewUIFormPropertySerializable in Model.UIFormProperties) {
         if (HasCombo(modelViewUIFormPropertySerializable, Model) && modelViewUIFormPropertySerializable.IsShownInView) { 
 #>
-    public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>: FormControl = null;
+    public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>: FormControl | any = null;
     public <#=  GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, ComboSufix) #> : <#= 
-                string.Join(" | ", CollectComboListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | null = null;
+                string.Join(" | ", CollectComboListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | any = null;
 <#
         } // if (HasCombo(modelViewUIFormPropertySerializable, Model)) {
         if (HasButton(modelViewUIFormPropertySerializable, Model)  && modelViewUIFormPropertySerializable.IsShownInView) {  
 #>
-    public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ButtonSufix) #>: <#= string.Join(" | ", CollectButtonItemInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | null = null;
+    public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ButtonSufix) #>: <#= string.Join(" | ", CollectButtonItemInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | any = null;
     public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ButtonDisable) #>: boolean = true;
 
 <#
         } // if (HasButton(modelViewUIFormPropertySerializable, Model)) { 
         if (HasTypeahead(modelViewUIFormPropertySerializable, Model)  && modelViewUIFormPropertySerializable.IsShownInView) {  
 #>
-    public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, TypeaheadSufix) #>: FormControl = null;
+    public <#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, TypeaheadSufix) #>: FormControl | any = null;
     public <#=  GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, TypeaheadSufix) #> : <#= 
-                string.Join(" | ", CollectTypeaheadListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | null = null;
+                string.Join(" | ", CollectTypeaheadListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | any = null;
 <#
         } // if (HasTypeahead(modelViewUIFormPropertySerializable, Model)) {  
     } // end of foreach(ModelViewUIFormPropertySerializable modelViewUIFormPropertySerializable in Model.UIFormProperties) {
@@ -317,9 +318,9 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
 #>
 <#    //////////////////////////// start Input Model -generator 
 #>
-    protected _<#= FormControlModelPropName #>: <#= GetInterfaceName(Model) #> | null = null;
+    protected _<#= FormControlModelPropName #>: <#= GetInterfaceName(Model) #> | any = null;
     @Input('<#= FormControlModelSelector #>') 
-        set <#= FormControlModelPropName #> (inFormControlModel : <#= GetInterfaceName(Model) #>) {
+        set <#= FormControlModelPropName #> (inFormControlModel : <#= GetInterfaceName(Model) #> | any) {
             let isInputNull: boolean = true;
             if (typeof inFormControlModel !== 'undefined') {
                 isInputNull = (inFormControlModel === null);
@@ -335,7 +336,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
                 this.DoInit();
             }
         }
-        get <#=  FormControlModelPropName #>(): <#= GetInterfaceName(Model) #> {
+        get <#=  FormControlModelPropName #>(): <#= GetInterfaceName(Model) #> | any {
             return this._<#= FormControlModelPropName #>;
         } // end of get <#=        FormControlModelPropName #>
 <#    //////////////////////////// end Input Model -generator 
@@ -520,7 +521,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
 <#   
                     if (HasOnValChangedMethod(Context, Model, modelViewUIFormPropertySerializable)) {
 #>                                
-            this.<#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.valueChanges.subscribe(val => this.<#=  GetExpressionForOnValChangedMethod(modelViewUIFormPropertySerializable, Model) #>(val, true));
+            this.<#=  GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.valueChanges.subscribe((val: any) => this.<#=  GetExpressionForOnValChangedMethod(modelViewUIFormPropertySerializable, Model) #>(val, true));
 <#    
                     }
                 } // else if (GetInputTypeWhenXXX(modelViewUIFormPropertySerializable, inptTp) == InputTypeEnum.Combo) {
@@ -1111,7 +1112,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
         }
                             if (directMasters.Count < 1) {
 #>
-            let flt = {};
+            let flt: any = {};
             <#= GetOrderBy(modelViewUIFormPropertySerializable, Model, Context, inptTp,"flt") #>
             this.<#= servisPropNm #>.<#= GetWithFilterMethodName #>(flt).subscribe(
                 (data: <#= GetInterfacePageNameEx(Context, viewName) #> ) => { // success path
@@ -1124,7 +1125,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
                                     let lfc: any = this.<#= GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.value;
                                     if (!(typeof lfc === 'undefined')) {
                                         if (!(lfc === null)) {
-                                            let ind: number = this.<#= GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.findIndex(e => {
+                                            let ind: number = this.<#= GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.findIndex((e: any) => {
                                                         return  <#= GetPrimKeyFilterForFindIndexMethod(Context, viewName, "e","lfc") #> ;
                                                 });                            
                                             if (ind > -1) {
@@ -1160,7 +1161,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
 #>
             let hasNoVal: boolean = typeof this.<#= GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.value === 'undefined';
             hasNoVal = hasNoVal ? hasNoVal : (this.<#= GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.value === null);
-            let flt: <#= GetInterfaceFilterName(locView) #> | null = null;
+            let flt: <#= GetInterfaceFilterName(locView) #> | any = null;
             if (! hasNoVal) {
                 let lfc: <#= GetInterfaceNameEx(Context, viewName) #> = this.<#= GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.value;
 <#
@@ -1349,7 +1350,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
                                             let lfc: any = this.<#= GetTypeScriptPropertyNameWithSufix(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.value;
                                             if (!(typeof lfc === 'undefined')) {
                                                 if (!(lfc === null)) {
-                                                    let ind: number = this.<#= GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.findIndex(e => {
+                                                    let ind: number = this.<#= GetExpressionForControlList(modelViewUIFormPropertySerializable, Model, ComboSufix) #>.findIndex((e: any) => {
                                                                 return  <#= GetPrimKeyFilterForFindIndexMethod(Context, viewName, "e","lfc") #> ;
                                                         });                            
                                                     if (ind > -1) {
@@ -1399,7 +1400,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
             if (modelViewUIFormPropertySerializable.IsShownInView) { 
                 if(HasTypeahead(modelViewUIFormPropertySerializable, Model)) {
 #>
-    <#= GetExpressionForOnFilterTypeaheadControlListMethod(modelViewUIFormPropertySerializable, Model, TypeaheadSufix) #>(inFilter: string): <#= string.Join(" | ", CollectTypeaheadListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> {
+    <#= GetExpressionForOnFilterTypeaheadControlListMethod(modelViewUIFormPropertySerializable, Model, TypeaheadSufix) #>(inFilter: string): <#= string.Join(" | ", CollectTypeaheadListInterfaces(Context, modelViewUIFormPropertySerializable, Model)) #> | any {
 <#  
                     bool genElse = false;
                     for(int inptTp = 1; inptTp < 4; inptTp++) {
@@ -1444,7 +1445,7 @@ export class <#= componentClassName #> implements OnInit, <#= eventEmitterPubMod
         }
 #>
             let hasNoVal: boolean = false;
-            let flt: <#= GetInterfaceFilterName(locView) #> = {};
+            let flt: <#= GetInterfaceFilterName(locView) #> | any = {};
 <#
                             if (directMasters.Count > 0) {
                                 List<ModelViewPropertyOfVwSerializable> allForeignKeyProps = GetAllForeignKeyProps(locView);

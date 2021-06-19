@@ -97,7 +97,7 @@
                     
                 <mat-form-field *ngIf="flt.fltrDataType !== 'datetime'" [appearance]="<#= AppearancePropName #>" fxFlex="72%">
                     <mat-label>Filter value</mat-label>
-                    <input  matInput placeholder="Placeholder" [formControl]="flt.fltrValue" [(maxlength)]="flt.fltrMaxLen">
+                    <input  matInput placeholder="Placeholder" [formControl]="flt.fltrValue" [maxlength]="flt.fltrMaxLen">
                     <mat-error *ngIf="flt.fltrValue.invalid">{{getErrorMessage(flt.fltrValue)}}</mat-error>
                     <mat-hint align="end" *ngIf="flt.fltrMaxLen">{{flt.fltrValue.value?.length || 0}}/{{flt.fltrMaxLen}}</mat-hint>
                 </mat-form-field>

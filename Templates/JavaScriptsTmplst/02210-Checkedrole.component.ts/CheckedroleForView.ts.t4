@@ -209,6 +209,7 @@
 #>
 import { Component,  Input, Output, EventEmitter, Inject, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 import { <#= eformModeEnumName #> } from '<#=  GetCommonFolderName(Model, Context,  eformModeEnumlFolder, checkedroleComponentFolder)#>';
 import { <#= appSettingServiceClassName #> } from '<#=  GetCommonFolderName(Model, Context,  appSettingServiceFolder, checkedroleComponentFolder)#>';
@@ -264,7 +265,7 @@ export class <#= componentClassName #> implements <#= eventEmitterPubModelClassN
           }
         } 
 
-    public <#= AppearancePropName #>: string = 'outline';
+    public <#= AppearancePropName #>: MatFormFieldAppearance = 'outline';
     constructor(protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #>, public dialog: MatDialog, private cd: ChangeDetectorRef) {
         this.<#= AppearancePropName #> = this.<#= AppSettingServicePropName #>.<#= AppearancePropName #>;
     }

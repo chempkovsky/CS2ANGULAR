@@ -17,7 +17,7 @@ export interface <#= GetInterfaceName(Model) #> {
     if (Model.ScalarProperties != null) {
         foreach (CS2ANGULAR.Model.Serializable.ModelViewPropertyOfVwSerializable prop in Model.ScalarProperties) { 
 #>
-      <#=                GetTypeScriptPropertyName(prop, Model) #>: <#=                GetPropertyTypeScriptTypeName(prop) #>;    // <#= GetPropertyTypeName(prop) #>
+      <#=                GetTypeScriptPropertyName(prop, Model) #>: <#= GetPropertyTypeScriptTypeName(prop) #>;    // <#= GetPropertyTypeName(prop) #>
 <#
         }
     }
@@ -46,6 +46,8 @@ export interface <#= GetInterfaceName(Model) #> {
         }
         if(prop.IsNullable || (!prop.IsRequiredInView)) {
             return result + " | null";
+        } else {
+            return result + " | any"; // this is impartant line of code
         }
         return result;
     }

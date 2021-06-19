@@ -50,6 +50,7 @@
 #>
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 import { <#= appSettingServiceClassName #> } from '<#= GetFolderName(Model, appSettingServiceFolder, appLogoutComponentFolder)#>';
 import { <#= appLoginServiceClassName #> } from '<#= GetFolderName(Model, appLoginServiceFolder, appLogoutComponentFolder)#>';
@@ -62,9 +63,10 @@ import { <#= appLoginServiceClassName #> } from '<#= GetFolderName(Model, appLog
 })
 export class <#= appLogoutComponentClassName #> {
     title: string = 'Do you want to Sign Out?';
-    public appearance: string = 'outline';
+    public <#= AppearancePropName #>: MatFormFieldAppearance = 'outline';
+
     constructor(private <#= securityServiceName #>: <#= appLoginServiceClassName #>, protected router: Router, protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #> ) {
-        this.appearance = this.<#= AppSettingServicePropName #>.appearance;
+        this.appearance = this.<#= AppSettingServicePropName #>.<#= AppearancePropName #>;
     } 
     doSubmit() {
         this.<#= securityServiceName #>.<#= logoutMethodName #>()

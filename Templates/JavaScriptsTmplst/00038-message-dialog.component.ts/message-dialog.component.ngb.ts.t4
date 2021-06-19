@@ -38,7 +38,7 @@ import { <#= messageDialogDataModelClassName #> } from '<#= GetFolderName(Model,
 })
 export class <#= messageDialogComponentClassName #>  {
     @Input('data')
-    public data: <#= messageDialogDataModelClassName #>;
+    public data: <#= messageDialogDataModelClassName #>|any;
     constructor(public dialogRef: NgbActiveModal
            // public dialogRef: MatDialogRef<MessageDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: <#= messageDialogDataModelClassName #> 
         ) { }

@@ -23,7 +23,7 @@
 
 import { Injectable, Component, TemplateRef } from '@angular/core';
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-import { CanActivate,  ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild } from '@angular/router';
+import { CanActivate,  ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild, Route } from '@angular/router';
 
 
 
@@ -49,7 +49,7 @@ import { CanActivate,  ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateC
 export class ToastComponent {
   constructor(public toastService: AppGlblSettingsService) {}
 
-  isTemplate(toast) { return toast.textOrTpl instanceof TemplateRef; }
+  isTemplate(toast: any) { return toast.textOrTpl instanceof TemplateRef; }
 }
 
 @Injectable({
@@ -64,7 +64,7 @@ export class <#= appSettingServiceClassName #> implements CanActivate, CanActiva
   }
 
   // Callback method to remove Toast DOM element from view
-  public removeToast(toast) {
+  public removeToast(toast: any) {
     this.toasts = this.toasts.filter(t => t !== toast);
   }
 
@@ -148,7 +148,8 @@ export class <#= appSettingServiceClassName #> implements CanActivate, CanActiva
         if (fc === null) {
           return rslt;
         }
-        const errs: ValidationErrors = fc.errors;
+        if (fc.errors === null) return rslt;
+        const errs: ValidationErrors = fc.errors as ValidationErrors;
         Object.keys(errs).forEach(k => {
           switch(k) {
             case 'maxlength':
@@ -268,7 +269,9 @@ export class <#= appSettingServiceClassName #> implements CanActivate, CanActiva
       return rslt; 
     }
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
-      let pth: string[] = childRoute.routeConfig.path.split('/');
+      if (childRoute.routeConfig === null) return false;
+      if ( typeof ((childRoute.routeConfig as Route).path) === 'undefined') return false;
+      let pth: string[] = ((childRoute.routeConfig as Route).path as string).split('/');
       let vnm: string = '';
       let act: number = 1;
       let vid: number = -1;
@@ -304,10 +307,11 @@ export class <#= appSettingServiceClassName #> implements CanActivate, CanActiva
       return (this.getViewModelMask(vnm) & act) === act;
     }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
-      return ( this.getDashBrdMask(route.routeConfig.component['name']) & 1) === 1;
+      if(route.routeConfig === null) return false;
+      if( typeof ((route.routeConfig as Route).component) === 'undefined') return false;
+      return ( this.getDashBrdMask(((route.routeConfig as Route).component as any)['name']) & 1) === 1;
     }
-    
-    public userName: string;
+    public userName: string|null=null;
 
 }
 

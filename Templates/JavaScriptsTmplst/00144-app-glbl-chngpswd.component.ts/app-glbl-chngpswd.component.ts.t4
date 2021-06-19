@@ -45,6 +45,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators, ValidatorFn, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 
 import { <#= appSettingServiceClassName #> } from '<#= GetFolderName(Model, appSettingServiceFolder, appChangePasswordComponentFolder)#>';
 import { <#= appLoginServiceClassName #> } from '<#= GetFolderName(Model, appLoginServiceFolder, appChangePasswordComponentFolder)#>';
@@ -61,12 +62,12 @@ export class <#= appChangePasswordComponentClassName #> {
     cnfPwdhide: boolean = true;
     pwdhide: boolean = true;
     oldpwdhide: boolean = true;
-    public appearance: string = 'outline';
+    public <#= AppearancePropName #>: MatFormFieldAppearance = 'outline';
     chngpswdFormGroup: FormGroup;
 
 
     constructor(private <#= securityServiceName #>: <#= appLoginServiceClassName #>, protected router: Router, protected <#= AppSettingServicePropName #>: <#= appSettingServiceClassName #> ) {
-        this.appearance = this.<#= AppSettingServicePropName #>.appearance;
+        this.<#= AppearancePropName #> = this.<#= AppSettingServicePropName #>.<#= AppearancePropName #>;
 
         this.chngpswdFormGroup =  new FormGroup({});
         let locValidators: ValidatorFn[]; 

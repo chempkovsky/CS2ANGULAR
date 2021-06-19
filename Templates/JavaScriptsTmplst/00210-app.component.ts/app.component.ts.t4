@@ -47,7 +47,7 @@ export class AppComponent {
     //<#= AppSettingServicePropName #>.appearance = 'fill';
     }
 
-    get userName(): string {
+    get userName(): string|null {
         return this.<#= AppSettingServicePropName #>.userName;
     }  
 }

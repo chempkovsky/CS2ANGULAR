@@ -36,14 +36,14 @@ import { NgbDateAdapter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 @Injectable()
 export class <#= appNgbDateNativeAdapterClassName #> extends NgbDateAdapter<Date> {
 
-    fromModel(date: Date): NgbDateStruct {
+    fromModel(date: Date): NgbDateStruct|null {
         if(typeof date === 'undefined') return null;
         if(date === null) return null;
         var dt = new Date(date);
         return dt ? {year: dt.getFullYear(), month: dt.getMonth() + 1, day: dt.getDate() || 1} : null;
     }
 
-    toModel(date: NgbDateStruct): Date {
+    toModel(date: NgbDateStruct): Date|null {
         return date ? new Date(date.year, date.month - 1, date.day, 0, 0, 0) : null;
     }
 }

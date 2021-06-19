@@ -88,7 +88,7 @@
                 <div class="form-group" *ngIf="flt.fltrDataType !== 'datetime'" fxFlex="72%">
                     <small>Filter value</small>
                     <div class="input-group" >
-                        <input  class="form-control form-control" placeholder="Placeholder" [formControl]="flt.fltrValue" [(maxlength)]="flt.fltrMaxLen">
+                        <input  class="form-control form-control" placeholder="Placeholder" [formControl]="flt.fltrValue" [maxlength]="flt.fltrMaxLen">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary " type="button"   (click)="removeFltr(flt)" data-toggle="tooltip" title="Remove current filter item">
                                 <fa-icon [icon]="['fas', 'trash']"  size="sm" class="text-danger"></fa-icon> 

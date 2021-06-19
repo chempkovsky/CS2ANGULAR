@@ -21,7 +21,7 @@ export interface <#= filterDefModelClassName #> {
     fltrName: string; 
     fltrCaption: string; 
     fltrDataType: string;
-    fltrMaxLen: number|null;
+    fltrMaxLen: number|any;
     fltrMin: any;
     fltrMax: any;
 }
