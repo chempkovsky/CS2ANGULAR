@@ -449,7 +449,7 @@
         if (propForSel == null) {
             return "NoName";
         }
-        return GetTypeScriptPropertyName(propForSel, model);
+        return GetTypeScriptPropertyName(propForSel, mv);
     }
     string GetTypeaheadControlListPropertyName(CS2ANGULAR.Model.Serializable.ModelViewUIFormPropertySerializable prop, CS2ANGULAR.Model.Serializable.ModelViewSerializable model, CS2ANGULAR.Model.Serializable.DbContextSerializable context, int inputType){
         string viewNameForSel = "";
