@@ -27,7 +27,8 @@ namespace CS2ANGULAR.Helpers
                     FileName = c.FileName,
                     FileProject = c.FileProject,
                     FileDefaultProjectNameSpace = c.FileDefaultProjectNameSpace,
-                    FileFolder = c.FileFolder
+                    FileFolder = c.FileFolder,
+                    T4Template = c.T4Template
                 }));
             }
 
